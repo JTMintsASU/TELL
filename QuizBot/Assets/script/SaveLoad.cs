@@ -9,10 +9,9 @@ public class SaveLoad
     //When called, load data from file if no active childID
     public SaveLoad()
     {
-		if(DataManager.childID==null)
-			Load();
-		
 		staging = new SerialData();
+		if (DataManager.childID==null)
+			Load();
 	}
 
 	//Creates save file out of datamanager class called LocalSave.dat
