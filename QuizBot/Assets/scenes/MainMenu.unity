@@ -332,9 +332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7484b9afba32cbc40ad1a44052f0348c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teacherField: {fileID: 0}
-  assessorField: {fileID: 0}
+  teacherNameField: {fileID: 0}
+  assessorNameField: {fileID: 0}
   childNameField: {fileID: 0}
+  teacherIDField: {fileID: 0}
+  assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
   responseField: {fileID: 0}
   expressiveToggle: {fileID: 0}
@@ -602,7 +604,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
@@ -802,7 +804,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
@@ -1084,7 +1086,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
@@ -1163,7 +1165,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
@@ -1721,8 +1723,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
-  m_sharedMaterial: {fileID: 4987265420253103367, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1811b43fdbecc484ab611f7d833c6b01, type: 2}
+  m_sharedMaterial: {fileID: 3214921493735848429, guid: 1811b43fdbecc484ab611f7d833c6b01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

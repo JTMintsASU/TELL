@@ -302,7 +302,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bd8e3fb8c71e48442a39af755018ad7d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d56499166a4640439f4bdab9fdf7d3f, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -786,29 +786,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7484b9afba32cbc40ad1a44052f0348c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teacherField: {fileID: 0}
-  assessorField: {fileID: 0}
+  teacherNameField: {fileID: 0}
+  assessorNameField: {fileID: 0}
   childNameField: {fileID: 0}
+  teacherIDField: {fileID: 0}
+  assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
   responseField: {fileID: 0}
   expressiveToggle: {fileID: 0}
   receptiveToggle: {fileID: 0}
   childText: {fileID: 0}
-  expressiveText: {fileID: 0}
-  receptiveText: {fileID: 0}
-  totalText: {fileID: 0}
+  promptText: []
+  responsesText: []
+  expressiveText:
+  - {fileID: 0}
+  receptiveText:
+  - {fileID: 0}
+  totalText:
+  - {fileID: 0}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
   - {fileID: 0}
   totalPercent:
   - {fileID: 0}
-  responsesText1: {fileID: 0}
-  responsesText2: {fileID: 0}
-  responsesText3: {fileID: 0}
-  responsesText4: {fileID: 0}
-  responsesText5: {fileID: 0}
-  responsesText6: {fileID: 0}
 --- !u!114 &1812890044
 MonoBehaviour:
   m_ObjectHideFlags: 0
