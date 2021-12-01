@@ -112,8 +112,8 @@ public class DataManager : MonoBehaviour
             {
                 promptText[wheel].text = promptStorage[wheel];
                 responsesText[wheel].text = responses[wheel];
-                expressiveText[wheel].text = individual_expressive[wheel].ToString();
-                receptiveText[wheel].text = individual_receptive[wheel].ToString();
+                expressiveText[wheel].text = individual_expressive[wheel] ? "1" : "0";
+                receptiveText[wheel].text = individual_receptive[wheel] ? "1" : "0";
                 totalText[wheel].text = individual_total[wheel].ToString();
             }            
         }
