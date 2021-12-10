@@ -1290,18 +1290,11 @@ MonoBehaviour:
   - {fileID: 1790721366}
   - {fileID: 1530604385}
   - {fileID: 131493009}
-  totalText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  expressiveTotal: {fileID: 836822232}
+  receptiveTotal: {fileID: 1814312585}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!4 &519637035
 Transform:
@@ -1878,7 +1871,7 @@ GameObject:
   - component: {fileID: 836822233}
   - component: {fileID: 836822232}
   m_Layer: 5
-  m_Name: text_expressive (7)
+  m_Name: text_expressive_total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4678,7 +4671,7 @@ GameObject:
   - component: {fileID: 1814312586}
   - component: {fileID: 1814312585}
   m_Layer: 5
-  m_Name: text_receptive (7)
+  m_Name: text_receptive_total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

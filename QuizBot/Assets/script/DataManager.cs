@@ -50,7 +50,8 @@ public class DataManager : MonoBehaviour
     public TextMeshProUGUI[] responsesText; //Displays child answers
     public TextMeshProUGUI[] expressiveText;
     public TextMeshProUGUI[] receptiveText;
-    public TextMeshProUGUI[] totalText;
+    public TextMeshProUGUI expressiveTotalText;
+    public TextMeshProUGUI receptiveTotalText;
 
     //Results Fields
     public TextMeshProUGUI[] expressivePercent;
@@ -114,8 +115,11 @@ public class DataManager : MonoBehaviour
                 responsesText[wheel].text = responses[wheel];
                 expressiveText[wheel].text = individual_expressive[wheel] ? "1" : "0";
                 receptiveText[wheel].text = individual_receptive[wheel] ? "1" : "0";
-                totalText[wheel].text = individual_total[wheel].ToString();
-            }            
+            }
+            //Access calculated total grades for this time
+            //See https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings for formatting
+            expressiveTotalText.text = grade_vocabularyExpressive[globalTime - 1].ToString("F0") + "%";
+            receptiveTotalText.text = grade_vocabularyReceptive[globalTime - 1].ToString("F0") + "%";
         }
 
         //Report card - show all times
