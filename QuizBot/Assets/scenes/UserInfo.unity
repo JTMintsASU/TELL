@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Child Name or Child ID already exists. Do you want to import saved data?
+  m_text: Child Name or Child ID already exists. Do you want to proceed?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
   m_sharedMaterial: {fileID: 4987265420253103367, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   childIDField: {fileID: 99378696}
   sceneName: MainMenu
   cleanup: {fileID: 99568383}
+  validator: {fileID: 0}
 --- !u!1 &110056747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,7 +2969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ID
+  m_text: ID Number
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
   m_sharedMaterial: {fileID: 4987265420253103367, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
@@ -4652,7 +4653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: First & Last Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
   m_sharedMaterial: {fileID: 4987265420253103367, guid: a81e8249167673b4e8365e9e2f8d0afe, type: 2}
