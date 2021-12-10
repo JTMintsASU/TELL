@@ -56,7 +56,6 @@ public class DataManager : MonoBehaviour
     //Results Fields
     public TextMeshProUGUI[] expressivePercent;
     public TextMeshProUGUI[] receptivePercent;
-    public TextMeshProUGUI[] totalPercent;
 
     //Long-Term Grades
     public static double vocabularyTotalQuestions; //How many vocab questions are asked per unit?
@@ -118,8 +117,8 @@ public class DataManager : MonoBehaviour
             }
             //Access calculated total grades for this time
             //See https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings for formatting
-            expressiveTotalText.text = grade_vocabularyExpressive[globalTime - 1].ToString("F0") + "%";
-            receptiveTotalText.text = grade_vocabularyReceptive[globalTime - 1].ToString("F0") + "%";
+            expressiveTotalText.text = grade_vocabularyExpressive[globalTime - 1].ToString("F0") + '%';
+            receptiveTotalText.text = grade_vocabularyReceptive[globalTime - 1].ToString("F0") + '%';
         }
 
         //Report card - show all times
@@ -129,9 +128,8 @@ public class DataManager : MonoBehaviour
             //Loop populates grades textboxes, hardcoded at 6 due to issues reading unfully instantiated sizes
             for(int loop = 0; loop < 6; loop++) 
             {
-                expressivePercent[loop].text = grade_vocabularyExpressive[loop].ToString("0") + '%'; //Parameter ensures two decimal points
-                receptivePercent[loop].text = grade_vocabularyReceptive[loop].ToString("0") + '%';
-                totalPercent[loop].text = grade_vocabularyTotal[loop].ToString("0") + '%';
+                expressivePercent[loop].text = grade_vocabularyExpressive[loop].ToString("F0"); //Parameter ensures two decimal points
+                receptivePercent[loop].text = grade_vocabularyReceptive[loop].ToString("F0");
             }
         }
     }
