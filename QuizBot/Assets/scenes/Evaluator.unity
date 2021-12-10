@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 727950458}
   - component: {fileID: 727950459}
   - component: {fileID: 727950452}
+  - component: {fileID: 727950460}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1163,8 +1164,8 @@ MonoBehaviour:
   - {fileID: 0}
   receptiveText:
   - {fileID: 0}
-  totalText:
-  - {fileID: 0}
+  expressiveTotalText: {fileID: 0}
+  receptiveTotalText: {fileID: 0}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
@@ -1212,6 +1213,20 @@ MonoBehaviour:
   gradeData: {fileID: 727950457}
   gradedQuestions: {fileID: 727950458}
   checker: {fileID: 727950453}
+--- !u!114 &727950460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727950451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6a35b048549d1429a9f027e6c46fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearButton: {fileID: 1065061408}
+  boxToClear: {fileID: 1459630532}
 --- !u!1 &746151779
 GameObject:
   m_ObjectHideFlags: 0

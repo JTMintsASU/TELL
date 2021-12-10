@@ -1290,12 +1290,13 @@ MonoBehaviour:
   - {fileID: 1790721366}
   - {fileID: 1530604385}
   - {fileID: 131493009}
-  expressiveTotal: {fileID: 836822232}
-  receptiveTotal: {fileID: 1814312585}
+  expressiveTotalText: {fileID: 836822232}
+  receptiveTotalText: {fileID: 1814312585}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
   - {fileID: 0}
+  totalPercent: []
 --- !u!4 &519637035
 Transform:
   m_ObjectHideFlags: 0
