@@ -13,8 +13,6 @@ public class SaveLoad
 	public SaveLoad()
     {
 		staging = new SerialData();
-		//if (DataManager.childID==null)
-		//	Load();
 	}
 
 	//Creates save file out of datamanager class called <childId>.dat
@@ -29,10 +27,13 @@ public class SaveLoad
 		staging.sGradeVocabTotal = DataManager.grade_vocabularyTotal;
 
 		if (staging.sChildID == null)
+		{
+			Debug.LogError("Missing childID, unable to save data");
 			return;
-
-		string fileName = staging.sChildID + ".dat";
-		string savePath = persistentDataPath + "/" + fileName;
+		}
+		
+		string fileName = staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
+		string savePath = persistentDataPath + "/" + fileName; // File path for storage with the file name
 
 		//Create and save file
 		BinaryFormatter bf = new BinaryFormatter();
@@ -43,10 +44,13 @@ public class SaveLoad
 
 	//Attempts to load LocalSave.dat into current DataManager
 	//Static members for datamanager allows data to persist through entire app
-	public void load(TMP_InputField childIDField)
+	public void Load(TMP_InputField childIDField)
 	{
 		if (childIDField == null || childIDField.text == null)
+		{
+			Debug.LogError("Missing childID, unable to load data");
 			return;
+		}
 
 		string fileName = childIDField.text + ".dat";
 		string loadPath = persistentDataPath + "/" + fileName;

@@ -61,7 +61,7 @@ public class Load : MonoBehaviour
     {
         loadBtn.interactable = true;
         panel.gameObject.SetActive(false);
-        loader.load(childIDField);
+        loader.Load(childIDField);
 
         // Load new scene
         cleanup.SceneCleanup();
