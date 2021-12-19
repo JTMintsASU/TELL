@@ -10,7 +10,7 @@ public class Load : MonoBehaviour
     // UI Elements
     public Button noBtn; // No Button in Panel
     public Button yesBtn; // Yes Button in Panel
-    public Button loadButton; // Load Button in Panel
+    public Button loadBtn; // Load Button in Panel
     public GameObject panel; // Panel
     public TextMeshProUGUI displayText; // Text display in Panel
     public TMP_InputField childIDField; // Value for childId
@@ -30,7 +30,7 @@ public class Load : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        loadButton.onClick.AddListener(loadButtonClick);
+        loadBtn.onClick.AddListener(loadButtonClick);
         yesBtn.onClick.AddListener(yesButtonClick);
         noBtn.onClick.AddListener(noButtonClick);
     }
@@ -47,17 +47,11 @@ public class Load : MonoBehaviour
         // Check if panel should be displayed (validator for panel)
         if (showWarning)
         {
-            loadButton.interactable = false;
-            yesBtn.gameObject.SetActive(true);
-            noBtn.gameObject.SetActive(true);
-            displayText.gameObject.SetActive(true);
+            loadBtn.interactable = false;
             panel.gameObject.SetActive(true);
         }
         else
         {
-            yesBtn.gameObject.SetActive(false);
-            noBtn.gameObject.SetActive(false);
-            displayText.gameObject.SetActive(false);
             panel.gameObject.SetActive(false);
         }
     }
@@ -65,10 +59,7 @@ public class Load : MonoBehaviour
     // Occurs when yes button is clicked
     void yesButtonClick()
     {
-        loadButton.interactable = true;
-        yesBtn.gameObject.SetActive(false);
-        noBtn.gameObject.SetActive(false);
-        displayText.gameObject.SetActive(false);
+        loadBtn.interactable = true;
         panel.gameObject.SetActive(false);
         loader.load(childIDField);
 
@@ -82,10 +73,7 @@ public class Load : MonoBehaviour
     // Occurs when no button is clicked
     void noButtonClick()
     {
-        loadButton.interactable = true;
-        yesBtn.gameObject.SetActive(false);
-        noBtn.gameObject.SetActive(false);
-        displayText.gameObject.SetActive(false);
+        loadBtn.interactable = true;
         panel.gameObject.SetActive(false);
     }
 }
