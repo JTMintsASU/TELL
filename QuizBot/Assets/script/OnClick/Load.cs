@@ -24,7 +24,6 @@ public class Load : MonoBehaviour
     void Awake()
     {
         loader = new SaveLoad();
-        validator = new Validation_UserInfo();
     }
 
     // Use this for initialization
@@ -39,8 +38,8 @@ public class Load : MonoBehaviour
     void loadButtonClick()
     {
         bool showWarning;
-        if (Validation_UserInfo.displayWarning.HasValue)
-            showWarning = Validation_UserInfo.displayWarning.Value;
+        if (validator.displayWarning.HasValue)
+            showWarning = validator.displayWarning.Value;
         else
             showWarning = validator.shouldDisplayWarning(childIDField);
 

@@ -1088,7 +1088,7 @@ MonoBehaviour:
   childIDField: {fileID: 99378696}
   sceneName: MainMenu
   cleanup: {fileID: 99568383}
-  validator: {fileID: 0}
+  validator: {fileID: 99568381}
 --- !u!114 &99568386
 MonoBehaviour:
   m_ObjectHideFlags: 0

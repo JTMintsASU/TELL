@@ -18,7 +18,7 @@ public class Validation_UserInfo : Validation_Parent
     public TMP_InputField childName;
     public TMP_InputField childID;
     public static string persistentDataPath;
-    public static Nullable<bool> displayWarning;
+    public Nullable<bool> displayWarning;
 
     void Awake()
     {
