@@ -51,18 +51,16 @@ public class SaveLoad
 			Debug.LogError("Missing childID, unable to load data");
 			return;
 		}
-
+		
+		// Obtain the filePath for loading
 		string fileName = childIDField.text + ".dat";
 		string loadPath = persistentDataPath + "/" + fileName;
 
-		//Load file into serializable
-		if (File.Exists(loadPath))
-		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(loadPath, FileMode.Open);
-			staging = (SerialData)bf.Deserialize(file);
-			file.Close();
-		}
+		// Open file and load data
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Open(loadPath, FileMode.Open);
+		staging = (SerialData)bf.Deserialize(file);
+		file.Close();
 
 		//Load serializable into Datamanager
 		DataManager.assessorID = staging.sAssessorID;
