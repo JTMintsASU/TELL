@@ -45,9 +45,4 @@ public class Validation_Evaluator : Validation_Parent
     {
         return validInput;
     }
-
-    public override bool Validate_Input()
-    {
-        throw new System.NotImplementedException();
-    }
 }

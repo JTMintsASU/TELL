@@ -7,11 +7,6 @@ using UnityEngine;
 
 public class Validation_Skip : Validation_Parent
 {
-    public override bool Validate_Input()
-    {
-        throw new System.NotImplementedException();
-    }
-
     //Since there's nothing to check,
     //we'll just say the input is valid
     public override bool Validator()

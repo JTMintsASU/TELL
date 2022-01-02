@@ -44,25 +44,6 @@ public class Validation_UserInfo : Validation_Parent
         return valid && !displayWarning.Value;
     }
 
-    //Time to validate!
-    //Requires one of each teacher, assessor, and child field filled
-    public override bool Validate_Input()
-    {
-        bool valid = true; //Return result
-        string empty = ""; //Used to more clearly indicate null strings
-
-        if (teacherName.text == empty && teacherID.text == empty)
-            valid = false;
-
-        if (assessorName.text == empty && assessorID.text == empty)
-            valid = false;
-
-        if (childName.text == empty && childID.text == empty)
-            valid = false;
-
-        return valid;
-    }
-
     public bool shouldDisplayWarning(TMP_InputField childIDField)
     {
         if (childIDField == null || childIDField.text == null)

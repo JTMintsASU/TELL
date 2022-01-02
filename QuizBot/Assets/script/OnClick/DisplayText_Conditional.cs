@@ -20,7 +20,7 @@ public class DisplayText_Conditional : MonoBehaviour
     void TaskOnClick()
     {
         //Make text opaque based on condition
-        if (!checker.Validate_Input()) //if input is invalid
+        if (!checker.Validator()) //if input is invalid
             displayText.alpha = 255;
         //Hide if condition is no longer met
         else

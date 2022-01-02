@@ -7,7 +7,4 @@ public abstract class Validation_Parent : MonoBehaviour
 {
     //Return a bool result determining if input is valid or not
     public abstract bool Validator();
-
-
-    public abstract bool Validate_Input();
 }
