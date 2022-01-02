@@ -21,14 +21,10 @@ public class Load : MonoBehaviour
     public Validation_UserInfo validator;
     SaveLoad loader;
 
-    void Awake()
-    {
-        loader = new SaveLoad();
-    }
-
     // Use this for initialization
     void Start()
     {
+        loader = new SaveLoad();
         loadBtn.onClick.AddListener(loadButtonClick);
         yesBtn.onClick.AddListener(yesButtonClick);
         noBtn.onClick.AddListener(noButtonClick);
