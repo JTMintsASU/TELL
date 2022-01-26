@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SaveLoad
 {
 	public SerialData staging;
-	public static string persistentDataPath = Application.persistentDataPath;
+	public static string pdP = Application.persistentDataPath;
 
 	//When called, load data from file if no active childID
 	public SaveLoad()
@@ -33,7 +33,7 @@ public class SaveLoad
 		}
 		
 		string fileName = staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
-		string savePath = persistentDataPath + "/" + fileName; // File path for storage with the file name
+		string savePath = pdP + "/" + fileName; // File path for storage with the file name
 
 		//Create and save file
 		BinaryFormatter bf = new BinaryFormatter();
@@ -54,7 +54,7 @@ public class SaveLoad
 		
 		// Obtain the filePath for loading
 		string fileName = childIDField.text + ".dat";
-		string loadPath = persistentDataPath + "/" + fileName;
+		string loadPath = pdP + "/" + fileName;
 
 		// Open file and load data
 		BinaryFormatter bf = new BinaryFormatter();
