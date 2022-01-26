@@ -1,21 +1,21 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveLoad
 {
 	public SerialData staging;
+	public static string pdP = Application.persistentDataPath;
 
-    //When called, load data from file if no active childID
-    public SaveLoad()
+	//When called, load data from file if no active childID
+	public SaveLoad()
     {
-		if(DataManager.childID==null)
-			Load();
-		
 		staging = new SerialData();
 	}
 
-	//Creates save file out of datamanager class called LocalSave.dat
+	//Creates save file out of datamanager class called <childId>.dat
 	public void Save()
 	{
 		//Prepare data
@@ -26,29 +26,41 @@ public class SaveLoad
 		staging.sGradeVocabRec = DataManager.grade_vocabularyReceptive;
 		staging.sGradeVocabTotal = DataManager.grade_vocabularyTotal;
 
+		if (staging.sChildID == null)
+		{
+			Debug.LogError("Missing childID, unable to save data");
+			return;
+		}
+		
+		string fileName = staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
+		string savePath = pdP + "/" + fileName; // File path for storage with the file name
+
 		//Create and save file
 		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath
-					 + "/LocalSave.dat");
+		FileStream file = File.Create(savePath);
 		bf.Serialize(file, staging);
 		file.Close();
 	}
 
 	//Attempts to load LocalSave.dat into current DataManager
 	//Static members for datamanager allows data to persist through entire app
-	public void Load()
+	public void Load(TMP_InputField childIDField)
 	{
-		//Load file into serializable
-		if (File.Exists(Application.persistentDataPath
-					   + "/LocalSave.dat"))
+		if (childIDField == null || childIDField.text == null)
 		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file =
-					   File.Open(Application.persistentDataPath
-					   + "/LocalSave.dat", FileMode.Open);
-			staging = (SerialData)bf.Deserialize(file);
-			file.Close();
+			Debug.LogError("Missing childID, unable to load data");
+			return;
 		}
+		
+		// Obtain the filePath for loading
+		string fileName = childIDField.text + ".dat";
+		string loadPath = pdP + "/" + fileName;
+
+		// Open file and load data
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Open(loadPath, FileMode.Open);
+		staging = (SerialData)bf.Deserialize(file);
+		file.Close();
 
 		//Load serializable into Datamanager
 		DataManager.assessorID = staging.sAssessorID;
