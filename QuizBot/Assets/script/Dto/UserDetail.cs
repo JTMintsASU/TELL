@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class UserDetails
+public class UserDetail
 {
     public string record_id;
     public string teacher_id;
@@ -13,7 +13,7 @@ public class UserDetails
 
 
 [System.Serializable]
-public class RootObject
+public class UsersDetails
 {
-    public UserDetails[] users;
+    public UserDetail[] users;
 }

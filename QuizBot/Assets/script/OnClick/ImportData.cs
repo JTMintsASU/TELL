@@ -13,36 +13,27 @@ public class ImportData  : MonoBehaviour
 
     void ButtonClick()
     {
-        // Debug.Log("checking button click");
-        StartCoroutine(Import());
+        StartCoroutine(RedCapService.Instance.ImportData(GetUserDetails, 
+                                                                "B345C5E9AFB7556F4627986E305D4F81", 
+                                                                "record", 
+                                                                "export", 
+                                                                "json", 
+                                                                "flat", 
+                                                                "json", 
+                                                                "game,time,teacher_id"));
     }
 
-    IEnumerator Import()
+    void GetUserDetails(UsersDetails usersDetails)
     {
-        WWWForm form = new WWWForm();
-        form.AddField("token", "B345C5E9AFB7556F4627986E305D4F81");
-        form.AddField("content", "record");
-        form.AddField("action", "export");
-        form.AddField("format", "json");
-        form.AddField("type", "flat");
-        form.AddField("returnFormat", "json");
-        form.AddField("fields", "game,time,teacher_id");
-
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        Debug.Log("Print Time");
+        foreach (UserDetail userDetail in usersDetails.users)
         {
-            yield return www.SendWebRequest();
-
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                string response = www.downloadHandler.text;
-                Debug.Log(www.downloadHandler.text);
-                RootObject root = JsonUtility.FromJson<RootObject>("{\"users\":" + response + "}");
-                Debug.Log(("Deserialized"));
-            }
+            Debug.Log("Assessor ID - " + userDetail.assessor_id);
+            Debug.Log("Game - " + userDetail.game);
+            Debug.Log("Record ID - " + userDetail.record_id);
+            Debug.Log("Score - " + userDetail.score);
+            Debug.Log("Teacher ID - " + userDetail.teacher_id);
+            Debug.Log("Time - " + userDetail.time);
         }
     }
 }
