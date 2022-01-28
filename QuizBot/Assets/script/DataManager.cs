@@ -17,6 +17,7 @@ public class DataManager : MonoBehaviour
 
     public static string currentScene; //used to determine what logic to use
 
+    public static string globalGame; //Var used to store what game we are playing
     public static int globalTime; //Var used to store which 'Time'/unit/week we are on
 
     //Per-game scored answers
@@ -45,6 +46,7 @@ public class DataManager : MonoBehaviour
     public Toggle receptiveToggle;
 
     //Grader Fields
+    public AdvanceText promptCycler;
     public TextMeshProUGUI childText; //Displays child ID
     public TextMeshProUGUI[] promptText;
     public TextMeshProUGUI[] responsesText; //Displays child answers
@@ -105,8 +107,7 @@ public class DataManager : MonoBehaviour
         if (currentScene == "Grader")
         {
             childText.text = childID;
-            //Temp storage
-            string[] promptStorage = AdvanceText.promptSelect(globalTime);
+            string[] promptStorage = promptCycler.promptSelect(globalTime);
             //Loop populates table textboxes, hardcoded at 6 due to issues reading unfully instantiated sizes
             for (int wheel = 0; wheel < 6; wheel++)
             {

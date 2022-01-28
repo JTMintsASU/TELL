@@ -1051,6 +1051,7 @@ GameObject:
   - component: {fileID: 727950459}
   - component: {fileID: 727950452}
   - component: {fileID: 727950460}
+  - component: {fileID: 727950461}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1157,6 +1158,7 @@ MonoBehaviour:
   responseField: {fileID: 1459630532}
   expressiveToggle: {fileID: 746151781}
   receptiveToggle: {fileID: 491013125}
+  promptCycler: {fileID: 0}
   childText: {fileID: 0}
   promptText: []
   responsesText: []
@@ -1169,8 +1171,6 @@ MonoBehaviour:
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!114 &727950458
 MonoBehaviour:
@@ -1197,6 +1197,7 @@ MonoBehaviour:
   complete: 0
   gradeMe: 0
   checker: {fileID: 727950453}
+  prompts: {fileID: 727950461}
 --- !u!114 &727950459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,6 +1228,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearButton: {fileID: 1065061408}
   boxToClear: {fileID: 1459630532}
+--- !u!114 &727950461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727950451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5614f38c87166c145b98256e56d1adc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompts1:
+  - (1) Alphabet
+  - (2) Senses
+  - (3) Schedule
+  - (4) Students
+  - (5) Scent
+  - (6) Taste
+  prompts2:
+  - (1) Transportation
+  - (2) Engine
+  - (3) Vehicles
+  - (4) Pretending
+  - (5) Dangerous
+  - (6) Delicious
+  prompts3:
+  - (1) Stretch
+  - (2) Creatures
+  - (3) Lantern
+  - (4) Harvest
+  - (5) Enormous
+  - (6) Autumn
+  prompts4:
+  - (1) Astronaut
+  - (2) Rocket
+  - (3) Planet
+  - (4) Fossils
+  - (5) Tracks
+  - (6) Scientist
+  prompts5:
+  - (1) Wild
+  - (2) Jungle
+  - (3) Tame
+  - (4) Branches
+  - (5) Seeds
+  - (6) Stem
+  prompts6:
+  - (1) Veterinarian
+  - (2) Collar
+  - (3) Leash
+  - (4) Farmer
+  - (5) Soil
+  - (6) Wheat
 --- !u!1 &746151779
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class AdvanceText : MonoBehaviour
     public bool complete; //Indicates when iteration moves to last element, viewed by other scripts for scene transition logic
     public bool gradeMe; //Seperate bool tracks actual last element, used for data sync purposes with other scripts
     public Validation_Evaluator checker; //Used to check for valid answer before proceeding
+    public Array_Prompts prompts; //Holds the list of prompts that the evaluator will be cycling through - select relevant child
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +28,16 @@ public class AdvanceText : MonoBehaviour
         clickedButton.onClick.AddListener(TaskOnClick);
     }
 
-    //This function uses an int to select a prompt from Array_Prompts.
+    //This function uses an int to select a prompt from Array_Prompts child.
     //The default case "prompts" contains an error message array.
-    public static string[] promptSelect(int selection) => selection switch
+    public string[] promptSelect(int selection) => selection switch
     {
-        1 => Array_Prompts.prompts1,
-        2 => Array_Prompts.prompts2,
-        3 => Array_Prompts.prompts3,
-        4 => Array_Prompts.prompts4,
-        5 => Array_Prompts.prompts5,
-        6 => Array_Prompts.prompts6,
+        1 => prompts.prompts1,
+        2 => prompts.prompts2,
+        3 => prompts.prompts3,
+        4 => prompts.prompts4,
+        5 => prompts.prompts5,
+        6 => prompts.prompts6,
         _ => Array_Prompts.prompts
     };
 
