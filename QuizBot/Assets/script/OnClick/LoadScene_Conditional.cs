@@ -20,7 +20,7 @@ public class LoadScene_Conditional : MonoBehaviour
         
     }
 
-    void TaskOnClick()
+    protected void TaskOnClick()
     {
         //Saves data and loads next string
         if(checker.Validator()) //if input is invalid

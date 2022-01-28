@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/CBM Scenes/Vocabulary/Grader.unity
     guid: d1ec2b68326afad419fee1b22bf3def2
+  - enabled: 1
+    path: Assets/scenes/CBM Scenes/Letter Name Identification/LNI_Evaluator.unity
+    guid: f17eaab4fb885914c958147fad9e51db
   m_configObjects: {}

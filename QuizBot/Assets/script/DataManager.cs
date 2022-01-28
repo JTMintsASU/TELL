@@ -199,5 +199,4 @@ public class DataManager : MonoBehaviour
             grade_vocabularyTotal[timeIndex] = (score_total / (vocabularyTotalQuestions * 2)) * 100;
         }
     }
-
 }

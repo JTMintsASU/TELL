@@ -341,12 +341,12 @@ GameObject:
   - component: {fileID: 322240619}
   - component: {fileID: 322240618}
   - component: {fileID: 322240617}
-  - component: {fileID: 322240612}
-  - component: {fileID: 322240609}
   - component: {fileID: 322240616}
   - component: {fileID: 322240615}
   - component: {fileID: 322240614}
+  - component: {fileID: 322240612}
   - component: {fileID: 322240611}
+  - component: {fileID: 322240609}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -379,11 +379,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 747153038}
-  sceneName: Instructions
+  clickedButton: {fileID: 1695333438}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!114 &322240610
@@ -407,6 +407,7 @@ MonoBehaviour:
   responseField: {fileID: 0}
   expressiveToggle: {fileID: 0}
   receptiveToggle: {fileID: 0}
+  promptCycler: {fileID: 0}
   childText: {fileID: 0}
   promptText: []
   responsesText: []
@@ -414,13 +415,11 @@ MonoBehaviour:
   - {fileID: 0}
   receptiveText:
   - {fileID: 0}
-  totalText:
-  - {fileID: 0}
+  expressiveTotalText: {fileID: 0}
+  receptiveTotalText: {fileID: 0}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!114 &322240611
 MonoBehaviour:
@@ -431,11 +430,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 1695333438}
-  sceneName: Instructions
+  clickedButton: {fileID: 373160702}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!114 &322240612
@@ -447,11 +446,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 1736704333}
-  sceneName: Instructions
+  clickedButton: {fileID: 676674379}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!4 &322240613
@@ -477,11 +476,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 373160702}
-  sceneName: Instructions
+  clickedButton: {fileID: 528406697}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!114 &322240615
@@ -493,11 +492,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 676674379}
-  sceneName: Instructions
+  clickedButton: {fileID: 747153038}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!114 &322240616
@@ -509,11 +508,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 322240607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afb4fd7f99308c42b1e13b31744bc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedButton: {fileID: 528406697}
-  sceneName: Instructions
+  clickedButton: {fileID: 1736704333}
+  sceneName: 
   checker: {fileID: 322240623}
   cleanup: {fileID: 322240610}
 --- !u!114 &322240617
