@@ -3,4 +3,4 @@ Software used to aid assessment for the TELL curriculum. Local Unity application
 
 # Useful Links:
 - Concerto Prototype: http://mathcms.la.asu.edu:8010/test/TELL-LSR-demo
-- Dropbox Manuals: https://www.dropbox.com/sh/20mypli1w0m3sbg/AADNghnMEV3epMh6sW8l1Ugga?dl=0
+- Dropbox Manual: https://www.dropbox.com/s/82ei1j48q0ppc22/TELL%203%20CBM%20Manual%20PDFP2.pdf
