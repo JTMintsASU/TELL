@@ -24,6 +24,7 @@ public class SetGame : MonoBehaviour
     {
         "buttonVocabulary" => "Evaluator",
         "buttonLNI" => "LNI_Evaluator",
+        "buttonRandom" => "Random_Evaluator",
         _ => "Error: No game found for button!" //Default 'error' case
     };
 }

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/CBM Scenes/Letter Name Identification/LNI_Evaluator.unity
     guid: f17eaab4fb885914c958147fad9e51db
+  - enabled: 1
+    path: Assets/scenes/CBM Scenes/Letter Name Identification/Random_Evaluator.unity
+    guid: b75e9b28547386048b992d5709368c14
   m_configObjects: {}
