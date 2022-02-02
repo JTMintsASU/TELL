@@ -13,14 +13,14 @@ public class ImportData  : MonoBehaviour
 
     void ButtonClick()
     {
-        StartCoroutine(RedCapService.Instance.ImportData(GetUserDetails, 
-                                                                "B345C5E9AFB7556F4627986E305D4F81", 
-                                                                "record", 
-                                                                "export", 
-                                                                "json", 
-                                                                "flat", 
-                                                                "json", 
-                                                                "game,time,teacher_id"));
+        StartCoroutine(RedCapService.Instance.ImportData(GetUserDetails,
+            "B345C5E9AFB7556F4627986E305D4F81",
+            "record",
+            "export",
+            "json",
+            "flat",
+            "json", null));
+                                                                //"game,time,teacher_id"));
     }
 
     void GetUserDetails(UsersDetails usersDetails)
@@ -28,12 +28,12 @@ public class ImportData  : MonoBehaviour
         Debug.Log("Print Time");
         foreach (UserDetail userDetail in usersDetails.users)
         {
-            Debug.Log("Assessor ID - " + userDetail.assessor_id);
-            Debug.Log("Game - " + userDetail.game);
-            Debug.Log("Record ID - " + userDetail.record_id);
-            Debug.Log("Score - " + userDetail.score);
-            Debug.Log("Teacher ID - " + userDetail.teacher_id);
-            Debug.Log("Time - " + userDetail.time);
+            Debug.Log("Assessor ID - " + userDetail.assessor_id + "\n" + 
+                      "Game - " + userDetail.game + "\n" + 
+                      "Record ID - " + userDetail.record_id + "\n" + 
+                      "Score - " + userDetail.score + "\n" + 
+                      "Teacher ID - " + userDetail.teacher_id + "\n" + 
+                      "Time - " + userDetail.time);
         }
     }
 }

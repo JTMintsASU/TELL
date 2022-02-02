@@ -39,7 +39,10 @@ public class RedCapService : MonoBehaviour
         form.AddField("format", format);
         form.AddField("type", type);
         form.AddField("returnFormat", returnFormat);
-        form.AddField("fields", fields);
+        if (fields != null)
+        {
+            form.AddField("fields", fields);
+        }
 
         using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
         {
@@ -65,7 +68,7 @@ public class RedCapService : MonoBehaviour
         string assessorId = DataManager.assessorID;
 
         UserDetail userDetail = new UserDetail();
-        userDetail.record_id = "record_id";
+        userDetail.record_id = Random.Range(10, 1000).ToString();
         userDetail.teacher_id = teacherId;
         userDetail.assessor_id = assessorId;
         
@@ -78,7 +81,7 @@ public class RedCapService : MonoBehaviour
         form.AddField("format", "json");
         form.AddField("type", "flat");
         form.AddField("overwriteBehavior", "normal");
-        form.AddField("forceAutoNumber", "false");
+        form.AddField("forceAutoNumber", "true");
         form.AddField("data","[" + data + "]");
         form.AddField("returnContent", "ids");
 
