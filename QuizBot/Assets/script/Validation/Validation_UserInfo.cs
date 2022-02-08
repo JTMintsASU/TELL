@@ -17,6 +17,8 @@ public class Validation_UserInfo : Validation_Parent
     public TMP_InputField assessorID;
     public TMP_InputField childName;
     public TMP_InputField childID;
+    public TMP_InputField classRoomName;
+    public TMP_InputField classRoomId;
     public static string persistentDataPath;
     public Nullable<bool> displayWarning;
 
@@ -38,18 +40,20 @@ public class Validation_UserInfo : Validation_Parent
             valid = false;
         if(childName.text == empty && childID.text == empty)
             valid = false;
+        if(classRoomName.text == empty && classRoomId.text == empty)
+            valid = false;
 
-        displayWarning = shouldDisplayWarning(childID);
+        displayWarning = shouldDisplayWarning(childID, classRoomId);
 
         return valid && !displayWarning.Value;
     }
 
-    public bool shouldDisplayWarning(TMP_InputField childIDField)
+    public bool shouldDisplayWarning(TMP_InputField childIDField, TMP_InputField classroomIDField)
     {
         if (childIDField == null || childIDField.text == null)
             return false;
 
-        string fileName = childIDField.text + ".dat";
+        string fileName = classroomIDField.text + "_" + childIDField.text + ".txt";
         string loadPath = persistentDataPath + "/" + fileName;
         if (File.Exists(loadPath))
         {

@@ -14,6 +14,7 @@ public class DataManager : MonoBehaviour
     public static string teacherID;
     public static string assessorID;
     public static string childID;
+    public static string classroomId;
 
     public static string currentScene; //used to determine what logic to use
 
@@ -35,9 +36,11 @@ public class DataManager : MonoBehaviour
     public TMP_InputField teacherNameField;
     public TMP_InputField assessorNameField;
     public TMP_InputField childNameField;
+    public TMP_InputField classroomField;
     public TMP_InputField teacherIDField;
     public TMP_InputField assessorIDField;
     public TMP_InputField childIDField;
+    public TMP_InputField classroomIDField;
 
     //Evaluator Fields
     public TMP_InputField responseField;
@@ -87,6 +90,7 @@ public class DataManager : MonoBehaviour
             teacherIDField.text = teacherID;
             assessorIDField.text = assessorID;
             childIDField.text = childID;
+            classroomIDField.text = classroomId;
         }
 
         //Reset scores and wipe responses
@@ -184,6 +188,10 @@ public class DataManager : MonoBehaviour
             childID = childNameField.text;
             if(childIDField.text != "")
                 childID = childIDField.text;
+            classroomId = classroomField.text;
+            if(classroomIDField.text != "")
+                classroomId = classroomIDField.text;
+            
         }
 
         //Grade final question and calculate results before moving on
