@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -90}
-  m_SizeDelta: {x: 100, y: 75}
+  m_AnchoredPosition: {x: 300, y: -200}
+  m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294388897
 MonoBehaviour:
@@ -550,9 +550,11 @@ MonoBehaviour:
   teacherNameField: {fileID: 0}
   assessorNameField: {fileID: 0}
   childNameField: {fileID: 0}
+  classroomField: {fileID: 0}
   teacherIDField: {fileID: 0}
   assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
+  classroomIDField: {fileID: 0}
   responseField: {fileID: 0}
   expressiveToggle: {fileID: 0}
   receptiveToggle: {fileID: 0}
@@ -563,13 +565,11 @@ MonoBehaviour:
   - {fileID: 0}
   receptiveText:
   - {fileID: 0}
-  totalText:
-  - {fileID: 0}
+  expressiveTotalText: {fileID: 0}
+  receptiveTotalText: {fileID: 0}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!114 &509879281
 MonoBehaviour:
@@ -1450,8 +1450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 30}
-  m_SizeDelta: {x: 100, y: 75}
+  m_AnchoredPosition: {x: -300, y: -200}
+  m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532174221
 MonoBehaviour:
@@ -2153,8 +2153,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1811b43fdbecc484ab611f7d833c6b01, type: 2}
-  m_sharedMaterial: {fileID: 3214921493735848429, guid: 1811b43fdbecc484ab611f7d833c6b01, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

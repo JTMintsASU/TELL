@@ -13,4 +13,15 @@ public class SerialData
     public double[] sGradeVocabExp;
     public double[] sGradeVocabRec;
     public double[] sGradeVocabTotal;
+    
+    
+    public static SerialData fromUserDetail(UserDetail userDetail)
+    {
+        SerialData serialData = new SerialData();
+        serialData.sAssessorID = userDetail.assessor_id;
+        serialData.sChildID = userDetail.child_id;
+        serialData.sClassroomID = userDetail.classroom_id;
+        serialData.sTeacherID = userDetail.teacher_id;
+        return serialData;
+    }
 }

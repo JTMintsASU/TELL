@@ -14,6 +14,6 @@ public class ExportData : MonoBehaviour
     void ButtonClick()
     {
         // Debug.Log("checking button click");
-        StartCoroutine(RedCapService.Instance.ExportData());
+        StartCoroutine(RedCapService.Instance.ExportAllData());
     }
 }
