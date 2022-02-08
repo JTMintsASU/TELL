@@ -22,6 +22,7 @@ public class SaveLoad
 		staging.sAssessorID = DataManager.assessorID;
 		staging.sChildID = DataManager.childID;
 		staging.sTeacherID = DataManager.teacherID;
+		staging.sClassroomID = DataManager.classroomId;
 		staging.sGradeVocabExp = DataManager.grade_vocabularyExpressive;
 		staging.sGradeVocabRec = DataManager.grade_vocabularyReceptive;
 		staging.sGradeVocabTotal = DataManager.grade_vocabularyTotal;
@@ -32,7 +33,7 @@ public class SaveLoad
 			return;
 		}
 		
-		string fileName = staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
+		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".txt"; // File for saving, filename will be <childID>.dat
 		string savePath = pdP + "/" + fileName; // File path for storage with the file name
 
 		//Create and save file
@@ -44,7 +45,7 @@ public class SaveLoad
 
 	//Attempts to load LocalSave.dat into current DataManager
 	//Static members for datamanager allows data to persist through entire app
-	public void Load(TMP_InputField childIDField)
+	public void Load(TMP_InputField childIDField, TMP_InputField classroomIDField)
 	{
 		if (childIDField == null || childIDField.text == null)
 		{
@@ -53,7 +54,7 @@ public class SaveLoad
 		}
 		
 		// Obtain the filePath for loading
-		string fileName = childIDField.text + ".dat";
+		string fileName = classroomIDField.text + "_" + childIDField.text + ".txt";
 		string loadPath = pdP + "/" + fileName;
 
 		// Open file and load data
@@ -66,6 +67,7 @@ public class SaveLoad
 		DataManager.assessorID = staging.sAssessorID;
 		DataManager.childID = staging.sChildID;
 		DataManager.teacherID = staging.sTeacherID;
+		DataManager.classroomId = staging.sClassroomID;
 		DataManager.grade_vocabularyExpressive = staging.sGradeVocabExp;
 		DataManager.grade_vocabularyReceptive = staging.sGradeVocabRec;
 		DataManager.grade_vocabularyTotal = staging.sGradeVocabTotal;

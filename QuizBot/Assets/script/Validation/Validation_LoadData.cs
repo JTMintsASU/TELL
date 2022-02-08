@@ -19,6 +19,9 @@ public class Validation_LoadData : Validation_UserInfo
         if (childName.text == empty && childID.text == empty)
             valid = false;
 
+        if (classRoomId.text == empty && classRoomName.text == empty)
+            valid = false;
+
         return valid;
     }
     
