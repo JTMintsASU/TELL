@@ -17,7 +17,7 @@ public class SaveLoad
 	}
 
 	// Creates a file and saves data currently in DataManager (current user)
-	// 1. Data is stored in a file -> <classroom_id>_<child_id>.txt
+	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Only data of current user is stored
 	public void Save()
 	{
@@ -36,7 +36,7 @@ public class SaveLoad
 			return;
 		}
 		
-		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".txt"; // File for saving, filename will be <childID>.dat
+		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
 		string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
 
 		//Create and save file
@@ -47,7 +47,7 @@ public class SaveLoad
 	}
 
 	// Loads data from a file into DataManager
-	// 1. Data is stored in a file -> <classroom_id>_<child_id>.txt
+	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Data of user is loaded in DataManager
 	public void Load(TMP_InputField childIDField, TMP_InputField classroomIDField)
 	{
@@ -59,7 +59,7 @@ public class SaveLoad
 		}
 		
 		// Obtain the filePath for loading
-		string fileName = classroomIDField.text + "_" + childIDField.text + ".txt";
+		string fileName = classroomIDField.text + "_" + childIDField.text + ".dat";
 		string loadPath = Path.Combine(pdP, fileName);
 
 		// Open file and load data
@@ -79,7 +79,7 @@ public class SaveLoad
 	}
 	
 	// Creates files and saves data passed as parameter
-	// 1. Data is stored in a file -> <classroom_id>_<child_id>.txt
+	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Only data of current user is stored
 	public void SaveAll(UsersDetails usersDetails)
 	{
@@ -97,7 +97,7 @@ public class SaveLoad
 			}
 			
 		
-			string fileName = staging.sClassroomID + "_" + staging.sChildID + ".txt"; // File for saving, filename will be <childID>.dat
+			string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
 			string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
 
 			//Create and save file

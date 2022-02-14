@@ -1,7 +1,5 @@
 //This class loads a scene when a button is clicked
 //if the given Validator is true
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;

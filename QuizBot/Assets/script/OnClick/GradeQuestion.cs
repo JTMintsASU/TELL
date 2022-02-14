@@ -13,7 +13,6 @@ public class GradeQuestion : MonoBehaviour
     {
         //Create listener for the button in question
         gradeButton.onClick.AddListener(GradeOnClick);
-
     }
 
     void GradeOnClick()

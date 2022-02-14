@@ -14,7 +14,6 @@ public class DisplayText_Conditional : MonoBehaviour
     {
         //Create listener for the button in question
         clickedButton.onClick.AddListener(TaskOnClick);
-        
     }
 
     void TaskOnClick()

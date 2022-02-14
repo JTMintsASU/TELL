@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 
+// Responsible for exporting data into RedCap
 public class ImportData  : MonoBehaviour
 {
     public SaveLoad saveLoad;
@@ -16,19 +17,35 @@ public class ImportData  : MonoBehaviour
 
     void Start()
     {
-        clickedButton.onClick.AddListener(ButtonClick);
+        clickedButton.onClick.AddListener(() => ImportActions());
     }
 
-    void ButtonClick()
+
+    // Function that executes on button click and is responsible for importing data.
+    // The aim is to develop this function for each scene (if import required)
+    void ImportActions()
     {
-        StartCoroutine(RedCapService.Instance.ImportAllData(usersDetails => GetAndSaveUserDetails(usersDetails),
-            "B345C5E9AFB7556F4627986E305D4F81",
-            "record",
-            "export",
-            "json",
-            "flat",
-            "json", null));
-            //"game,time,teacher_id"));
+        // If classroomId was not entered in the first scene, import is not allowed.
+        if (DataManager.classroomId == String.Empty)
+            Debug.Log("Classroom ID is missing, cannot import");
+        else
+        {
+            // Prepare request for import.
+            RedCapRequest redCapRequest = new RedCapRequest();
+            redCapRequest.Token = "B345C5E9AFB7556F4627986E305D4F81";
+            redCapRequest.Content = "record";
+            redCapRequest.Action = "export";
+            redCapRequest.Format = "json";
+            redCapRequest.Type = "flat";
+            redCapRequest.ReturnFormat = "json";
+            redCapRequest.Fields0 = "record_id";
+            redCapRequest.Form0 = "credentials";
+            redCapRequest.FilterLogic = "[classroom_id]=" + "\"" + DataManager.classroomId + "\"";
+
+            // Execute import request
+            StartCoroutine(RedCapService.Instance.ImportAllData(usersDetails => GetAndSaveUserDetails(usersDetails),
+                                                                        redCapRequest));
+        }
     }
 
     // Function used to remove all records that cannot be saved (due to missing data points)
@@ -36,11 +53,14 @@ public class ImportData  : MonoBehaviour
     {
         for (int index = usersDetails.users.Count - 1; index >= 0; index--)
         {
-            UserDetail userDetail = usersDetails.users[index];
-            if (userDetail.classroom_id == String.Empty || userDetail.child_id == String.Empty)
+            Credential credential = usersDetails.users[index];
+            if (credential.classroom_id == String.Empty || credential.child_id == String.Empty)
                 usersDetails.users.RemoveAt(index);
         }
         
-        saveLoad.SaveAll(usersDetails);
+        if (usersDetails.users.Count > 0)
+            saveLoad.SaveAll(usersDetails);
+        else
+            Debug.Log("No data to import in RedCap Database");
     }
 }
