@@ -7,7 +7,7 @@ public class GradeQuestion : MonoBehaviour
     public Button gradeButton; //Button clicked
     public DataManager gradeData;
     public AdvanceText gradedQuestions;
-    public Validation_Evaluator checker; //Used to check for valid answer before proceeding
+    public Validation_Games checker; //Used to check for valid answer before proceeding
 
     void Start()
     {

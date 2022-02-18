@@ -13,7 +13,7 @@ public class AdvanceText : MonoBehaviour
     public Button clickedButton;
     public bool complete; //Indicates when iteration moves to last element, viewed by other scripts for scene transition logic
     public bool gradeMe; //Seperate bool tracks actual last element, used for data sync purposes with other scripts
-    public Validation_Evaluator checker; //Used to check for valid answer before proceeding
+    public Validation_Games checker; //Used to check for valid answer before proceeding
     public Array_Prompts prompts; //Holds the list of prompts that the evaluator will be cycling through - select relevant child
 
     // Start is called before the first frame update

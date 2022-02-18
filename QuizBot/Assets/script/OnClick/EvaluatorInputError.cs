@@ -8,7 +8,7 @@ public class EvaluatorInputError : MonoBehaviour
 {
     public Button clickedButton; //Button clicked
     public TextMeshProUGUI displayText; //Text that might be displayed
-    public Validation_Evaluator checker; //Used to check game state
+    public Validation_Games checker; //Used to check game state
 
     void Start()
     {
