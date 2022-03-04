@@ -42,6 +42,9 @@ public class DataManager : MonoBehaviour
     public TMP_InputField assessorIDField;
     public TMP_InputField childIDField;
 
+    //Instructions Fields
+    public TextMeshProUGUI lniSkippedText;
+
     //Evaluator Fields
     public TMP_InputField responseField;
     public Toggle primaryToggle;
@@ -66,6 +69,7 @@ public class DataManager : MonoBehaviour
     public static double[] grade_vocabularyExpressive;
     public static double[] grade_vocabularyReceptive;
     public static double[] grade_vocabularyTotal;
+    public static bool[] learnedLetterNames; //Tracks letters that we have 'tested out of'
     
 
     // Start is called before the first frame update
@@ -79,6 +83,8 @@ public class DataManager : MonoBehaviour
             grade_vocabularyExpressive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyReceptive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyTotal = new double[6] { -1, -1, -1, -1, -1, -1 };
+            learnedLetterNames = new bool[26] {false, false, false, false, false, false, false, false, false, false, false, false, false,
+                false, false, false, false, false, false, false, false, false, false, false, false, false};
         }
 
         //Initializes currentScene
@@ -91,6 +97,29 @@ public class DataManager : MonoBehaviour
             teacherIDField.text = teacherID;
             assessorIDField.text = assessorID;
             childIDField.text = childID;
+        }
+
+        //Check for 'tested out' letters
+        if(currentScene == "LNI_Instructions")
+        {
+            for (int letter = 0; letter < individual_LNI.GetLength(0); letter++)
+            {
+                for (int time = 0; time < individual_LNI.GetLength(1); time++)
+                {
+                    int matchStart = time - 2;
+                    if (matchStart >= 0) //must have at least two records to check
+                    {
+                        //See if last two records were correct
+                        if (individual_LNI[letter, matchStart] == AdaptiveResponse.Correct &&
+                        individual_LNI[letter, matchStart+1] == AdaptiveResponse.Correct)
+                        {
+                            learnedLetterNames[letter] = true;
+                            lniSkippedText.text += " " + ((char)(letter + 65)).ToString(); //65 is code for 'A'
+                        }
+                    }
+                }
+            
+            }
         }
 
         //Reset scores and wipe responses
@@ -183,7 +212,7 @@ public class DataManager : MonoBehaviour
         if (currentScene == "LNI_Evaluator")
         {
             //Get prompt array for current time, get exact prompt we're on, convert from str to char to int to number of alphabet
-            int charNum = (int)(char.Parse(promptCycler.promptSelect(globalTime)[promptCycler.iterator])) - 64; //'A' ASCII int is 65   
+            int charNum = (int)(char.Parse(promptCycler.promptSelect(globalTime)[promptCycler.iterator])) - 65; //'A' ASCII int is 65   
 
             if (primaryToggle.isOn)
             {

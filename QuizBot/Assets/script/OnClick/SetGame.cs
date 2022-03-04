@@ -22,8 +22,8 @@ public class SetGame : MonoBehaviour
     }
     public static string SaveGame(string btnGame) => btnGame switch
     {
-        "buttonVocabulary" => "Evaluator",
-        "buttonLNI" => "LNI_Evaluator",
+        "buttonVocabulary" => "Instructions",
+        "buttonLNI" => "LNI_Instructions",
         "buttonRandom" => "Random_Evaluator",
         _ => "Error: No game found for button!" //Default 'error' case
     };

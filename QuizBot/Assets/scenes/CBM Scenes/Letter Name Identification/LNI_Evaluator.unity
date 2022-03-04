@@ -2002,8 +2002,8 @@ GameObject:
   - component: {fileID: 1362174509}
   - component: {fileID: 1362174508}
   - component: {fileID: 1362174507}
-  - component: {fileID: 1362174506}
   - component: {fileID: 1362174510}
+  - component: {fileID: 1362174506}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2024,15 +2024,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompts1:
-  - P
+  - A
   - R
   - E
   - O
   - F
   - S
-  - A
+  - P
   prompts2:
-  - D
+  - A
   - V
   - J
   - L
@@ -2040,34 +2040,15 @@ MonoBehaviour:
   - T
   - B
   prompts3:
-  - H
+  - A
   - Q
   - G
   - C
   - Y
   - I
-  prompts4:
-  - Astronaut
-  - Rocket
-  - Planet
-  - Fossils
-  - Tracks
-  - Scientist
-  prompts5:
-  - U
-  - X
-  - W
-  - M
-  - K
-  - Z
-  prompts6:
-  - N
-  - F
-  - H
-  - W
-  - P
-  - I
-  - Y
+  prompts4: []
+  prompts5: []
+  prompts6: []
 --- !u!114 &1362174507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2154,6 +2135,7 @@ MonoBehaviour:
   teacherIDField: {fileID: 0}
   assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
+  lniSkippedText: {fileID: 0}
   responseField: {fileID: 0}
   primaryToggle: {fileID: 424348525}
   receptiveToggle: {fileID: 0}
