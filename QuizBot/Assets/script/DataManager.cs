@@ -25,6 +25,8 @@ public class DataManager : MonoBehaviour
     public static List<bool> individual_expressive;
     public static List<bool> individual_receptive;
     public static List<int> individual_total;
+    public static AdaptiveResponse[,] individual_LNI = new AdaptiveResponse[26,6]; //26 letters, 6 times
+
     //These hold the total score for the game
     public static double score_expressive;
     public static double score_receptive;
@@ -42,8 +44,8 @@ public class DataManager : MonoBehaviour
 
     //Evaluator Fields
     public TMP_InputField responseField;
-    public Toggle expressiveToggle;
-    public Toggle receptiveToggle;
+    public Toggle primaryToggle;
+    public Toggle receptiveToggle; //Vocab
 
     //Grader Fields
     public AdvanceText promptCycler;
@@ -122,6 +124,17 @@ public class DataManager : MonoBehaviour
             receptiveTotalText.text = grade_vocabularyReceptive[globalTime - 1].ToString("F0") + '%';
         }
 
+        if (currentScene == "LNI_Grader")
+        {
+            childText.text = childID;
+            string arrayText = "";
+            foreach (AdaptiveResponse response in individual_LNI)
+            {
+                arrayText += response.ToString();
+            }
+            responsesText[0].text = arrayText;
+        }
+
         //Report card - show all times
         if (currentScene == "Results")
         {
@@ -142,7 +155,7 @@ public class DataManager : MonoBehaviour
         //Calculate scores based on toggles
         if (currentScene == "Evaluator")
         {
-            if (expressiveToggle.isOn)
+            if (primaryToggle.isOn)
             {
                 individual_expressive.Add(true);
                 individual_receptive.Add(true);
@@ -165,6 +178,21 @@ public class DataManager : MonoBehaviour
             }
 
             responses.Add(responseField.text);
+        }
+
+        if (currentScene == "LNI_Evaluator")
+        {
+            //Get prompt array for current time, get exact prompt we're on, convert from str to char to int to number of alphabet
+            int charNum = (int)(char.Parse(promptCycler.promptSelect(globalTime)[promptCycler.iterator])) - 64; //'A' ASCII int is 65   
+
+            if (primaryToggle.isOn)
+            {
+                individual_LNI[charNum, globalTime-1] = AdaptiveResponse.Correct;
+            }
+            else
+            {
+                individual_LNI[charNum, globalTime-1] = AdaptiveResponse.Incorrect;
+            }
         }
     }
 

@@ -1999,11 +1999,11 @@ GameObject:
   - component: {fileID: 1362174515}
   - component: {fileID: 1362174512}
   - component: {fileID: 1362174511}
-  - component: {fileID: 1362174510}
   - component: {fileID: 1362174509}
   - component: {fileID: 1362174508}
   - component: {fileID: 1362174507}
   - component: {fileID: 1362174506}
+  - component: {fileID: 1362174510}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2024,7 +2024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompts1:
-  - Part 2 P
+  - P
   - R
   - E
   - O
@@ -2129,13 +2129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shownText: {fileID: 582901839}
-  textArray:
-  - 1. Alphabet
-  - 2. Senses
-  - 3. Schedule
-  - 4. Students
-  - 5. Scent
-  - 6. Taste
+  textArray: []
   iterator: 0
   clickedButton: {fileID: 867038192}
   complete: 0
@@ -2161,7 +2155,7 @@ MonoBehaviour:
   assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
   responseField: {fileID: 0}
-  expressiveToggle: {fileID: 424348525}
+  primaryToggle: {fileID: 424348525}
   receptiveToggle: {fileID: 0}
   promptCycler: {fileID: 1362174510}
   childText: {fileID: 0}
@@ -2190,7 +2184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedButton: {fileID: 867038192}
-  sceneName: Grader
+  sceneName: LNI_Grader
   checker: {fileID: 1362174507}
   cleanup: {fileID: 1362174511}
 --- !u!4 &1362174515

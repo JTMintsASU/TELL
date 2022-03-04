@@ -9,7 +9,7 @@ public class Prompts_LNI : Array_Prompts
     {
         //See array_prompts for definition
         prompts1 = new string[7] {
-            "Part 2 P",
+            "P",
             "R",
             "E",
             "O",

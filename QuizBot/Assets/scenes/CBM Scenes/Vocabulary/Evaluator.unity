@@ -1156,7 +1156,7 @@ MonoBehaviour:
   assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
   responseField: {fileID: 1459630532}
-  expressiveToggle: {fileID: 746151781}
+  primaryToggle: {fileID: 746151781}
   receptiveToggle: {fileID: 491013125}
   promptCycler: {fileID: 0}
   childText: {fileID: 0}
