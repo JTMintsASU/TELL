@@ -4,19 +4,15 @@ using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 
-// Responsible for exporting data into RedCap
+// Responsible for importing data into RedCap
 public class ImportData  : MonoBehaviour
 {
     public SaveLoad saveLoad;
     public Button clickedButton; //Button clicked
 
-    private void Awake()
-    {
-        saveLoad = new SaveLoad();
-    }
-
     void Start()
     {
+        saveLoad = new SaveLoad();
         clickedButton.onClick.AddListener(() => ImportActions());
     }
 
@@ -32,15 +28,15 @@ public class ImportData  : MonoBehaviour
         {
             // Prepare request for import.
             RedCapRequest redCapRequest = new RedCapRequest();
-            redCapRequest.Token = "B345C5E9AFB7556F4627986E305D4F81";
-            redCapRequest.Content = "record";
-            redCapRequest.Action = "export";
-            redCapRequest.Format = "json";
-            redCapRequest.Type = "flat";
-            redCapRequest.ReturnFormat = "json";
-            redCapRequest.Fields0 = "record_id";
-            redCapRequest.Form0 = "credentials";
-            redCapRequest.FilterLogic = "[classroom_id]=" + "\"" + DataManager.classroomId + "\"";
+            redCapRequest.token = "B345C5E9AFB7556F4627986E305D4F81"; // This is Akshay's creds, to be replaced!
+            redCapRequest.content = "record";
+            redCapRequest.action = "export";
+            redCapRequest.format = "json";
+            redCapRequest.type = "flat";
+            redCapRequest.returnFormat = "json";
+            redCapRequest.fields_0 = "record_id";
+            redCapRequest.form_0 = "credentials";
+            redCapRequest.filterLogic = "[classroom_id]=" + "\"" + DataManager.classroomId + "\"";
 
             // Execute import request
             StartCoroutine(RedCapService.Instance.ImportAllData(usersDetails => GetAndSaveUserDetails(usersDetails),
@@ -48,14 +44,20 @@ public class ImportData  : MonoBehaviour
         }
     }
 
-    // Function used to remove all records that cannot be saved (due to missing data points)
+    // Function is responsible for preprocessing data obtained from RedCap and storing it locally.
+    // 1. Records obtained from RedCap should contain classroomId and childId. If any of these are missing, record
+    // is not stored locally.
+    // 2. Once eligible records are obtained, they are stored locally.
     void GetAndSaveUserDetails(UsersDetails usersDetails)
     {
         for (int index = usersDetails.users.Count - 1; index >= 0; index--)
         {
             Credential credential = usersDetails.users[index];
             if (credential.classroom_id == String.Empty || credential.child_id == String.Empty)
+            {
                 usersDetails.users.RemoveAt(index);
+                Debug.Log("Record obtained from RedCap is corrupted, missing classroom_id/child_id");
+            }
         }
         
         if (usersDetails.users.Count > 0)

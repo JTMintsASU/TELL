@@ -54,7 +54,7 @@ public class SaveLoad
 		if (childIDField == null || childIDField.text == null || 
 		    classroomIDField == null || classroomIDField.text == null)
 		{
-			Debug.LogError("Missing childID, unable to load data");
+			Debug.LogError("Missing childID/classroomId, unable to load data");
 			return;
 		}
 		
@@ -88,7 +88,7 @@ public class SaveLoad
 		
 		foreach (var user in usersDetails.users)
 		{
-			SerialData staging = SerialData.fromUserDetail(user);
+			SerialData staging = SerialData.convertToSerialData(user);
 			
 			if (staging.sClassroomID == null || staging.sChildID == null)
 			{

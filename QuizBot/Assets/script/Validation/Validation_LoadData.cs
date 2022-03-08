@@ -4,7 +4,7 @@ public class Validation_LoadData : Validation_UserInfo
 {
     
     //Time to validate!
-    //Requires one of each teacher, assessor, and child field filled
+    //Requires one of each teacher, assessor, child and classroom field filled
     public override bool Validator()
     {
         bool valid = true; //Return result

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ExportData : MonoBehaviour
 {
     public Button clickedButton; //Button clicked
-    public static string pdP;
+    public static string pdP; // persistentDataPath, this contains the local storage path
     void Start()
     {
         clickedButton.onClick.AddListener(() => ExportActions());
@@ -19,14 +19,14 @@ public class ExportData : MonoBehaviour
     void ExportActions()
     {
         // Preparing export request
-        RedCapRequest redCapRequest = new RedCapRequest();
-        redCapRequest.Token = "B345C5E9AFB7556F4627986E305D4F81";
-        redCapRequest.Content = "record";
-        redCapRequest.Action = "import";
-        redCapRequest.Format = "json";
-        redCapRequest.Type = "flat";
-        redCapRequest.OverwriteBehavior = "overwrite";
-        redCapRequest.ReturnContent = "ids";
+        RedCapRequest outboundRequest = new RedCapRequest();
+        outboundRequest.token = "B345C5E9AFB7556F4627986E305D4F81"; // This is Akshay's creds, to be replaced!
+        outboundRequest.content = "record";
+        outboundRequest.action = "import";
+        outboundRequest.format = "json";
+        outboundRequest.type = "flat";
+        outboundRequest.overwriteBehavior = "overwrite";
+        outboundRequest.returnContent = "ids";
         
         BinaryFormatter bf = new BinaryFormatter();
         DirectoryInfo directory = new DirectoryInfo(pdP);
@@ -45,16 +45,16 @@ public class ExportData : MonoBehaviour
             // Read data in file
             FileStream file = File.Open(fileName, FileMode.Open);
             SerialData serialData = (SerialData) bf.Deserialize(file);
-            Credential credential = Credential.fromSerialData(serialData);
+            Credential credential = Credential.convertToCredential(serialData);
             file.Close();
 
             //string data = JsonConvert.SerializeObject(userDetails.users);
             string data = JsonUtility.ToJson(credential);
-            redCapRequest.ForceAutoNumber = credential.record_id == int.MaxValue ? "true" : "false";
-            redCapRequest.Data = "[" + data + "]";
+            outboundRequest.forceAutoNumber = credential.record_id == int.MaxValue ? "true" : "false";
+            outboundRequest.data = "[" + data + "]";
 
             // Execute export request
-            StartCoroutine(RedCapService.Instance.ExportCredentials(redCapRequest));
+            StartCoroutine(RedCapService.Instance.ExportCredentials(outboundRequest));
         }
     }
 }

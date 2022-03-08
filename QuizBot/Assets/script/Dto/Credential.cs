@@ -14,15 +14,15 @@ public class Credential
     public string child_id;
     public string classroom_id;
 
-    public static Credential fromSerialData(SerialData serialData)
+    public static Credential convertToCredential(SerialData inputData)
     {
-        Credential credential = new Credential();
-        credential.record_id = String.IsNullOrEmpty(serialData.sRecordId) ? int.MaxValue : int.Parse(serialData.sRecordId);
-        credential.assessor_id = serialData.sAssessorID;
-        credential.child_id = serialData.sChildID;
-        credential.classroom_id = serialData.sClassroomID;
-        credential.teacher_id = serialData.sTeacherID;
-        return credential;
+        Credential outputCred = new Credential();
+        outputCred.record_id = String.IsNullOrEmpty(inputData.sRecordId) ? int.MaxValue : int.Parse(inputData.sRecordId);
+        outputCred.assessor_id = inputData.sAssessorID;
+        outputCred.child_id = inputData.sChildID;
+        outputCred.classroom_id = inputData.sClassroomID;
+        outputCred.teacher_id = inputData.sTeacherID;
+        return outputCred;
     }
 }
 

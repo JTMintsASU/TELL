@@ -28,7 +28,7 @@ public class Validation_UserInfo : Validation_Parent
     }
 
     //Time to validate!
-    //Requires one of each teacher, assessor, and child field filled
+    //Requires one of each teacher, assessor, child and classroom field filled
     public override bool Validator()
     {
         string empty = ""; //Used to more clearly indicate null strings
@@ -48,6 +48,8 @@ public class Validation_UserInfo : Validation_Parent
         return valid && !displayWarning.Value;
     }
 
+    // This function is responsible for evaluating if a file can be loaded into application or not, displays
+    // a warning if it is not possible to load file (missing either child or classroom information)
     public bool shouldDisplayWarning(TMP_InputField childIDField, TMP_InputField classroomIDField)
     {
         if (childIDField == null || childIDField.text == null)

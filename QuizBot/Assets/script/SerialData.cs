@@ -16,7 +16,7 @@ public class SerialData
     public double[] sGradeVocabTotal;
     
     
-    public static SerialData fromUserDetail(Credential credential)
+    public static SerialData convertToSerialData(Credential credential)
     {
         SerialData serialData = new SerialData();
         serialData.sRecordId = credential.record_id.ToString();
