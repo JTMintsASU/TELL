@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
@@ -26,9 +27,19 @@ public class SaveLoad
 		staging.sChildID = DataManager.childID;
 		staging.sTeacherID = DataManager.teacherID;
 		staging.sClassroomID = DataManager.classroomId;
+		
+		// Storing vocab game data
 		staging.sGradeVocabExp = DataManager.grade_vocabularyExpressive;
 		staging.sGradeVocabRec = DataManager.grade_vocabularyReceptive;
 		staging.sGradeVocabTotal = DataManager.grade_vocabularyTotal;
+		if (DataManager.globalTime > 0)
+		{
+			staging.sIndividualExpressiveList = DataManager.individual_vocabularyExpressive;
+			staging.sIndividualExpressiveFlagList = DataManager.individual_vocabularyExpressiveFlag;
+			staging.sIndividualReceptiveList = DataManager.individual_vocabularyReceptive;
+			staging.sIndividualReceptiveFlagList = DataManager.individual_vocabularyReceptiveFlag;
+			staging.sIndividualResponses = DataManager.individual_vocabularyResponses;
+		}
 
 		if (staging.sClassroomID == null || staging.sChildID == null)
 		{
@@ -76,6 +87,11 @@ public class SaveLoad
 		DataManager.grade_vocabularyExpressive = staging.sGradeVocabExp;
 		DataManager.grade_vocabularyReceptive = staging.sGradeVocabRec;
 		DataManager.grade_vocabularyTotal = staging.sGradeVocabTotal;
+		DataManager.individual_vocabularyExpressive = staging.sIndividualExpressiveList;
+		DataManager.individual_vocabularyExpressiveFlag = staging.sIndividualExpressiveFlagList;
+		DataManager.individual_vocabularyReceptive = staging.sIndividualReceptiveList;
+		DataManager.individual_vocabularyReceptiveFlag = staging.sIndividualReceptiveFlagList;
+		DataManager.individual_vocabularyResponses = staging.sIndividualResponses;
 	}
 	
 	// Creates files and saves data passed as parameter

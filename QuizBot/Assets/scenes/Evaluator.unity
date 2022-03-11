@@ -1157,6 +1157,8 @@ MonoBehaviour:
   responseField: {fileID: 1459630532}
   expressiveToggle: {fileID: 746151781}
   receptiveToggle: {fileID: 491013125}
+  expressiveFlag: {fileID: 918021803}
+  receptiveFlag: {fileID: 1375433545}
   childText: {fileID: 0}
   promptText: []
   responsesText: []
@@ -1169,8 +1171,6 @@ MonoBehaviour:
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!114 &727950458
 MonoBehaviour:
