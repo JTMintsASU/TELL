@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/scenes/MainMenu.unity
     guid: 0c2d7256ae1029f409e6666ea9afb3c2
   - enabled: 1
-    path: Assets/scenes/Results.unity
-    guid: b9801d2b7cac7a04c9bb767561234a93
-  - enabled: 1
     path: Assets/scenes/SelectCBM.unity
     guid: a71527354c87fc04c97cf3a879b55348
   - enabled: 1
@@ -41,4 +38,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/CBM Scenes/Letter Name Identification/Random_Evaluator.unity
     guid: b75e9b28547386048b992d5709368c14
+  - enabled: 1
+    path: Assets/scenes/Results Scenes/RSelect.unity
+    guid: 646f2d85dd42cae45b1dd37042c0e1fa
+  - enabled: 1
+    path: Assets/scenes/Results Scenes/RVocab.unity
+    guid: b9801d2b7cac7a04c9bb767561234a93
+  - enabled: 1
+    path: Assets/scenes/Results Scenes/RLNI.unity
+    guid: e56ba01973252524ab4bbc6f51d0d172
   m_configObjects: {}

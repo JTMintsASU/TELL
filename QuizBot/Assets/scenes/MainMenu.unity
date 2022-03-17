@@ -338,9 +338,11 @@ MonoBehaviour:
   teacherIDField: {fileID: 0}
   assessorIDField: {fileID: 0}
   childIDField: {fileID: 0}
+  lniSkippedText: {fileID: 0}
   responseField: {fileID: 0}
-  expressiveToggle: {fileID: 0}
+  primaryToggle: {fileID: 0}
   receptiveToggle: {fileID: 0}
+  promptCycler: {fileID: 0}
   childText: {fileID: 0}
   promptText: []
   responsesText: []
@@ -348,13 +350,11 @@ MonoBehaviour:
   - {fileID: 0}
   receptiveText:
   - {fileID: 0}
-  totalText:
-  - {fileID: 0}
+  expressiveTotalText: {fileID: 0}
+  receptiveTotalText: {fileID: 0}
   expressivePercent:
   - {fileID: 0}
   receptivePercent:
-  - {fileID: 0}
-  totalPercent:
   - {fileID: 0}
 --- !u!114 &509879281
 MonoBehaviour:
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedButton: {fileID: 721589143}
-  sceneName: Results
+  sceneName: RSelect
   checker: {fileID: 509879277}
   cleanup: {fileID: 509879280}
 --- !u!1 &668301102
