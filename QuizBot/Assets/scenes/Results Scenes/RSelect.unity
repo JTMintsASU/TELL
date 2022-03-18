@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedButton: {fileID: 1809807112}
-  sceneName: RLNI
+  sceneName: RLI
   checker: {fileID: 2082702627}
   cleanup: {fileID: 2082702625}
 --- !u!114 &2082702624
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedButton: {fileID: 1559227309}
-  sceneName: RLNI
+  sceneName: RLI
   checker: {fileID: 2082702627}
   cleanup: {fileID: 2082702625}
 --- !u!114 &2082702625
@@ -1348,6 +1348,32 @@ MonoBehaviour:
   - {fileID: 0}
   receptivePercent:
   - {fileID: 0}
+  RLNI_A: {fileID: 0}
+  RLNI_B: {fileID: 0}
+  RLNI_C: {fileID: 0}
+  RLNI_D: {fileID: 0}
+  RLNI_E: {fileID: 0}
+  RLNI_F: {fileID: 0}
+  RLNI_G: {fileID: 0}
+  RLNI_H: {fileID: 0}
+  RLNI_I: {fileID: 0}
+  RLNI_J: {fileID: 0}
+  RLNI_K: {fileID: 0}
+  RLNI_L: {fileID: 0}
+  RLNI_M: {fileID: 0}
+  RLNI_N: {fileID: 0}
+  RLNI_O: {fileID: 0}
+  RLNI_P: {fileID: 0}
+  RLNI_Q: {fileID: 0}
+  RLNI_R: {fileID: 0}
+  RLNI_S: {fileID: 0}
+  RLNI_T: {fileID: 0}
+  RLNI_U: {fileID: 0}
+  RLNI_V: {fileID: 0}
+  RLNI_W: {fileID: 0}
+  RLNI_X: {fileID: 0}
+  RLNI_Y: {fileID: 0}
+  RLNI_Z: {fileID: 0}
 --- !u!114 &2082702626
 MonoBehaviour:
   m_ObjectHideFlags: 0

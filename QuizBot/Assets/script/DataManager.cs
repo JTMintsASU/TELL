@@ -60,9 +60,37 @@ public class DataManager : MonoBehaviour
     public TextMeshProUGUI expressiveTotalText;
     public TextMeshProUGUI receptiveTotalText;
 
-    //Results Fields
+    //RVocab Fields
     public TextMeshProUGUI[] expressivePercent;
     public TextMeshProUGUI[] receptivePercent;
+
+    //RLI Fields
+    public TextMeshProUGUI RLNI_A;
+    public TextMeshProUGUI RLNI_B;
+    public TextMeshProUGUI RLNI_C;
+    public TextMeshProUGUI RLNI_D;
+    public TextMeshProUGUI RLNI_E;
+    public TextMeshProUGUI RLNI_F;
+    public TextMeshProUGUI RLNI_G;
+    public TextMeshProUGUI RLNI_H;
+    public TextMeshProUGUI RLNI_I;
+    public TextMeshProUGUI RLNI_J;
+    public TextMeshProUGUI RLNI_K;
+    public TextMeshProUGUI RLNI_L;
+    public TextMeshProUGUI RLNI_M;
+    public TextMeshProUGUI RLNI_N;
+    public TextMeshProUGUI RLNI_O;
+    public TextMeshProUGUI RLNI_P;
+    public TextMeshProUGUI RLNI_Q;
+    public TextMeshProUGUI RLNI_R;
+    public TextMeshProUGUI RLNI_S;
+    public TextMeshProUGUI RLNI_T;
+    public TextMeshProUGUI RLNI_U;
+    public TextMeshProUGUI RLNI_V;
+    public TextMeshProUGUI RLNI_W;
+    public TextMeshProUGUI RLNI_X;
+    public TextMeshProUGUI RLNI_Y;
+    public TextMeshProUGUI RLNI_Z;
 
     //Long-Term Grades
     public static double vocabularyTotalQuestions; //How many vocab questions are asked per unit?
@@ -165,7 +193,7 @@ public class DataManager : MonoBehaviour
         }
 
         //Report card - show all times
-        if (currentScene == "Results")
+        if (currentScene == "RVocab")
         {
             childText.text = childID;
             //Loop populates grades textboxes, hardcoded at 6 due to issues reading unfully instantiated sizes
@@ -174,6 +202,23 @@ public class DataManager : MonoBehaviour
                 expressivePercent[loop].text = grade_vocabularyExpressive[loop].ToString("F0"); //Parameter ensures two decimal points
                 receptivePercent[loop].text = grade_vocabularyReceptive[loop].ToString("F0");
             }
+        }
+
+        //RLI - show scores for each letter
+        if (currentScene == "RLI")
+        {
+            //look for last good score
+            int scoreTotal = 0;
+            for(int loop = 0; loop < individual_LNI.GetLength(1); loop++)
+            {
+                AdaptiveResponse x = individual_LNI[0, loop];
+                if (x == AdaptiveResponse.Correct || x == AdaptiveResponse.Skipped)
+                    scoreTotal++;
+            }
+            //if none, zero
+            //else track back and add, exit once tested out
+            
+             RLNI_A.text = scoreTotal.ToString();
         }
     }
 
