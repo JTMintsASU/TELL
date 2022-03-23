@@ -4356,32 +4356,33 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  RLNI_A: {fileID: 792902090}
-  RLNI_B: {fileID: 1449493073}
-  RLNI_C: {fileID: 856622321}
-  RLNI_D: {fileID: 87346381}
-  RLNI_E: {fileID: 66870224}
-  RLNI_F: {fileID: 1820437530}
-  RLNI_G: {fileID: 1695254631}
-  RLNI_H: {fileID: 1722782409}
-  RLNI_I: {fileID: 1653115118}
-  RLNI_J: {fileID: 66031580}
-  RLNI_K: {fileID: 2093342651}
-  RLNI_L: {fileID: 191232683}
-  RLNI_M: {fileID: 378958208}
-  RLNI_N: {fileID: 675232101}
-  RLNI_O: {fileID: 1822511787}
-  RLNI_P: {fileID: 239699985}
-  RLNI_Q: {fileID: 1436287777}
-  RLNI_R: {fileID: 1809994133}
-  RLNI_S: {fileID: 505770312}
-  RLNI_T: {fileID: 32181853}
-  RLNI_U: {fileID: 1794212239}
-  RLNI_V: {fileID: 1818208328}
-  RLNI_W: {fileID: 78536861}
-  RLNI_X: {fileID: 551795855}
-  RLNI_Y: {fileID: 485529444}
-  RLNI_Z: {fileID: 1381492550}
+  RLNI_letterText:
+  - {fileID: 792902090}
+  - {fileID: 1449493073}
+  - {fileID: 856622321}
+  - {fileID: 87346381}
+  - {fileID: 66870224}
+  - {fileID: 1820437530}
+  - {fileID: 1695254631}
+  - {fileID: 1722782409}
+  - {fileID: 1653115118}
+  - {fileID: 66031580}
+  - {fileID: 2093342651}
+  - {fileID: 191232683}
+  - {fileID: 378958208}
+  - {fileID: 675232101}
+  - {fileID: 1822511787}
+  - {fileID: 239699985}
+  - {fileID: 1436287777}
+  - {fileID: 1809994133}
+  - {fileID: 505770312}
+  - {fileID: 32181853}
+  - {fileID: 1794212239}
+  - {fileID: 1818208328}
+  - {fileID: 78536861}
+  - {fileID: 551795855}
+  - {fileID: 485529444}
+  - {fileID: 1381492550}
 --- !u!114 &1141281532
 MonoBehaviour:
   m_ObjectHideFlags: 0

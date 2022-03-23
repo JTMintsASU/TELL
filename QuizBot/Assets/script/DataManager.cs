@@ -65,32 +65,7 @@ public class DataManager : MonoBehaviour
     public TextMeshProUGUI[] receptivePercent;
 
     //RLI Fields
-    public TextMeshProUGUI RLNI_A;
-    public TextMeshProUGUI RLNI_B;
-    public TextMeshProUGUI RLNI_C;
-    public TextMeshProUGUI RLNI_D;
-    public TextMeshProUGUI RLNI_E;
-    public TextMeshProUGUI RLNI_F;
-    public TextMeshProUGUI RLNI_G;
-    public TextMeshProUGUI RLNI_H;
-    public TextMeshProUGUI RLNI_I;
-    public TextMeshProUGUI RLNI_J;
-    public TextMeshProUGUI RLNI_K;
-    public TextMeshProUGUI RLNI_L;
-    public TextMeshProUGUI RLNI_M;
-    public TextMeshProUGUI RLNI_N;
-    public TextMeshProUGUI RLNI_O;
-    public TextMeshProUGUI RLNI_P;
-    public TextMeshProUGUI RLNI_Q;
-    public TextMeshProUGUI RLNI_R;
-    public TextMeshProUGUI RLNI_S;
-    public TextMeshProUGUI RLNI_T;
-    public TextMeshProUGUI RLNI_U;
-    public TextMeshProUGUI RLNI_V;
-    public TextMeshProUGUI RLNI_W;
-    public TextMeshProUGUI RLNI_X;
-    public TextMeshProUGUI RLNI_Y;
-    public TextMeshProUGUI RLNI_Z;
+    public TextMeshProUGUI[] RLNI_letterText;
 
     //Long-Term Grades
     public static double vocabularyTotalQuestions; //How many vocab questions are asked per unit?
@@ -127,31 +102,17 @@ public class DataManager : MonoBehaviour
             childIDField.text = childID;
         }
 
-        //Check for 'tested out' letters
-        if(currentScene == "LNI_Instructions")
+        if(currentScene=="LNI_Instructions")
         {
-            for (int letter = 0; letter < individual_LNI.GetLength(0); letter++)
+            for(int checkLetter = 0; checkLetter < learnedLetterNames.Length; checkLetter++)
             {
-                for (int time = 0; time < individual_LNI.GetLength(1); time++)
-                {
-                    int matchStart = time - 2;
-                    if (matchStart >= 0) //must have at least two records to check
-                    {
-                        //See if last two records were correct
-                        if (individual_LNI[letter, matchStart] == AdaptiveResponse.Correct &&
-                        individual_LNI[letter, matchStart+1] == AdaptiveResponse.Correct)
-                        {
-                            learnedLetterNames[letter] = true;
-                            lniSkippedText.text += " " + ((char)(letter + 65)).ToString(); //65 is code for 'A'
-                        }
-                    }
-                }
-            
+                if(learnedLetterNames[checkLetter])
+                    lniSkippedText.text += " " + ((char)(checkLetter + 65)).ToString(); //65 is code for 'A'
             }
         }
 
         //Reset scores and wipe responses
-        if(currentScene == "Evaluator")
+        if(currentScene == "Evaluator" || currentScene == "LNI_Evaluator")
         {
             individual_expressive = new List<bool>();
             individual_receptive = new List<bool>();
@@ -183,13 +144,33 @@ public class DataManager : MonoBehaviour
 
         if (currentScene == "LNI_Grader")
         {
-            childText.text = childID;
-            string arrayText = "";
-            foreach (AdaptiveResponse response in individual_LNI)
+            //Check for "Tested Out" Letters
+            for (int letter = 0; letter < individual_LNI.GetLength(0); letter++)
             {
-                arrayText += response.ToString();
+                for (int time = 0; time < individual_LNI.GetLength(1); time++)
+                {
+                    int matchStart = time - 2;
+                    if (matchStart >= 0) //must have at least two records to check
+                    {
+                        //See if last two records were correct or skipped
+                        if ((individual_LNI[letter, matchStart] == AdaptiveResponse.Correct ||
+                        individual_LNI[letter, matchStart] == AdaptiveResponse.Skipped) &&
+                        (individual_LNI[letter, matchStart+1] == AdaptiveResponse.Correct ||
+                        individual_LNI[letter, matchStart+1] == AdaptiveResponse.Skipped))
+                        {
+                            learnedLetterNames[letter] = true;
+                        }
+                    }
+                }
             }
-            responsesText[0].text = arrayText;
+
+            //Populate answers and scores entered for this time
+            string[] promptStorage = promptCycler.promptSelect(globalTime);
+            for (int wheel = 0; wheel < 6; wheel++)
+            {
+                promptText[wheel].text = promptStorage[wheel];
+                responsesText[wheel].text = responses[wheel];
+            }
         }
 
         //Report card - show all times
@@ -208,17 +189,20 @@ public class DataManager : MonoBehaviour
         if (currentScene == "RLI")
         {
             //look for last good score
-            int scoreTotal = 0;
-            for(int loop = 0; loop < individual_LNI.GetLength(1); loop++)
+            for(int loop = 0; loop < learnedLetterNames.Length; loop++)
             {
-                AdaptiveResponse x = individual_LNI[0, loop];
-                if (x == AdaptiveResponse.Correct || x == AdaptiveResponse.Skipped)
-                    scoreTotal++;
+                string result = "ERR";
+                if(learnedLetterNames[loop] == true)
+                {
+                    result = "<color=green>+</color>";
+                }
+                else result = "<color=red>-</color>";
+                RLNI_letterText[loop].text = result;
             }
             //if none, zero
             //else track back and add, exit once tested out
             
-             RLNI_A.text = scoreTotal.ToString();
+             
         }
     }
 
@@ -262,10 +246,12 @@ public class DataManager : MonoBehaviour
             if (primaryToggle.isOn)
             {
                 individual_LNI[charNum, globalTime-1] = AdaptiveResponse.Correct;
+                responses.Add("<color=green>Correct</color>");
             }
             else
             {
                 individual_LNI[charNum, globalTime-1] = AdaptiveResponse.Incorrect;
+                responses.Add("<color=red>Incorrect</color>");
             }
         }
     }
