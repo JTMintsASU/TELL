@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 
 // Responsible for importing data into RedCap
@@ -9,11 +10,15 @@ public class ImportData  : MonoBehaviour
 {
     public SaveLoad saveLoad;
     public Button clickedButton; //Button clicked
+    public Button doneBtn; // Load Button in Panel
+    public GameObject panel; // Panel
+    public TMP_Text popUpText; // Value for childId
 
     void Start()
     {
         saveLoad = new SaveLoad();
         clickedButton.onClick.AddListener(() => ImportActions());
+        doneBtn.onClick.AddListener(doneButtonClick);
     }
 
 
@@ -52,17 +57,28 @@ public class ImportData  : MonoBehaviour
     {
         for (int index = usersDetails.users.Count - 1; index >= 0; index--)
         {
-            Credential credential = usersDetails.users[index];
-            if (credential.classroom_id == String.Empty || credential.child_id == String.Empty)
+            RedCapRecord redCapRecord = usersDetails.users[index];
+            if (redCapRecord.classroomID == String.Empty || redCapRecord.childID == String.Empty)
             {
                 usersDetails.users.RemoveAt(index);
                 Debug.Log("Record obtained from RedCap is corrupted, missing classroom_id/child_id");
             }
         }
-        
+
         if (usersDetails.users.Count > 0)
+        {
             saveLoad.SaveAll(usersDetails);
+            panel.gameObject.SetActive(true);
+        }
         else
+        {
+            panel.gameObject.SetActive(true);
+            popUpText.text = "No data to import in RedCap Database";
             Debug.Log("No data to import in RedCap Database");
+        }
+    }
+    void doneButtonClick()
+    {
+        panel.gameObject.SetActive(false);
     }
 }

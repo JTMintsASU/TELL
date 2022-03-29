@@ -21,14 +21,14 @@ public class SerialData
     public List<List<bool>> sIndividualReceptiveFlagList;
     public List<List<string>> sIndividualResponses;
     
-    public static SerialData convertToSerialData(Credential credential)
+    public static SerialData convertToSerialData(RedCapRecord redCapRecord)
     {
         SerialData serialData = new SerialData();
-        serialData.sRecordId = credential.record_id.ToString();
-        serialData.sAssessorID = credential.assessor_id;
-        serialData.sChildID = credential.child_id;
-        serialData.sClassroomID = credential.classroom_id;
-        serialData.sTeacherID = credential.teacher_id;
+        serialData.sRecordId = redCapRecord.recordID.ToString();
+        serialData.sAssessorID = redCapRecord.assessorID;
+        serialData.sChildID = redCapRecord.childID;
+        serialData.sClassroomID = redCapRecord.classroomID;
+        serialData.sTeacherID = redCapRecord.teacherID;
         return serialData;
     }
 }

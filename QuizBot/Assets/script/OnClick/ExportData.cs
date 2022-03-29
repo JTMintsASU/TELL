@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
+using TMPro;
 using UnityEngine.UI;
 
 // Responsible for exporting data into RedCap
@@ -8,9 +11,13 @@ public class ExportData : MonoBehaviour
 {
     public Button clickedButton; //Button clicked
     public static string pdP; // persistentDataPath, this contains the local storage path
+    public Button doneBtn; // Load Button in Panel
+    public GameObject panel; // Panel
+    public TMP_Text popUpText; // Value for childId
     void Start()
     {
         clickedButton.onClick.AddListener(() => ExportActions());
+        doneBtn.onClick.AddListener(doneButtonClick);
         pdP = Application.persistentDataPath;
     }
 
@@ -45,16 +52,22 @@ public class ExportData : MonoBehaviour
             // Read data in file
             FileStream file = File.Open(fileName, FileMode.Open);
             SerialData serialData = (SerialData) bf.Deserialize(file);
-            Credential credential = Credential.convertToCredential(serialData);
+            List<RedCapRecord> redCapRecords = RedCapRecord.convertToRedCapRecord(serialData);
             file.Close();
 
-            //string data = JsonConvert.SerializeObject(userDetails.users);
-            string data = JsonUtility.ToJson(credential);
-            outboundRequest.forceAutoNumber = credential.record_id == int.MaxValue ? "true" : "false";
-            outboundRequest.data = "[" + data + "]";
+            string data = JsonConvert.SerializeObject(redCapRecords);
+            //string data = JsonUtility.ToJson(redCapRecords);
+            outboundRequest.forceAutoNumber = redCapRecords[0].recordID == int.MaxValue ? "true" : "false";
+            outboundRequest.data = data;
 
             // Execute export request
             StartCoroutine(RedCapService.Instance.ExportCredentials(outboundRequest));
         }
+        
+        panel.gameObject.SetActive(true);
+    }
+    void doneButtonClick()
+    {
+        panel.gameObject.SetActive(false);
     }
 }
