@@ -159,11 +159,13 @@ public class SerialData
         return serialData;
     }
 
+    // Function responsible for returning bool truth value
     private static bool getTrueFalse(int? value)
     {
         return value != null && value == 1;
     }
 
+    // Function responsible for calculating expressive and receptive percentage values
     private static void addExpressiveAndReceptiveScore(List<bool> sessionExpressiveList, 
                                                         List<bool> sessionReceptiveList,
                                                         int vocabSession,

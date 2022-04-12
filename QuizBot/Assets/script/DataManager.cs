@@ -242,6 +242,7 @@ public class DataManager : MonoBehaviour
             score_total = score_expressive + score_receptive;
             grade_vocabularyTotal[timeIndex] = (score_total / (vocabularyTotalQuestions * 2)) * 100;
             
+            // Add individual answers
             individual_vocabularyExpressive.Insert(timeIndex, individual_expressive);
             individual_vocabularyReceptive.Insert(timeIndex, individual_receptive);
             individual_vocabularyExpressiveFlag.Insert(timeIndex, individual_expressiveFlag);

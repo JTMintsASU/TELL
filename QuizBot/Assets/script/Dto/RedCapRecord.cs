@@ -4,8 +4,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 [Serializable]
-// DTO - Credentials
-// Represents a sample record in "Credentials" Instrument in RedCap
+// Represents a sample record in RedCap across all instruments
 public class RedCapRecord
 {
     [JsonProperty("record_id", NullValueHandling = NullValueHandling.Ignore)]
@@ -105,7 +104,7 @@ public class RedCapRecord
         string classroomID = inputData.sClassroomID;
         string teacherID = inputData.sTeacherID;
         
-        
+        // Populate fields for Credentials Instrument in RedCap
         RedCapRecord credentialRedCapRecord = new RedCapRecord();
         credentialRedCapRecord.recordID = recordID;
         credentialRedCapRecord.assessorID = assessorID;
@@ -115,7 +114,7 @@ public class RedCapRecord
         redCapRecords.Add(credentialRedCapRecord);
         
         
-        // Populate solution (Vocabulary) data
+        // Populate fields for Vocabulary Instrument (field-solution) in RedCap
         for (int responseIndex = 0; inputData.sIndividualResponses != null && 
                                     responseIndex < inputData.sIndividualResponses.Count; responseIndex++)
         {
@@ -143,7 +142,7 @@ public class RedCapRecord
                 redCapRecord.q6Solution = sessionData[5];
         }
         
-        // Populate expressive (Vocabulary) data
+        // Populate fields for Vocabulary Instrument (field-expressive) in RedCap
         for (int responseIndex = 0; inputData.sIndividualExpressiveList != null && 
                                     responseIndex < inputData.sIndividualExpressiveList.Count; responseIndex++)
         {
@@ -171,7 +170,7 @@ public class RedCapRecord
                 redCapRecord.q6Expressive = getBinaryTrueFalse(sessionData[5]);
         }
         
-        // Populate receptive (Vocabulary) data
+        // Populate fields for Vocabulary Instrument (field-receptive) in RedCap
         for (int responseIndex = 0; inputData.sIndividualReceptiveList != null && 
                                     responseIndex < inputData.sIndividualReceptiveList.Count; responseIndex++)
         {
@@ -199,7 +198,7 @@ public class RedCapRecord
                 redCapRecord.q6Receptive = getBinaryTrueFalse(sessionData[5]);
         }
         
-        // Populate expressive flag (Vocabulary) data
+        // Populate fields for Vocabulary Instrument (field-expressive flag) in RedCap
         for (int responseIndex = 0; inputData.sIndividualExpressiveFlagList != null && 
                                     responseIndex < inputData.sIndividualExpressiveFlagList.Count; responseIndex++)
         {
@@ -227,7 +226,7 @@ public class RedCapRecord
                 redCapRecord.q6ExpressiveFlag = getBinaryTrueFalse(sessionData[5]);
         }
         
-        // Populate receptive flag (Vocabulary) data
+        // Populate fields for Vocabulary Instrument (field-receptive flag) in RedCap
         for (int responseIndex = 0; inputData.sIndividualReceptiveFlagList != null && 
                                     responseIndex < inputData.sIndividualReceptiveFlagList.Count; responseIndex++)
         {
@@ -259,6 +258,7 @@ public class RedCapRecord
         return redCapRecords;
     }
 
+    // Function responsible for returning int truth value
     public static int getBinaryTrueFalse(bool value)
     {
         return value ? 1 : 0;

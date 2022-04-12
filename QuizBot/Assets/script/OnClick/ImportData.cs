@@ -24,8 +24,7 @@ public class ImportData  : MonoBehaviour
     }
 
 
-    // Function that executes on button click and is responsible for importing data.
-    // The aim is to develop this function for each scene (if import required)
+    // Function that is responsible for importing data into RedCap, triggered after button click.
     IEnumerator ImportActions()
     {
         // If classroomId was not entered in the first scene, import is not allowed.
@@ -39,7 +38,7 @@ public class ImportData  : MonoBehaviour
             // 1. First, get all record_id corresponding to the classroom_id filter in hand
             // 2. Second, get all records with the corresponding record_id and store locally.
             
-            // 1. Prepare request for obtaining record_ids to import
+            // 1. Getting all record_id corresponding to the classroom_id filter in hand
             RedCapRequest redCapRequestForRecordIDs = new RedCapRequest();
             redCapRequestForRecordIDs.token = "B345C5E9AFB7556F4627986E305D4F81"; // This is Akshay's creds, to be replaced!
             redCapRequestForRecordIDs.content = "record";
@@ -54,8 +53,7 @@ public class ImportData  : MonoBehaviour
                 RedCapService.Instance.ImportAllData(usersDetails => GetRecordIDs(usersDetails, recordIDsToImport),
                                                             redCapRequestForRecordIDs));
 
-            // 2. Prepare request for obtaining records to import
-            ConcurrentBag<bool> finishedSuccessfully = new ConcurrentBag<bool>();
+            // 2. Getting all records with the corresponding record_id and store locally.
             RedCapRequest redCapRequestForRecords = new RedCapRequest();
             redCapRequestForRecords.token = "B345C5E9AFB7556F4627986E305D4F81"; // This is Akshay's creds, to be replaced!
             redCapRequestForRecords.content = "record";
@@ -69,7 +67,7 @@ public class ImportData  : MonoBehaviour
 
                 // Execute import request
                 StartCoroutine(
-                    RedCapService.Instance.ImportAllData(usersDetails => GetAndSaveRecords(usersDetails, finishedSuccessfully), 
+                    RedCapService.Instance.ImportAllData(usersDetails => GetAndSaveRecords(usersDetails), 
                             redCapRequestForRecords));
                 
                 
@@ -101,7 +99,7 @@ public class ImportData  : MonoBehaviour
     // 1. Records obtained from RedCap should contain classroomId and childId. If any of these are missing, record
     // is not stored locally.
     // 2. Once eligible records are obtained, they are stored locally.
-    void GetAndSaveRecords(UsersDetails usersDetails, ConcurrentBag<bool> finishedSuccessfully)
+    void GetAndSaveRecords(UsersDetails usersDetails)
     {
         if (isRecordValid(usersDetails) == false)
             return;
@@ -109,15 +107,11 @@ public class ImportData  : MonoBehaviour
         if (usersDetails.users.Count > 0)
         {
             saveLoad.Save(usersDetails);
-            finishedSuccessfully.Add(true);
-        }
-        else
-        {
-            finishedSuccessfully.Add(false);
         }
     }
 
 
+    // Function is responsible for returning if RedCap record is valid to save locally
     bool isRecordValid(UsersDetails usersDetails)
     {
         bool isValid = false;

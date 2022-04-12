@@ -32,7 +32,7 @@ public class RedCapService : MonoBehaviour
     }
 
 
-    // Responsible for importing all data in RedCap to local file system. 
+    // Responsible for executing API call for importing data from RedCap to local file system. 
     // Files created with the file name -> <classroom_id>_<child_id>.dat
     public IEnumerator ImportAllData(System.Action<UsersDetails> callBack, RedCapRequest redCapRequest){
         
@@ -86,7 +86,7 @@ public class RedCapService : MonoBehaviour
         }
     }
     
-    // Responsible for exporting ALL data present in local files into RedCap Database
+    // Responsible for executing API call for importing data from local file system to RedCap. 
     public IEnumerator ExportCredentials(RedCapRequest redCapRequest)
     {
         WWWForm form = new WWWForm();

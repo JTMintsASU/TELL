@@ -21,8 +21,7 @@ public class ExportData : MonoBehaviour
         pdP = Application.persistentDataPath;
     }
 
-    // Function that executes on button click and is responsible for exporting data.
-    // The aim is to develop this function for each scene (if export required)
+    // Function that is responsible for exporting data into RedCap, triggered after button click.
     void ExportActions()
     {
         // Preparing export request
@@ -49,7 +48,7 @@ public class ExportData : MonoBehaviour
             if (splits.Length == 0 || splits[0] != DataManager.classroomId)
                 continue;
 
-            // Read data in file
+            // Read data in file and convert it into RedCap records
             FileStream file = File.Open(fileName, FileMode.Open);
             SerialData serialData = (SerialData) bf.Deserialize(file);
             List<RedCapRecord> redCapRecords = RedCapRecord.convertToRedCapRecord(serialData);
