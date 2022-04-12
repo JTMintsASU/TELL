@@ -55,7 +55,7 @@ public class Validation_UserInfo : Validation_Parent
         if (childIDField == null || childIDField.text == null)
             return false;
 
-        string fileName = classroomIDField.text + "_" + childIDField.text + ".txt";
+        string fileName = classroomIDField.text + "_" + childIDField.text + ".dat";
         string loadPath = persistentDataPath + "/" + fileName;
         if (File.Exists(loadPath))
         {

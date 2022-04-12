@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
 {
     //User info
     //Note ID can be name or an ID #
+    public static string recordID;
     public static string teacherID;
     public static string assessorID;
     public static string childID;
@@ -105,6 +106,16 @@ public class DataManager : MonoBehaviour
             assessorIDField.text = assessorID;
             childIDField.text = childID;
             classroomIDField.text = classroomId;
+            
+            // Add logout code here
+            grade_vocabularyExpressive = new double[6] { -1, -1, -1, -1, -1, -1 };
+            grade_vocabularyReceptive = new double[6] { -1, -1, -1, -1, -1, -1 };
+            grade_vocabularyTotal = new double[6] { -1, -1, -1, -1, -1, -1 };
+            individual_vocabularyExpressive = new List<List<bool>>();
+            individual_vocabularyExpressiveFlag = new List<List<bool>>();
+            individual_vocabularyReceptive = new List<List<bool>>();
+            individual_vocabularyReceptiveFlag = new List<List<bool>>();
+            individual_vocabularyResponses = new List<List<string>>();
         }
 
         //Reset scores and wipe responses

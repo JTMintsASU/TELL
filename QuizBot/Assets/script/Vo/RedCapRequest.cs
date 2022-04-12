@@ -16,4 +16,5 @@ public class RedCapRequest
     public string form_0 { get; set; }
     public string filterLogic { get; set; }
     public string fields_0 { get; set; }
+    public int records_0 { get; set; }
 }

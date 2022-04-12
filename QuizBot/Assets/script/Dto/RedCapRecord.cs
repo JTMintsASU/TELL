@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 public class RedCapRecord
 {
     [JsonProperty("record_id", NullValueHandling = NullValueHandling.Ignore)]
-    public int recordID;
+    public int? recordID = null;
     [JsonProperty("teacher_id", NullValueHandling = NullValueHandling.Ignore)] [CanBeNull]
     public string teacherID = null;
     [JsonProperty("assessor_id", NullValueHandling = NullValueHandling.Ignore)] [CanBeNull]

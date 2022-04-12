@@ -23,6 +23,7 @@ public class SaveLoad
 	public void Save()
 	{
 		//Prepare data
+		staging.sRecordId = DataManager.recordID;
 		staging.sAssessorID = DataManager.assessorID;
 		staging.sChildID = DataManager.childID;
 		staging.sTeacherID = DataManager.teacherID;
@@ -80,6 +81,7 @@ public class SaveLoad
 		file.Close();
 
 		//Load serializable into Datamanager
+		DataManager.recordID = staging.sRecordId;
 		DataManager.assessorID = staging.sAssessorID;
 		DataManager.childID = staging.sChildID;
 		DataManager.teacherID = staging.sTeacherID;
@@ -97,30 +99,26 @@ public class SaveLoad
 	// Creates files and saves data passed as parameter
 	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Only data of current user is stored
-	public void SaveAll(UsersDetails usersDetails)
+	public void Save(UsersDetails usersDetails)
 	{
 		if (usersDetails == null || usersDetails.users == null)
 			return;
 		
-		foreach (var user in usersDetails.users)
+		SerialData staging = SerialData.convertToSerialData(usersDetails);
+			
+		if (staging.sClassroomID == null || staging.sChildID == null)
 		{
-			SerialData staging = SerialData.convertToSerialData(user);
-			
-			if (staging.sClassroomID == null || staging.sChildID == null)
-			{
-				Debug.LogError("Missing childID or classroomId, unable to save data");
-				return;
-			}
-			
-		
-			string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
-			string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
-
-			//Create and save file
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Create(savePath);
-			bf.Serialize(file, staging);
-			file.Close();
+			Debug.LogError("Missing childID or classroomId, unable to save data");
+			return;
 		}
+		
+		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
+		string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
+
+		//Create and save file
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Create(savePath);
+		bf.Serialize(file, staging);
+		file.Close();
 	}
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using Random = UnityEngine.Random;
@@ -60,6 +61,9 @@ public class RedCapService : MonoBehaviour
         
         if (!String.IsNullOrEmpty(redCapRequest.form_0))
             form.AddField("forms[0]", redCapRequest.form_0);
+        
+        if (redCapRequest.records_0 != null && redCapRequest.records_0 != 0)
+            form.AddField("records[0]", redCapRequest.records_0);
 
         if (!String.IsNullOrEmpty(redCapRequest.filterLogic))
             form.AddField("filterLogic", redCapRequest.filterLogic);
@@ -75,7 +79,8 @@ public class RedCapService : MonoBehaviour
             else
             {
                 string response = www.downloadHandler.text;
-                UsersDetails root = JsonUtility.FromJson<UsersDetails>("{\"users\":" + response + "}");
+                UsersDetails root = JsonConvert.DeserializeObject<UsersDetails>("{\"users\":" + response + "}");
+                // UsersDetails root = JsonUtility.FromJson<UsersDetails>("{\"users\":" + response + "}");
                 callBack(root);
             }
         }
