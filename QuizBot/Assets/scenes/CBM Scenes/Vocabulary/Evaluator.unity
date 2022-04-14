@@ -1159,6 +1159,8 @@ MonoBehaviour:
   primaryToggle: {fileID: 746151781}
   receptiveToggle: {fileID: 491013125}
   promptCycler: {fileID: 0}
+  expressiveFlag: {fileID: 918021803}
+  receptiveFlag: {fileID: 1375433545}
   childText: {fileID: 0}
   promptText: []
   responsesText: []

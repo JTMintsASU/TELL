@@ -17,6 +17,8 @@ public class Validation_UserInfo : Validation_Parent
     public TMP_InputField assessorID;
     public TMP_InputField childName;
     public TMP_InputField childID;
+    public TMP_InputField classRoomName;
+    public TMP_InputField classRoomId;
     public static string persistentDataPath;
     public Nullable<bool> displayWarning;
 
@@ -26,7 +28,7 @@ public class Validation_UserInfo : Validation_Parent
     }
 
     //Time to validate!
-    //Requires one of each teacher, assessor, and child field filled
+    //Requires one of each teacher, assessor, child and classroom field filled
     public override bool Validator()
     {
         string empty = ""; //Used to more clearly indicate null strings
@@ -38,18 +40,22 @@ public class Validation_UserInfo : Validation_Parent
             valid = false;
         if(childName.text == empty && childID.text == empty)
             valid = false;
+        if(classRoomName.text == empty && classRoomId.text == empty)
+            valid = false;
 
-        displayWarning = shouldDisplayWarning(childID);
+        displayWarning = shouldDisplayWarning(childID, classRoomId);
 
         return valid && !displayWarning.Value;
     }
 
-    public bool shouldDisplayWarning(TMP_InputField childIDField)
+    // This function is responsible for evaluating if a file can be loaded into application or not, displays
+    // a warning if it is not possible to load file (missing either child or classroom information)
+    public bool shouldDisplayWarning(TMP_InputField childIDField, TMP_InputField classroomIDField)
     {
         if (childIDField == null || childIDField.text == null)
             return false;
 
-        string fileName = childIDField.text + ".dat";
+        string fileName = classroomIDField.text + "_" + childIDField.text + ".dat";
         string loadPath = persistentDataPath + "/" + fileName;
         if (File.Exists(loadPath))
         {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -14,6 +13,7 @@ public class Load : MonoBehaviour
     public GameObject panel; // Panel
     public TextMeshProUGUI displayText; // Text display in Panel
     public TMP_InputField childIDField; // Value for childId
+    public TMP_InputField classroomIDField; // Value for childId
 
     // Non-UI Elements
     public string sceneName; // Name up upcoming scene after loading data
@@ -33,11 +33,7 @@ public class Load : MonoBehaviour
     // Occurs when next button is clicked
     void loadButtonClick()
     {
-        bool showWarning;
-        if (validator.displayWarning.HasValue)
-            showWarning = validator.displayWarning.Value;
-        else
-            showWarning = validator.shouldDisplayWarning(childIDField);
+        bool showWarning = validator.shouldDisplayWarning(childIDField, classroomIDField);
 
         // Check if panel should be displayed (validator for panel)
         if (showWarning)
@@ -48,6 +44,7 @@ public class Load : MonoBehaviour
         else
         {
             panel.gameObject.SetActive(false);
+            loader.Save();
         }
     }
 
@@ -56,7 +53,7 @@ public class Load : MonoBehaviour
     {
         loadBtn.interactable = true;
         panel.gameObject.SetActive(false);
-        loader.Load(childIDField);
+        loader.Load(childIDField, classroomIDField);
 
         // Load new scene
         cleanup.SceneCleanup();

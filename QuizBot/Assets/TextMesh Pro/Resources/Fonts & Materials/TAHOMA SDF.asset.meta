@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:QuizBot/Assets/TextMesh Pro/Resources/Fonts & Materials/TAHOMA SDF.asset.meta
-guid: 1811b43fdbecc484ab611f7d833c6b01
-NativeFormatImporter:
-=======
-guid: c766abfac188c574395c0b100440c4b8
+<<<<<<< HEAD:QuizBot/Assets/script/Api.meta
+guid: e9b7c3fb143f34f7ca40f0bc59f42e8d
 folderAsset: yes
 DefaultImporter:
->>>>>>> Stashed changes:QuizBot/Assets/scenes/CBM Scenes.meta
+=======
+guid: 1811b43fdbecc484ab611f7d833c6b01
+NativeFormatImporter:
+>>>>>>> 75a4a98363b12c7eb3e6a4c07ef6b88c7c3d21b2:QuizBot/Assets/TextMesh Pro/Resources/Fonts & Materials/TAHOMA SDF.asset.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 
