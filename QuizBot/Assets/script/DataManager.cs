@@ -20,6 +20,9 @@ public class DataManager : MonoBehaviour
     public static string globalGame; //Var used to store what game we are playing
     public static int globalTime; //Var used to store which 'Time'/unit/week we are on
 
+    public static string childNameLNI; //used to store child name for use in LNI
+    //PII THAT SHOULD NOT BE SAVED LONG-TERM
+
     //Per-game scored answers
     //These lists hold each answer's result
     public static List<bool> individual_expressive;
@@ -43,7 +46,7 @@ public class DataManager : MonoBehaviour
     public TMP_InputField childIDField;
 
     //Instructions Fields
-    public TextMeshProUGUI lniSkippedText;
+    public TMP_InputField lniNameField;
 
     //Evaluator Fields
     public TMP_InputField responseField;
@@ -102,15 +105,6 @@ public class DataManager : MonoBehaviour
             childIDField.text = childID;
         }
 
-        if(currentScene=="LNI_Instructions")
-        {
-            for(int checkLetter = 0; checkLetter < learnedLetterNames.Length; checkLetter++)
-            {
-                if(learnedLetterNames[checkLetter])
-                    lniSkippedText.text += " " + ((char)(checkLetter + 65)).ToString(); //65 is code for 'A'
-            }
-        }
-
         //Reset scores and wipe responses
         if(currentScene == "Evaluator" || currentScene == "LNI_Evaluator")
         {
@@ -127,7 +121,7 @@ public class DataManager : MonoBehaviour
         if (currentScene == "Grader")
         {
             childText.text = childID;
-            string[] promptStorage = promptCycler.promptSelect(globalTime);
+            string[] promptStorage = promptCycler.PromptSelect(globalTime);
             //Loop populates table textboxes, hardcoded at 6 due to issues reading unfully instantiated sizes
             for (int wheel = 0; wheel < 6; wheel++)
             {
@@ -147,30 +141,39 @@ public class DataManager : MonoBehaviour
             //Check for "Tested Out" Letters
             for (int letter = 0; letter < individual_LNI.GetLength(0); letter++)
             {
+                int adaptiveCounter = 0; //Var used to track 'consecutive' correct answers
+
                 for (int time = 0; time < individual_LNI.GetLength(1); time++)
                 {
-                    int matchStart = time - 2;
-                    if (matchStart >= 0) //must have at least two records to check
+                    Debug.Log("grading loop");
+                    //If score was correct or CSkipped, increase adaptive counter
+                    if (individual_LNI[letter, time] == AdaptiveResponse.Correct ||
+                    individual_LNI[letter, time] == AdaptiveResponse.CSKIP)
                     {
-                        //See if last two records were correct or skipped
-                        if ((individual_LNI[letter, matchStart] == AdaptiveResponse.Correct ||
-                        individual_LNI[letter, matchStart] == AdaptiveResponse.Skipped) &&
-                        (individual_LNI[letter, matchStart+1] == AdaptiveResponse.Correct ||
-                        individual_LNI[letter, matchStart+1] == AdaptiveResponse.Skipped))
-                        {
-                            learnedLetterNames[letter] = true;
-                        }
+                        adaptiveCounter++;                        
+                    }
+
+                    //If incorrect, reset adaptive counter. Note that we don't count ISKIP
+                    else if  (individual_LNI[letter, time] == AdaptiveResponse.Incorrect)
+                    {
+                        adaptiveCounter = 0;
+                    }
+
+                    if(adaptiveCounter>=2)
+                    {
+                        learnedLetterNames[letter] = true; //THIS IS OUR PROBLEM LINE--WHAT CHANGES WHEN TRUE
+                        //there's no mechanic to take this back to false--test out once and you're good
                     }
                 }
             }
 
-            //Populate answers and scores entered for this time
-            string[] promptStorage = promptCycler.promptSelect(globalTime);
+            /*Populate answers and scores entered for this time
+            string[] promptStorage = promptCycler.PromptSelect(globalTime);
             for (int wheel = 0; wheel < 6; wheel++)
             {
                 promptText[wheel].text = promptStorage[wheel];
                 responsesText[wheel].text = responses[wheel];
-            }
+            }*/
         }
 
         //Report card - show all times
@@ -191,8 +194,8 @@ public class DataManager : MonoBehaviour
             //look for last good score
             for(int loop = 0; loop < learnedLetterNames.Length; loop++)
             {
-                string result = "ERR";
-                if(learnedLetterNames[loop] == true)
+                string result;
+                if (learnedLetterNames[loop] == true)
                 {
                     result = "<color=green>+</color>";
                 }
@@ -241,7 +244,8 @@ public class DataManager : MonoBehaviour
         if (currentScene == "LNI_Evaluator")
         {
             //Get prompt array for current time, get exact prompt we're on, convert from str to char to int to number of alphabet
-            int charNum = (int)(char.Parse(promptCycler.promptSelect(globalTime)[promptCycler.iterator])) - 65; //'A' ASCII int is 65   
+            int charNum = (int)(char.Parse(promptCycler.PromptSelect(globalTime)[promptCycler.iterator])) - 65; //'A' ASCII int is 65   
+            Debug.Log("Preparing to score letter at charNum " + charNum + "and globalTime " + globalTime);
 
             if (primaryToggle.isOn)
             {
@@ -273,6 +277,12 @@ public class DataManager : MonoBehaviour
             childID = childNameField.text;
             if(childIDField.text != "")
                 childID = childIDField.text;
+        }
+
+        //Store child name for letter randomization
+        if(currentScene == "LNI_Instructions")
+        {
+            childNameLNI = lniNameField.text;
         }
 
         //Grade final question and calculate results before moving on

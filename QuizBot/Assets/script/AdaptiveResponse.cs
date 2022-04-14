@@ -3,6 +3,7 @@ public enum AdaptiveResponse
 {
         Missing,
         Incorrect,
+        ISKIP,
         Correct,
-        Skipped
+        CSKIP
 }

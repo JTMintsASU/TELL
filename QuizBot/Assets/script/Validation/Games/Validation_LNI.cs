@@ -28,6 +28,8 @@ public class Validation_LNI : Validation_Games
             validInput = false;
         }
 
+        if (validScene)
+            Debug.Log("Scene valid for leaving.");
         return validScene;
     }
 

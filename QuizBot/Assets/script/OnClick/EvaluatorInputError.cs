@@ -18,6 +18,7 @@ public class EvaluatorInputError : MonoBehaviour
 
     void TaskOnClick()
     {
+        Debug.Log("Evaluator Input Error");
         //Make text opaque based on condition
         checker.Validator();
         if (!checker.GetValidInput()) //if input is invalid

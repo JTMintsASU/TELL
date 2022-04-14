@@ -1,4 +1,6 @@
+/*
 //This class stores the static prompts for LNI
+//Should be ok to delete with new random combo
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,7 @@ using UnityEngine;
 public class Prompts_LNI : Array_Prompts
 {
     //Used to see what letters we already know and adapt out of them
-    bool[] adaptThis = DataManager.learnedLetterNames;
+    //bool[] adaptThis = DataManager.learnedLetterNames;
 
     void Start()
     {
@@ -75,13 +77,14 @@ public class Prompts_LNI : Array_Prompts
 
     //This function alters the letter prompts based on adaptive scoring
     //Optimization: figure out how to adapt only on the current time
-    string[] adaptPrompts(string[] vanilla)
+    /*string[] adaptPrompts(string[] vanilla)
     {
         string[] result = vanilla;
         int count = -1;
         //Look for 'passed' letters
         foreach (bool letter in adaptThis)
         {
+            Debug.Log("adaptPrompts loop letter");
             count++;
             if (letter)
             {
@@ -89,6 +92,7 @@ public class Prompts_LNI : Array_Prompts
                 string skipMe = ((char)(count + 65)).ToString(); //65 is code for 'A'
                 for (int loop = 0; loop < result.Length; loop++)
                 {
+                    Debug.Log("adaptPrompts internal loop");
                     if (skipMe == result[loop])
                     {
                         //Continue to look for new letter to test
@@ -96,6 +100,7 @@ public class Prompts_LNI : Array_Prompts
                         int promptNumber;
                         do 
                         {
+                            Debug.Log("LNI DoWhile");
                             promptNumber = (int)(char.Parse(result[loop]) - 65);
                             promptNumber += 1; //logic that controls what new letter we will provide
                         } while (adaptThis[promptNumber]);
@@ -106,4 +111,4 @@ public class Prompts_LNI : Array_Prompts
         }
         return result;
     }
-}
+}*/

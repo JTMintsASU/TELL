@@ -17,20 +17,20 @@ public class AdvanceText : MonoBehaviour
     public Array_Prompts prompts; //Holds the list of prompts that the evaluator will be cycling through - select relevant child
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         localTime = DataManager.globalTime;
-        textArray = promptSelect(localTime);
         complete = false;
         gradeMe = true;
         iterator = 0; //Selects the starting text to display
+        textArray = PromptSelect(localTime);
         shownText.text = textArray[iterator]; //Display the first text
         clickedButton.onClick.AddListener(TaskOnClick);
     }
 
     //This function uses an int to select a prompt from Array_Prompts child.
     //The default case "prompts" contains an error message array.
-    public string[] promptSelect(int selection) => selection switch
+    public virtual string[] PromptSelect(int selection) => selection switch
     {
         1 => prompts.prompts1,
         2 => prompts.prompts2,
@@ -42,7 +42,7 @@ public class AdvanceText : MonoBehaviour
     };
 
     //Occurs when button is clicked
-    void TaskOnClick()
+    protected virtual void TaskOnClick()
     {
         checker.Validator();
         if (checker.GetValidInput())
@@ -50,6 +50,7 @@ public class AdvanceText : MonoBehaviour
             if (iterator < textArray.Length - 1)
             {
                 iterator++;
+                Debug.Log("Iterator: " + iterator);
                 shownText.text = textArray[iterator];
 
                 //On last question display, mark completed
@@ -58,7 +59,10 @@ public class AdvanceText : MonoBehaviour
             }
             //Last element
             else
+            {
+                Debug.Log("Setting gradeMe to false");
                 gradeMe = false;
+            }
         }
     }
 }
