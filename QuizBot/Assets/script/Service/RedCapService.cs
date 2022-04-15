@@ -11,7 +11,7 @@ public class RedCapService : MonoBehaviour
     private static RedCapService _instance;
     public static string pdP;
 
-    private void Start()
+    private void Awake()
     {
         pdP = Application.persistentDataPath;
     }

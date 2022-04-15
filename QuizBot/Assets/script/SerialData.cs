@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 [Serializable]
 public class SerialData
@@ -209,6 +210,66 @@ public class SerialData
                 serialData.sLearnedLetterNames[24] = getTrueFalse(redCapRecord.Y);
             if (redCapRecord.Z != null)
                 serialData.sLearnedLetterNames[25] = getTrueFalse(redCapRecord.Z);
+
+
+            //Populate sIndividual_LNI
+            serialData.sIndividual_LNI = new AdaptiveResponse[26,6];
+            if (redCapRecord.lnirSessionNumber != null && redCapRecord.lnirSessionNumber != 0)
+            {
+                int lniTime = (int)redCapRecord.lnirSessionNumber-1;
+                if (redCapRecord.rA != null)
+                    serialData.sIndividual_LNI[0, lniTime] = (AdaptiveResponse)(int)redCapRecord.rA;
+                if (redCapRecord.rB != null)
+                    serialData.sIndividual_LNI[1, lniTime] = (AdaptiveResponse)(int)redCapRecord.rB;
+                if (redCapRecord.rC != null)
+                    serialData.sIndividual_LNI[2, lniTime] = (AdaptiveResponse)(int)redCapRecord.rC;
+                if (redCapRecord.rD != null)
+                    serialData.sIndividual_LNI[3, lniTime] = (AdaptiveResponse)(int)redCapRecord.rD;
+                if (redCapRecord.rE != null)
+                    serialData.sIndividual_LNI[4, lniTime] = (AdaptiveResponse)(int)redCapRecord.rE;
+                if (redCapRecord.rF != null)
+                    serialData.sIndividual_LNI[5, lniTime] = (AdaptiveResponse)(int)redCapRecord.rF;
+                if (redCapRecord.rG != null)
+                    serialData.sIndividual_LNI[6, lniTime] = (AdaptiveResponse)(int)redCapRecord.rG;
+                if (redCapRecord.rH != null)
+                    serialData.sIndividual_LNI[7, lniTime] = (AdaptiveResponse)(int)redCapRecord.rH;
+                if (redCapRecord.rI != null)
+                    serialData.sIndividual_LNI[8, lniTime] = (AdaptiveResponse)(int)redCapRecord.rI;
+                if (redCapRecord.rJ != null)
+                    serialData.sIndividual_LNI[9, lniTime] = (AdaptiveResponse)(int)redCapRecord.rJ;
+                if (redCapRecord.rK != null)
+                    serialData.sIndividual_LNI[10, lniTime] = (AdaptiveResponse)(int)redCapRecord.rK;
+                if (redCapRecord.rL != null)
+                    serialData.sIndividual_LNI[11, lniTime] = (AdaptiveResponse)(int)redCapRecord.rL;
+                if (redCapRecord.rM != null)
+                    serialData.sIndividual_LNI[12, lniTime] = (AdaptiveResponse)(int)redCapRecord.rM;
+                if (redCapRecord.rN != null)
+                    serialData.sIndividual_LNI[13, lniTime] = (AdaptiveResponse)(int)redCapRecord.rN;
+                if (redCapRecord.rO != null)
+                    serialData.sIndividual_LNI[14, lniTime] = (AdaptiveResponse)(int)redCapRecord.rO;
+                if (redCapRecord.rP != null)
+                    serialData.sIndividual_LNI[15, lniTime] = (AdaptiveResponse)(int)redCapRecord.rP;
+                if (redCapRecord.rQ != null)
+                    serialData.sIndividual_LNI[16, lniTime] = (AdaptiveResponse)(int)redCapRecord.rQ;
+                if (redCapRecord.rR != null)
+                    serialData.sIndividual_LNI[17, lniTime] = (AdaptiveResponse)(int)redCapRecord.rR;
+                if (redCapRecord.rS != null)
+                    serialData.sIndividual_LNI[18, lniTime] = (AdaptiveResponse)(int)redCapRecord.rS;
+                if (redCapRecord.rT != null)
+                    serialData.sIndividual_LNI[19, lniTime] = (AdaptiveResponse)(int)redCapRecord.rT;
+                if (redCapRecord.rU != null)
+                    serialData.sIndividual_LNI[20, lniTime] = (AdaptiveResponse)(int)redCapRecord.rU;
+                if (redCapRecord.rV != null)
+                    serialData.sIndividual_LNI[21, lniTime] = (AdaptiveResponse)(int)redCapRecord.rV;
+                if (redCapRecord.rW != null)
+                    serialData.sIndividual_LNI[22, lniTime] = (AdaptiveResponse)(int)redCapRecord.rW;
+                if (redCapRecord.rX != null)
+                    serialData.sIndividual_LNI[23, lniTime] = (AdaptiveResponse)(int)redCapRecord.rX;
+                if (redCapRecord.rY != null)
+                    serialData.sIndividual_LNI[24, lniTime] = (AdaptiveResponse)(int)redCapRecord.rY;
+                if (redCapRecord.rZ != null)
+                    serialData.sIndividual_LNI[25, lniTime] = (AdaptiveResponse)(int)redCapRecord.rZ;
+            }
         }
 
         serialData.sIndividualExpressiveList = expressiveList;

@@ -4,6 +4,6 @@ public enum AdaptiveResponse
         Missing,
         Incorrect,
         ISKIP,
-        Correct,
-        CSKIP
+        CSKIP,
+        Correct
 }
