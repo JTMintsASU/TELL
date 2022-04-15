@@ -43,19 +43,19 @@ public class Validation_UserInfo : Validation_Parent
         if(classRoomName.text == empty && classRoomId.text == empty)
             valid = false;
 
-        displayWarning = shouldDisplayWarning(childID, classRoomId);
+        displayWarning = shouldDisplayWarning();
 
         return valid && !displayWarning.Value;
     }
 
     // This function is responsible for evaluating if a file can be loaded into application or not, displays
     // a warning if it is not possible to load file (missing either child or classroom information)
-    public bool shouldDisplayWarning(TMP_InputField childIDField, TMP_InputField classroomIDField)
+    public bool shouldDisplayWarning()
     {
-        if (childIDField == null || childIDField.text == null)
+        if (DataManager.childID == null || DataManager.classroomID == null)
             return false;
 
-        string fileName = classroomIDField.text + "_" + childIDField.text + ".dat";
+        string fileName = DataManager.childID + "_" + DataManager.classroomID + ".dat";
         string loadPath = persistentDataPath + "/" + fileName;
         if (File.Exists(loadPath))
         {

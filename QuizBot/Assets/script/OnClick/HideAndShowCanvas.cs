@@ -38,7 +38,6 @@ public class HideAndShowCanvas : MonoBehaviour
     //Show canvas if not shown and not in the middle of a click
     void ShowOnClick()
     {
-        Debug.Log("HideAndShowCanvas");
         if (hnsCanvas.enabled == false)
         {
             hnsCanvas.enabled = true;

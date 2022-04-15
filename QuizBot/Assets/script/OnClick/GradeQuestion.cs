@@ -17,7 +17,6 @@ public class GradeQuestion : MonoBehaviour
 
     void GradeOnClick()
     {
-        Debug.Log("GradeQuestion");
         //Prevents incrementing during final question
         //Due to uncertain execution order, we let the data manager
         //grade the final question in its class

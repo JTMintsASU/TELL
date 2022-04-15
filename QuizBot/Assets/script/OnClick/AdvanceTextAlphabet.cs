@@ -23,9 +23,7 @@ public class AdvanceTextAlphabet : AdvanceText
     //Need to add the check for 4/6 right or abort
     protected override void TaskOnClick()
     {
-        Debug.Log("Advance Text Base");
         base.TaskOnClick(); //increment to iterator is here
-        Debug.Log("Advance Text Alphabet");
         int part1 = 6 - 1;
         if (iterator == part1) //ok, we've hit 6
         {
@@ -33,14 +31,12 @@ public class AdvanceTextAlphabet : AdvanceText
             //if we can find 3+ incorrect answers, it's time to stop
             for (int index = 0; index < DataManager.individual_LNI.GetLength(0); index++)
             {
-                Debug.Log("Wrongos Loop");
                 if(DataManager.individual_LNI[index, DataManager.globalTime-1] == AdaptiveResponse.Incorrect)
                     wrongos++;
             }
             if (wrongos >= 3)
                 complete = true;
         }
-        Debug.Log("Alphabet Complete");
         bigShownText.text = textArray[iterator];
     }
 }

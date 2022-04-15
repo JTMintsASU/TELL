@@ -9,7 +9,12 @@ using Random = UnityEngine.Random;
 public class RedCapService : MonoBehaviour
 {
     private static RedCapService _instance;
-    public static string pdP = Application.persistentDataPath;
+    public static string pdP;
+
+    private void Start()
+    {
+        pdP = Application.persistentDataPath;
+    }
 
     // Create a singleton
     public static RedCapService Instance
@@ -62,7 +67,7 @@ public class RedCapService : MonoBehaviour
         if (!String.IsNullOrEmpty(redCapRequest.form_0))
             form.AddField("forms[0]", redCapRequest.form_0);
         
-        if (redCapRequest.records_0 != null && redCapRequest.records_0 != 0)
+        if (redCapRequest.records_0 != 0)
             form.AddField("records[0]", redCapRequest.records_0);
 
         if (!String.IsNullOrEmpty(redCapRequest.filterLogic))
@@ -80,7 +85,6 @@ public class RedCapService : MonoBehaviour
             {
                 string response = www.downloadHandler.text;
                 UsersDetails root = JsonConvert.DeserializeObject<UsersDetails>("{\"users\":" + response + "}");
-                // UsersDetails root = JsonUtility.FromJson<UsersDetails>("{\"users\":" + response + "}");
                 callBack(root);
             }
         }

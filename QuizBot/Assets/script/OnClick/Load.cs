@@ -12,8 +12,6 @@ public class Load : MonoBehaviour
     public Button loadBtn; // Load Button in Panel
     public GameObject panel; // Panel
     public TextMeshProUGUI displayText; // Text display in Panel
-    public TMP_InputField childIDField; // Value for childId
-    public TMP_InputField classroomIDField; // Value for childId
 
     // Non-UI Elements
     public string sceneName; // Name up upcoming scene after loading data
@@ -33,7 +31,7 @@ public class Load : MonoBehaviour
     // Occurs when next button is clicked
     void loadButtonClick()
     {
-        bool showWarning = validator.shouldDisplayWarning(childIDField, classroomIDField);
+        bool showWarning = validator.shouldDisplayWarning();
 
         // Check if panel should be displayed (validator for panel)
         if (showWarning)
@@ -44,7 +42,7 @@ public class Load : MonoBehaviour
         else
         {
             panel.gameObject.SetActive(false);
-            loader.Save();
+            loader.Load();
         }
     }
 
@@ -53,7 +51,7 @@ public class Load : MonoBehaviour
     {
         loadBtn.interactable = true;
         panel.gameObject.SetActive(false);
-        loader.Load(childIDField, classroomIDField);
+        loader.Load();
 
         // Load new scene
         cleanup.SceneCleanup();

@@ -50,7 +50,6 @@ public class AdvanceText : MonoBehaviour
             if (iterator < textArray.Length - 1)
             {
                 iterator++;
-                Debug.Log("Iterator: " + iterator);
                 shownText.text = textArray[iterator];
 
                 //On last question display, mark completed
@@ -60,7 +59,6 @@ public class AdvanceText : MonoBehaviour
             //Last element
             else
             {
-                Debug.Log("Setting gradeMe to false");
                 gradeMe = false;
             }
         }

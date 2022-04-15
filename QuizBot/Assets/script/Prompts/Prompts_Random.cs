@@ -20,7 +20,6 @@ public class Prompts_Random : Array_Prompts
         //Knuth shuffle algorithm
         for (int t = 0; t < alphabet.Length; t++)
         {
-            Debug.Log("shuffle loop");
             string tmp = alphabet[t];
             System.Random ran = new();
             int r = ran.Next(t, alphabet.Length);
@@ -41,7 +40,6 @@ public class Prompts_Random : Array_Prompts
         string[] promptAlpha = {"NULL", "NULL", "NULL", "NULL", "NULL", "NULL"};
         for (int pos = 0; (pos < scrambled.Length) && (pos < 6); pos++)
         {
-            Debug.Log("Scramble loop");
             promptAlpha[pos] = scrambled[pos].ToString();
         }
 
@@ -56,9 +54,6 @@ public class Prompts_Random : Array_Prompts
 
         adaptingArray = adaptPrompts(adaptingArray);
 
-        foreach (string x in adaptingArray)
-            Debug.Log(x);
-
         //Copy this to prompt 1
         prompts1 = adaptingArray;
     }
@@ -68,7 +63,6 @@ public class Prompts_Random : Array_Prompts
     {
         foreach(string letter in smallArray)
         {
-            Debug.Log("Remove2ndfrom1st loop");
             bigArray = bigArray.Where(val => val != letter).ToArray(); 
         }
 
@@ -85,7 +79,6 @@ public class Prompts_Random : Array_Prompts
         //Look for 'passed' letters
         foreach (bool letter in adaptThis)
         {
-            Debug.Log("adaptprompts loop random");
             count++;
             if (letter)
             {
@@ -93,7 +86,6 @@ public class Prompts_Random : Array_Prompts
                 string skipMe = ((char)(count + 65)).ToString(); //65 is code for 'A'
                 for (int loop = 0; loop < result.Length; loop++)
                 {
-                    Debug.Log("adaptprompts internal loop random");
                     if (skipMe == result[loop])
                     {
                         //Add CSkip grade

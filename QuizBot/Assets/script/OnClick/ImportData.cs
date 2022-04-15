@@ -28,7 +28,7 @@ public class ImportData  : MonoBehaviour
     IEnumerator ImportActions()
     {
         // If classroomId was not entered in the first scene, import is not allowed.
-        if (DataManager.classroomId == String.Empty)
+        if (DataManager.classroomID == String.Empty)
             Debug.Log("Classroom ID is missing, cannot import");
         else
         {
@@ -46,7 +46,7 @@ public class ImportData  : MonoBehaviour
             redCapRequestForRecordIDs.format = "json";
             redCapRequestForRecordIDs.type = "flat";
             redCapRequestForRecordIDs.returnFormat = "json";
-            redCapRequestForRecordIDs.filterLogic = "[classroom_id]=" + "\"" + DataManager.classroomId + "\"";
+            redCapRequestForRecordIDs.filterLogic = "[classroom_id]=" + "\"" + DataManager.classroomID + "\"";
 
             // Execute import request
             yield return StartCoroutine(

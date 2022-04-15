@@ -45,7 +45,7 @@ public class ExportData : MonoBehaviour
             string[] splits = fileInDirectory.Name.Split('_');
 
             // Only pick files in directory that belong to same class
-            if (splits.Length == 0 || splits[0] != DataManager.classroomId)
+            if (splits.Length == 0 || splits[0] != DataManager.classroomID)
                 continue;
 
             // Read data in file and convert it into RedCap records

@@ -27,8 +27,14 @@ public class SaveLoad
 		staging.sAssessorID = DataManager.assessorID;
 		staging.sChildID = DataManager.childID;
 		staging.sTeacherID = DataManager.teacherID;
-		staging.sClassroomID = DataManager.classroomId;
-		
+		staging.sClassroomID = DataManager.classroomID;
+
+		if (staging.sClassroomID == null || staging.sChildID == null)
+		{
+			Debug.LogError("Missing childID or classroomId, unable to save data");
+			return;
+		}
+
 		// Storing vocab game data
 		staging.sGradeVocabExp = DataManager.grade_vocabularyExpressive;
 		staging.sGradeVocabRec = DataManager.grade_vocabularyReceptive;
@@ -42,11 +48,9 @@ public class SaveLoad
 			staging.sIndividualResponses = DataManager.individual_vocabularyResponses;
 		}
 
-		if (staging.sClassroomID == null || staging.sChildID == null)
-		{
-			Debug.LogError("Missing childID or classroomId, unable to save data");
-			return;
-		}
+		//Storing LNI data
+		staging.sLearnedLetterNames = DataManager.learnedLetterNames;
+		staging.sIndividual_LNI = DataManager.individual_LNI;
 		
 		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
 		string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
@@ -61,17 +65,16 @@ public class SaveLoad
 	// Loads data from a file into DataManager
 	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Data of user is loaded in DataManager
-	public void Load(TMP_InputField childIDField, TMP_InputField classroomIDField)
+	public void Load()
 	{
-		if (childIDField == null || childIDField.text == null || 
-		    classroomIDField == null || classroomIDField.text == null)
+		if (DataManager.childID == null || DataManager.classroomID == null)
 		{
 			Debug.LogError("Missing childID/classroomId, unable to load data");
 			return;
 		}
 		
 		// Obtain the filePath for loading
-		string fileName = classroomIDField.text + "_" + childIDField.text + ".dat";
+		string fileName = DataManager.classroomID + "_" + DataManager.childID + ".dat";
 		string loadPath = Path.Combine(pdP, fileName);
 
 		// Open file and load data
@@ -85,7 +88,7 @@ public class SaveLoad
 		DataManager.assessorID = staging.sAssessorID;
 		DataManager.childID = staging.sChildID;
 		DataManager.teacherID = staging.sTeacherID;
-		DataManager.classroomId = staging.sClassroomID;
+		DataManager.classroomID = staging.sClassroomID;
 		DataManager.grade_vocabularyExpressive = staging.sGradeVocabExp;
 		DataManager.grade_vocabularyReceptive = staging.sGradeVocabRec;
 		DataManager.grade_vocabularyTotal = staging.sGradeVocabTotal;
@@ -94,6 +97,8 @@ public class SaveLoad
 		DataManager.individual_vocabularyReceptive = staging.sIndividualReceptiveList;
 		DataManager.individual_vocabularyReceptiveFlag = staging.sIndividualReceptiveFlagList;
 		DataManager.individual_vocabularyResponses = staging.sIndividualResponses;
+		DataManager.learnedLetterNames = staging.sLearnedLetterNames;
+        DataManager.individual_LNI = staging.sIndividual_LNI;
 	}
 	
 	// Creates files and saves data passed as parameter

@@ -19,7 +19,6 @@ public class LoadScene_Conditional : MonoBehaviour
 
     protected void TaskOnClick()
     {
-        Debug.Log("LoadScene_Conditional");
         //Saves data and loads next string
         if(checker.Validator()) //if input is invalid
         {
