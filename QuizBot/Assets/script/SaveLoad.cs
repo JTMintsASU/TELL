@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -65,16 +66,16 @@ public class SaveLoad
 	// Loads data from a file into DataManager
 	// 1. Data is stored in a file -> <classroom_id>_<child_id>.dat
 	// 2. Data of user is loaded in DataManager
-	public void Load()
+	public void Load(string childId, string classroomId)
 	{
-		if (DataManager.childID == null || DataManager.classroomID == null)
+		if (childId == String.Empty || classroomId == String.Empty)
 		{
 			Debug.LogError("Missing childID/classroomId, unable to load data");
 			return;
 		}
 		
 		// Obtain the filePath for loading
-		string fileName = DataManager.classroomID + "_" + DataManager.childID + ".dat";
+		string fileName = classroomId + "_" + childId + ".dat";
 		string loadPath = Path.Combine(pdP, fileName);
 
 		// Open file and load data

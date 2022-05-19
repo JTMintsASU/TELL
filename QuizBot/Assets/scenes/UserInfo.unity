@@ -1100,6 +1100,8 @@ MonoBehaviour:
   loadBtn: {fileID: 824475904}
   panel: {fileID: 68087905}
   displayText: {fileID: 12564043}
+  childIDField: {fileID: 99378696}
+  classroomIDField: {fileID: 1592095471}
   sceneName: MainMenu
   cleanup: {fileID: 99568383}
   validator: {fileID: 99568381}
