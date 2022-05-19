@@ -185,11 +185,24 @@ public class DataManager : MonoBehaviour
 
                 for (int time = 0; time < individual_LNI.GetLength(1); time++)
                 {
+                    if (time == globalTime-1)
+                    {
+                        if (individual_LNI[letter, time] == AdaptiveResponse.Correct ||
+                            individual_LNI[letter, time] == AdaptiveResponse.CSKIP)
+                        {
+                            RLNI_letterText[letter].text = "<color=green>+</color>";
+                        }
+                        else
+                        {
+                            RLNI_letterText[letter].text = "<color=red>-</color>";
+                        }
+                    }
+                    
                     //If score was correct or CSkipped, increase adaptive counter
                     if (individual_LNI[letter, time] == AdaptiveResponse.Correct ||
                     individual_LNI[letter, time] == AdaptiveResponse.CSKIP)
                     {
-                        adaptiveCounter++;                        
+                        adaptiveCounter++;
                     }
 
                     //If incorrect, reset adaptive counter. Note that we don't count ISKIP
