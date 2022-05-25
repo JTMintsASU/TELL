@@ -24,19 +24,41 @@ public class AdvanceTextAlphabet : AdvanceText
     protected override void TaskOnClick()
     {
         base.TaskOnClick(); //increment to iterator is here
-        int part1 = 6 - 1;
-        if (iterator == part1) //ok, we've hit 6
+
+        if (DataManager.globalGame == "LNI_Instructions")
         {
-            int wrongos = 0;
-            //if we can find 3+ incorrect answers, it's time to stop
-            for (int index = 0; index < DataManager.individual_LNI.GetLength(0); index++)
+            int part1 = 6 - 1;
+            if (iterator == part1) //ok, we've hit 6
             {
-                if(DataManager.individual_LNI[index, DataManager.globalTime-1] == AdaptiveResponse.Incorrect)
-                    wrongos++;
+                int wrongos = 0;
+                //if we can find 3+ incorrect answers, it's time to stop
+                for (int index = 0; index < DataManager.individual_LNI.GetLength(0); index++)
+                {
+                    if(DataManager.individual_LNI[index, DataManager.globalTime-1] == AdaptiveResponse.Incorrect)
+                        wrongos++;
+                }
+                if (wrongos >= 3)
+                    complete = true;
             }
-            if (wrongos >= 3)
-                complete = true;
+            bigShownText.text = textArray[iterator];
         }
-        bigShownText.text = textArray[iterator];
+
+        if (DataManager.globalGame == "LSI_Instructions")
+        {
+            int part1 = 6 - 1;
+            if (iterator == part1) //ok, we've hit 6
+            {
+                int wrongos = 0;
+                //if we can find 3+ incorrect answers, it's time to stop
+                for (int index = 0; index < DataManager.individual_LSI.GetLength(0); index++)
+                {
+                    if(DataManager.individual_LSI[index, DataManager.globalTime-1] == AdaptiveResponse.Incorrect)
+                        wrongos++;
+                }
+                if (wrongos >= 3)
+                    complete = true;
+            }
+            bigShownText.text = textArray[iterator];
+        }
     }
 }

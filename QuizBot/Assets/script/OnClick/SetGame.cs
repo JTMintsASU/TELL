@@ -24,6 +24,7 @@ public class SetGame : MonoBehaviour
     {
         "buttonVocabulary" => "Instructions",
         "buttonLNI" => "LNI_Instructions",
+        "buttonLSI" => "LSI_Instructions",
         _ => "Error: No game found for button!" //Default 'error' case
     };
 }
