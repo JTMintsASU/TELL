@@ -8,6 +8,8 @@ using UnityEngine;
 public class Prompts_Random : Array_Prompts
 {
     public string[] alphabet; //Used to store main chunk of alphabet letters in part 2
+    public string[] prefixAlphabets;
+    public string[] suffixAlphabets;
     //Used to see what letters we already know and adapt out of them
     bool[] adaptLNIResults = DataManager.learnedLetterNamesLNI;
     bool[] adaptLSIResults = DataManager.learnedLetterNamesLSI;
@@ -63,22 +65,33 @@ public class Prompts_Random : Array_Prompts
         
         if (DataManager.globalGame == "LSI_Instructions")
         {
+            prefixAlphabets = new string[] { "A", "B", "M", "P", "S", "T"};
             //Initialize and shuffle alphabet
-            alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
-                "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            suffixAlphabets = new string[] {"C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "N", "O", 
+                "Q", "R", "U", "V", "W", "X", "Y", "Z" };
             //Knuth shuffle algorithm
-            for (int t = 0; t < alphabet.Length; t++)
+            for (int t = 0; t < prefixAlphabets.Length; t++)
             {
-                string tmp = alphabet[t];
+                string tmp = prefixAlphabets[t];
                 System.Random ran = new();
-                int r = ran.Next(t, alphabet.Length);
-                alphabet[t] = alphabet[r];
-                alphabet[r] = tmp;
+                int r = ran.Next(t, prefixAlphabets.Length);
+                prefixAlphabets[t] = prefixAlphabets[r];
+                prefixAlphabets[r] = tmp;
+            }
+            //Knuth shuffle algorithm
+            for (int t = 0; t < suffixAlphabets.Length; t++)
+            {
+                string tmp = suffixAlphabets[t];
+                System.Random ran = new();
+                int r = ran.Next(t, suffixAlphabets.Length);
+                suffixAlphabets[t] = suffixAlphabets[r];
+                suffixAlphabets[r] = tmp;
             }
 
             //Combine arrays together, in order
             List<string> combinedList = new();
-            combinedList.AddRange(alphabet);
+            combinedList.AddRange(prefixAlphabets);
+            combinedList.AddRange(suffixAlphabets);
 
             string[] adaptingArray = combinedList.ToArray();
 

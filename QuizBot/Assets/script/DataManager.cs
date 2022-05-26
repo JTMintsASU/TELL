@@ -3,6 +3,7 @@
 //By using static variables we keep a persistent location in memory.
 //Note: Use doubles to store all numbers to avoid expensive casting
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -243,42 +244,56 @@ public class DataManager : MonoBehaviour
 
         if (currentScene == "LSI_Grader" )
         {
+            string[] exceptionalCharacters = new[] { "A", "B", "E", "O", "S", "U" }; // Student should answer 3 of these alphabets to skip these alphabets
+            
             //Check for "Tested Out" Letters
-            for (int letter = 0; letter < individual_LSI.GetLength(0); letter++)
+            for (int letterIndex = 0; letterIndex < individual_LSI.GetLength(0); letterIndex++)
             {
+                string letter = ((char)(letterIndex + 65)).ToString(); //65 is code for 'A'
                 int adaptiveCounter = 0; //Var used to track 'consecutive' correct answers
 
                 for (int time = 0; time < individual_LSI.GetLength(1); time++)
                 {
                     if (time == globalTime-1)
                     {
-                        if (individual_LSI[letter, time] == AdaptiveResponse.Correct ||
-                            individual_LSI[letter, time] == AdaptiveResponse.CSKIP)
+                        if (individual_LSI[letterIndex, time] == AdaptiveResponse.Correct ||
+                            individual_LSI[letterIndex, time] == AdaptiveResponse.CSKIP)
                         {
-                            RLSI_letterText[letter].text = "<color=green>+</color>";
+                            RLSI_letterText[letterIndex].text = "<color=green>+</color>";
                         }
                         else
                         {
-                            RLSI_letterText[letter].text = "<color=red>-</color>";
+                            RLSI_letterText[letterIndex].text = "<color=red>-</color>";
                         }
                     }
                     
                     //If score was correct or CSkipped, increase adaptive counter
-                    if (individual_LSI[letter, time] == AdaptiveResponse.Correct ||
-                        individual_LSI[letter, time] == AdaptiveResponse.CSKIP)
+                    if (individual_LSI[letterIndex, time] == AdaptiveResponse.Correct ||
+                        individual_LSI[letterIndex, time] == AdaptiveResponse.CSKIP)
                     {
                         adaptiveCounter++;
                     }
 
                     //If incorrect, reset adaptive counter. Note that we don't count ISKIP
-                    else if  (individual_LSI[letter, time] == AdaptiveResponse.Incorrect)
+                    else if  (individual_LSI[letterIndex, time] == AdaptiveResponse.Incorrect)
                     {
                         adaptiveCounter = 0;
                     }
+                }
 
+                if (exceptionalCharacters.Contains(letter))
+                {
+                    if(adaptiveCounter>=3)
+                    {
+                        learnedLetterNamesLSI[letterIndex] = true; //THIS IS OUR PROBLEM LINE--WHAT CHANGES WHEN TRUE
+                        //there's no mechanic to take this back to false--test out once and you're good
+                    }
+                }
+                else
+                {
                     if(adaptiveCounter>=2)
                     {
-                        learnedLetterNamesLSI[letter] = true; //THIS IS OUR PROBLEM LINE--WHAT CHANGES WHEN TRUE
+                        learnedLetterNamesLSI[letterIndex] = true; //THIS IS OUR PROBLEM LINE--WHAT CHANGES WHEN TRUE
                         //there's no mechanic to take this back to false--test out once and you're good
                     }
                 }

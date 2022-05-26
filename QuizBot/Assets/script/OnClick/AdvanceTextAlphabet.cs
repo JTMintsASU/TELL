@@ -45,8 +45,8 @@ public class AdvanceTextAlphabet : AdvanceText
 
         if (DataManager.globalGame == "LSI_Instructions")
         {
-            int part1 = 6 - 1;
-            if (iterator == part1) //ok, we've hit 6
+            int twoStepRuleThreshold = 6;
+            if (iterator == twoStepRuleThreshold) //ok, we've hit 6
             {
                 int wrongos = 0;
                 //if we can find 3+ incorrect answers, it's time to stop
@@ -55,7 +55,8 @@ public class AdvanceTextAlphabet : AdvanceText
                     if(DataManager.individual_LSI[index, DataManager.globalTime-1] == AdaptiveResponse.Incorrect)
                         wrongos++;
                 }
-                if (wrongos >= 3)
+                // Atleast 3 should be correct to proceed game
+                if (wrongos > 3)
                     complete = true;
             }
             bigShownText.text = textArray[iterator];
