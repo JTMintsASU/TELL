@@ -23,8 +23,14 @@ public class DataManager : MonoBehaviour
     public static string globalGame; //Var used to store what game we are playing
     public static int globalTime; //Var used to store which 'Time'/unit/week we are on
 
+    // Student should answer 3 of these alphabets to skip these alphabets
+    public static string[] exceptionalAdaptCharactersLSI = new[] { "A", "B", "E", "O", "S", "U" }; 
+    public static string[] exceptionalTwoStageCharactersLSI = new[] { "A", "B", "M", "P", "S", "T" }; 
+    
     public static string childNameLNI; //used to store child name for use in LNI
                                        //PII THAT SHOULD NOT BE SAVED LONG-TERM
+    
+                                       
 
     //Per-game scored answers
     //LNI Grades
@@ -244,8 +250,6 @@ public class DataManager : MonoBehaviour
 
         if (currentScene == "LSI_Grader" )
         {
-            string[] exceptionalCharacters = new[] { "A", "B", "E", "O", "S", "U" }; // Student should answer 3 of these alphabets to skip these alphabets
-            
             //Check for "Tested Out" Letters
             for (int letterIndex = 0; letterIndex < individual_LSI.GetLength(0); letterIndex++)
             {
@@ -281,7 +285,7 @@ public class DataManager : MonoBehaviour
                     }
                 }
 
-                if (exceptionalCharacters.Contains(letter))
+                if (exceptionalAdaptCharactersLSI.Contains(letter))
                 {
                     if(adaptiveCounter>=3)
                     {

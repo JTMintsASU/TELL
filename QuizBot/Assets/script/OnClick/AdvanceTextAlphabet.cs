@@ -45,8 +45,18 @@ public class AdvanceTextAlphabet : AdvanceText
 
         if (DataManager.globalGame == "LSI_Instructions")
         {
-            int twoStepRuleThreshold = 6;
-            if (iterator == twoStepRuleThreshold) //ok, we've hit 6
+            int twoStepRuleThreshold = 3;
+            foreach (var alphabet in DataManager.exceptionalAdaptCharactersLSI)
+            {
+                int alphabetValue = char.Parse(alphabet);
+                int alphabetIndex = alphabetValue - 65;
+                if (DataManager.learnedLetterNamesLSI[alphabetIndex])
+                {
+                    twoStepRuleThreshold -= 1;
+                }
+            }
+
+            if (twoStepRuleThreshold > 0 && iterator == 6)
             {
                 int wrongos = 0;
                 //if we can find 3+ incorrect answers, it's time to stop
@@ -59,6 +69,7 @@ public class AdvanceTextAlphabet : AdvanceText
                 if (wrongos > 3)
                     complete = true;
             }
+            
             bigShownText.text = textArray[iterator];
         }
     }
