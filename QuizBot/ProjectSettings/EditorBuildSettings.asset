@@ -45,6 +45,15 @@ EditorBuildSettings:
     path: Assets/scenes/CBM Scenes/Letter Sound Identification/LSI_Grader.unity
     guid: 4c2172d4a41204d98a463190ac2d04b4
   - enabled: 1
+    path: Assets/scenes/CBM Scenes/Beginning Sounds/BS_Instructions.unity
+    guid: 1dd93e21e533241278ac78a07dca14c0
+  - enabled: 1
+    path: Assets/scenes/CBM Scenes/Beginning Sounds/BS_Evaluator.unity
+    guid: 498155f0dab084287bf2ee3bbe371102
+  - enabled: 1
+    path: Assets/scenes/CBM Scenes/Beginning Sounds/BS_Grader.unity
+    guid: 4c0a6f15afade4a40bec690014cc4a26
+  - enabled: 1
     path: Assets/scenes/Results Scenes/RSelect.unity
     guid: 646f2d85dd42cae45b1dd37042c0e1fa
   - enabled: 1

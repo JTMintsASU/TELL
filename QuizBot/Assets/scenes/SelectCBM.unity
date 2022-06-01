@@ -1407,6 +1407,8 @@ GameObject:
   - component: {fileID: 1812890050}
   - component: {fileID: 1812890052}
   - component: {fileID: 1812890051}
+  - component: {fileID: 1812890054}
+  - component: {fileID: 1812890053}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1584,6 +1586,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedButton: {fileID: 1752756352}
+  sceneName: Times
+  checker: {fileID: 1812890045}
+  cleanup: {fileID: 1812890043}
+--- !u!114 &1812890053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812890042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d788ceebf100a4043ab694f96c7d86ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameButton: {fileID: 1804463194}
+--- !u!114 &1812890054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812890042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81ca533505700643b730d3279d128b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickedButton: {fileID: 1804463194}
   sceneName: Times
   checker: {fileID: 1812890045}
   cleanup: {fileID: 1812890043}

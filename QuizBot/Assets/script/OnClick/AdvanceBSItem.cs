@@ -1,0 +1,137 @@
+
+using System;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class AdvanceBSItem: MonoBehaviour
+{
+    public TextMeshProUGUI shownText;
+    public Toggle response_yes;
+    public Toggle response_no;
+    public Button clickedButton;
+    public List<Sprite> sprites;
+    public Image image;
+    
+    public int iterator; //Used to track our position in the array.
+    public bool complete; //Indicates when iteration moves to last element, viewed by other scripts for scene transition logic
+    public bool gradeMe; //Seperate bool tracks actual last element, used for data sync purposes with other scripts
+    public static double pi = 3.1416;
+    public List<int> recordedSolutions;
+
+    public Validation_Games checker; //Used to check for valid answer before proceeding
+    public Prompts_BS prompts; //Holds the list of prompts that the evaluator will be cycling through - select relevant child
+
+    // Start is called before the first frame update
+    public virtual void Start()
+    {
+        complete = false;
+        gradeMe = true;
+        iterator = 0; //Selects the starting text to display
+        recordedSolutions = new List<int>();
+        shownText.text = prompts.promptsToDisplay[iterator].item; //Display the first text
+        clickedButton.onClick.AddListener(TaskOnClick);
+        image.sprite = sprites[prompts.promptsToDisplay[iterator].index];
+    }
+    
+    //Occurs when button is clicked
+    protected virtual void TaskOnClick()
+    {
+        checker.Validator();
+        if (checker.GetValidInput())
+        {
+            Tuple<double, double> eapResults = getEAPEstimationScore();
+            double eap_estimation_value = eapResults.Item1;
+            double standard_error = eapResults.Item2;
+
+            BSItem nextSelectedItem = null;
+            foreach (var item in prompts.universalItems)
+            {
+                if (nextSelectedItem == null)
+                {
+                    nextSelectedItem = item;
+                }
+                else
+                {
+                    double diff = Math.Abs(item.difficulty - eap_estimation_value);
+                    double currDiff = Math.Abs(nextSelectedItem.difficulty - eap_estimation_value);
+                    if (diff < currDiff)
+                        nextSelectedItem = item;
+                }
+            }
+
+            //if (prompts.promptsToDisplay.Count >= 8 || standard_error <= 0.4)
+            if (prompts.promptsToDisplay.Count == 7 || standard_error <= 0.4)
+            {
+                complete = true;
+            }
+
+            if (nextSelectedItem != null)
+            {
+                prompts.promptsToDisplay.Add(nextSelectedItem);
+                prompts.universalItems.Remove(nextSelectedItem);
+                iterator++;
+                shownText.text = nextSelectedItem.item; //Display the first text
+                image.sprite = sprites[nextSelectedItem.index];
+            }
+        }
+    }
+
+    private Tuple<double, double> getEAPEstimationScore()
+    {
+        if (checker.GetValidInput())
+        {
+            
+            if (response_no.isOn)
+                this.recordedSolutions.Add(0);
+            if (response_yes.isOn)
+                this.recordedSolutions.Add(1);
+
+            double D = 2.77112763740014;
+            double q = 81.0;
+            int array_size = (int) q;
+            double[] x = new double[array_size];
+            double[] g = new double[array_size];
+            double[] l = new double[array_size];
+            for (int i=1; i <= q; i++)
+            {
+                x[i-1] = (-4) + (i - 1) * (8 / (q - 1));
+                g[i-1] = Math.Exp(-1 * Math.Pow(x[i-1], 2) / 2) / (Math.Sqrt(2 * pi));
+
+                l[i-1] = 1;
+                for (int j=1; j <= recordedSolutions.Count; j++)
+                {
+                    BSItem item = prompts.promptsToDisplay[j - 1];
+                    double difficultyItem = item.difficulty;
+                    int responseItem = recordedSolutions[j - 1];
+                    double p = 1 / (1 + Math.Exp(-D * (x[i - 1] - difficultyItem)));
+                    l[i - 1] = l[i - 1] * Math.Pow(p, responseItem) * Math.Pow((1-p), 1-responseItem);
+                }
+            }
+
+            double denominator = 0D;
+            double first_moment = 0D;
+            double second_moment = 0D;
+            for (int i = 1; i <= q; i++)
+            {
+                denominator += (l[i - 1] * g[i - 1]);
+                first_moment += (x[i - 1] * l[i - 1] * g[i - 1]);
+                second_moment += Math.Pow(x[i - 1], 2) * l[i - 1] * g[i - 1];
+            }
+
+            double eap_estimation_value = first_moment / denominator;
+            double standard_error = Math.Sqrt((second_moment / denominator) - Math.Pow(eap_estimation_value, 2));
+
+            if (eap_estimation_value < -3)
+                eap_estimation_value = -3;
+            if (eap_estimation_value > 3)
+                eap_estimation_value = 3;
+
+            return Tuple.Create(eap_estimation_value, standard_error);
+        }
+
+        return Tuple.Create(-999.999, -999.999);
+    }
+    
+}

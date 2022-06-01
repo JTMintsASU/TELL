@@ -3,7 +3,9 @@
 //By using static variables we keep a persistent location in memory.
 //Note: Use doubles to store all numbers to avoid expensive casting
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -35,6 +37,10 @@ public class DataManager : MonoBehaviour
     //LSI Grades
     public static bool[] learnedLetterNamesLSI; //Tracks letters that we have 'tested out of'
     public static AdaptiveResponse[,] individual_LSI; //26 letters, 6 times
+    
+    //Per-game scored answers
+    //BS Grades
+    public static AdaptiveResponse[,] individual_BS;
 
     //Vocab Grades
     //These hold the total score for the game
@@ -83,6 +89,7 @@ public class DataManager : MonoBehaviour
 
     //Grader Fields
     public AdvanceText promptCycler;
+    public AdvanceBSItem promptCyclerBS;
     public TextMeshProUGUI childText; //Displays child ID
     public TextMeshProUGUI[] promptText;
     public TextMeshProUGUI[] responsesText; //Displays child answers
@@ -98,6 +105,10 @@ public class DataManager : MonoBehaviour
     //RLI Fields
     public TextMeshProUGUI[] RLNI_letterText;
     public TextMeshProUGUI[] RLSI_letterText;
+
+    //RLI Fields
+    public TextMeshProUGUI[] BS_items;
+    public TextMeshProUGUI[] BS_letterText;
 
     
 
@@ -149,6 +160,7 @@ public class DataManager : MonoBehaviour
             individual_vocabularyResponses = new List<List<string>>();
             individual_LNI =  new AdaptiveResponse[26, 6];
             individual_LSI =  new AdaptiveResponse[26, 6];
+            individual_BS =  new AdaptiveResponse[36, 6];
 
             learnedLetterNamesLNI = new bool[26] {false, false, false, false, false, false, false, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false};
@@ -158,7 +170,8 @@ public class DataManager : MonoBehaviour
         }
 
         //Reset scores and wipe responses
-        if(currentScene == "Evaluator" || currentScene == "LNI_Evaluator" || currentScene == "LSI_Evaluator")
+        if(currentScene == "Evaluator" || currentScene == "LNI_Evaluator" || 
+           currentScene == "LSI_Evaluator" || currentScene == "BS_Evaluator")
         {
             individual_expressive = new List<bool>();
             individual_expressiveFlag = new List<bool>();
@@ -307,6 +320,41 @@ public class DataManager : MonoBehaviour
                 responsesText[wheel].text = responses[wheel];
             }*/
         }
+        
+        if (currentScene == "BS_Grader" )
+        {
+            List<BSItem> universalItems;
+            string readPath = Path.Combine(Application.dataPath, Prompts_BS.configurationFilePath);
+            using (StreamReader r = new StreamReader(readPath))
+            {
+                string json = r.ReadToEnd();
+                universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
+            }
+            
+            //Check for "Tested Out" Letters
+            int iterator = 0;
+            for (int item = 0; item < individual_BS.GetLength(0); item++)
+            {
+                for (int time = 0; time < individual_BS.GetLength(1); time++)
+                {
+                    if (time == globalTime-1)
+                    {
+                        if (individual_BS[item, time] == AdaptiveResponse.Correct)
+                        {
+                            BS_items[iterator].text = universalItems.Find(bsItem => bsItem.index.Equals(item)).item;
+                            BS_letterText[iterator].text = "<color=green>+</color>";
+                            iterator++;
+                        }
+                        else if (individual_BS[item, time] == AdaptiveResponse.Incorrect)
+                        {
+                            BS_items[iterator].text = universalItems.Find(bsItem => bsItem.index.Equals(item)).item;
+                            BS_letterText[iterator].text = "<color=red>-</color>";
+                            iterator++;
+                        }
+                    }
+                }
+            }
+        }
 
         //Report card - show all times
         if (currentScene == "RVocab")
@@ -425,6 +473,19 @@ public class DataManager : MonoBehaviour
             {
                 individual_LSI[charNum, globalTime-1] = AdaptiveResponse.Incorrect;
                 responses.Add("<color=red>Incorrect</color>");
+            }
+        }
+
+        if (currentScene == "BS_Evaluator")
+        {
+            BSItem itemToGrade = promptCyclerBS.prompts.promptsToDisplay[promptCyclerBS.iterator];
+            if (primaryToggle.isOn)
+            {
+                individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Correct;
+            }
+            else
+            {
+                individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Incorrect;
             }
         }
     }

@@ -7,6 +7,7 @@ public class GradeQuestion : MonoBehaviour
     public Button gradeButton; //Button clicked
     public DataManager gradeData;
     public AdvanceText gradedQuestions;
+    public AdvanceBSItem gradedQuestionsBS;
     public Validation_Games checker; //Used to check for valid answer before proceeding
 
     void Start()
@@ -23,7 +24,7 @@ public class GradeQuestion : MonoBehaviour
         checker.Validator();
         if (checker.GetValidInput())
         {
-            if (gradedQuestions.gradeMe)
+            if (gradedQuestionsBS.gradeMe || gradedQuestions.gradeMe)
                 gradeData.GradeQuestion();
         }
     }
