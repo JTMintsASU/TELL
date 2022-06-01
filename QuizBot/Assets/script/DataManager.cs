@@ -2,6 +2,8 @@
 //Useful for scene transitions, data exports, and local saves.
 //By using static variables we keep a persistent location in memory.
 //Note: Use doubles to store all numbers to avoid expensive casting
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,6 +43,7 @@ public class DataManager : MonoBehaviour
     //Per-game scored answers
     //BS Grades
     public static AdaptiveResponse[,] individual_BS;
+    public static string[,] individual_BSChildResponse;
 
     //Vocab Grades
     //These hold the total score for the game
@@ -78,6 +81,9 @@ public class DataManager : MonoBehaviour
 
     //Instructions Fields
     public TMP_InputField lniNameField;
+    
+    //BS Child Response Field
+    public TMP_InputField bsChildResponseField;
 
     //Evaluator Fields
     public TMP_InputField responseField;
@@ -161,6 +167,7 @@ public class DataManager : MonoBehaviour
             individual_LNI =  new AdaptiveResponse[26, 6];
             individual_LSI =  new AdaptiveResponse[26, 6];
             individual_BS =  new AdaptiveResponse[36, 6];
+            individual_BSChildResponse =  new string[36, 6];
 
             learnedLetterNamesLNI = new bool[26] {false, false, false, false, false, false, false, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false};
@@ -487,6 +494,8 @@ public class DataManager : MonoBehaviour
             {
                 individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Incorrect;
             }
+            if (bsChildResponseField.text != String.Empty)
+                individual_BSChildResponse[itemToGrade.index, globalTime-1] = bsChildResponseField.text;
         }
     }
 

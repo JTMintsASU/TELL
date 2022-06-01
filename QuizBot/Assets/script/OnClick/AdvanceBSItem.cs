@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class AdvanceBSItem: MonoBehaviour
 {
@@ -45,23 +46,8 @@ public class AdvanceBSItem: MonoBehaviour
             double eap_estimation_value = eapResults.Item1;
             double standard_error = eapResults.Item2;
 
-            BSItem nextSelectedItem = null;
-            foreach (var item in prompts.universalItems)
-            {
-                if (nextSelectedItem == null)
-                {
-                    nextSelectedItem = item;
-                }
-                else
-                {
-                    double diff = Math.Abs(item.difficulty - eap_estimation_value);
-                    double currDiff = Math.Abs(nextSelectedItem.difficulty - eap_estimation_value);
-                    if (diff < currDiff)
-                        nextSelectedItem = item;
-                }
-            }
+            BSItem nextSelectedItem = pickNextItemRandomly(eap_estimation_value);
 
-            //if (prompts.promptsToDisplay.Count >= 8 || standard_error <= 0.4)
             if (prompts.promptsToDisplay.Count == 7 || standard_error <= 0.4)
             {
                 complete = true;
@@ -133,5 +119,26 @@ public class AdvanceBSItem: MonoBehaviour
 
         return Tuple.Create(-999.999, -999.999);
     }
-    
+
+    private BSItem pickNextItemRandomly(double eap_estimation_value)
+    {
+        int randomnessThreshold = 3;
+        Random random = new Random();
+        List<Tuple<double, int>> absDifference = new List<Tuple<double, int>>();
+        
+        // Create a list of tuples where each tuple contains (absDiff, index)
+        for (int index = 0; index < prompts.universalItems.Count; index++)
+        {
+            BSItem itemIndex = prompts.universalItems[index];
+            double diff = Math.Abs(itemIndex.difficulty - eap_estimation_value);
+            absDifference.Add(new Tuple<double, int>(diff, index));
+        }
+        
+        // Sort the list and get smallest abs difference first
+        absDifference.Sort();
+        List<Tuple<double, int>> randomList = absDifference.GetRange(0, randomnessThreshold);
+        Tuple<double, int> randomTuple = randomList[random.Next(randomList.Count)];
+
+        return prompts.universalItems[randomTuple.Item2];
+    }
 }

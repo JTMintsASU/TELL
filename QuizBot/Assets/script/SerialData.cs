@@ -32,6 +32,10 @@ public class SerialData
     public bool[] sLearnedLetterNamesLSI;
     public AdaptiveResponse[,] sIndividual_LSI;
     
+    //BS Storage
+    public AdaptiveResponse[,] sIndividual_BS;
+    public string[,] sIndividual_BSChildResponse;
+    
     public static SerialData convertToSerialData(UsersDetails usersDetails)
     {
         SerialData serialData = new SerialData();

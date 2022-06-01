@@ -56,6 +56,10 @@ public class SaveLoad
 		//Storing LSI data
 		staging.sLearnedLetterNamesLSI = DataManager.learnedLetterNamesLSI;
 		staging.sIndividual_LSI = DataManager.individual_LSI;
+
+		//Storing BS data
+		staging.sIndividual_BS = DataManager.individual_BS;
+		staging.sIndividual_BSChildResponse = DataManager.individual_BSChildResponse;
 		
 		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
 		string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
@@ -106,6 +110,8 @@ public class SaveLoad
         DataManager.individual_LNI = staging.sIndividual_LNI;
         DataManager.learnedLetterNamesLSI = staging.sLearnedLetterNamesLSI;
         DataManager.individual_LSI = staging.sIndividual_LSI;
+        DataManager.individual_BS = staging.sIndividual_BS;
+        DataManager.individual_BSChildResponse = staging.sIndividual_BSChildResponse;
 	}
 	
 	// Creates files and saves data passed as parameter

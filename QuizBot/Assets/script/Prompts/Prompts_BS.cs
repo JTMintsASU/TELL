@@ -32,16 +32,19 @@ public class Prompts_BS : MonoBehaviour
             universalItems = universalItems.FindAll(item => item.item != String.Empty &&
                                                             item.index != null &&
                                                             item.difficulty != null);
+            BSItem itemToAdd = null;
             foreach (var item in universalItems)
             {
                 if (item.item.Equals(firstItem))
                 {
                     List<BSItem> items = new List<BSItem>(){};
-                    items.Add(item);
-                    universalItems.Remove(item);
+                    itemToAdd = item;
+                    items.Add(itemToAdd);
                     promptsToDisplay = items;
                 }
             }
+            if (itemToAdd != null)
+                universalItems.Remove(itemToAdd);
         }
     }
 }
