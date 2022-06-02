@@ -230,7 +230,8 @@ public class DataManager : MonoBehaviour
                         if (individual_LNI[letter, time] == AdaptiveResponse.Correct ||
                             individual_LNI[letter, time] == AdaptiveResponse.CSKIP)
                         {
-                            RLNI_letterText[letter].text = "<color=green>+</color>";
+                            RLNI_letterText[letter].text = "+";
+                            RLNI_letterText[letter].color = new Color(0, 0.6f, 0);
                         }
                         else
                         {
@@ -283,7 +284,8 @@ public class DataManager : MonoBehaviour
                         if (individual_LSI[letterIndex, time] == AdaptiveResponse.Correct ||
                             individual_LSI[letterIndex, time] == AdaptiveResponse.CSKIP)
                         {
-                            RLSI_letterText[letterIndex].text = "<color=green>+</color>";
+                            RLSI_letterText[letterIndex].text = "+";
+                            RLSI_letterText[letterIndex].color = new Color(0, 0.6f, 0);
                         }
                         else
                         {
@@ -353,7 +355,8 @@ public class DataManager : MonoBehaviour
                         if (individual_BS[item, time] == AdaptiveResponse.Correct)
                         {
                             BS_items[iterator].text = universalItems.Find(bsItem => bsItem.index.Equals(item)).item;
-                            BS_letterText[iterator].text = "<color=green>+</color>";
+                            BS_letterText[iterator].text = "+";
+                            BS_letterText[iterator].color = new Color(0, 0.6f, 0);
                             iterator++;
                         }
                         else if (individual_BS[item, time] == AdaptiveResponse.Incorrect)
@@ -388,7 +391,7 @@ public class DataManager : MonoBehaviour
                 string result;
                 if (learnedLetterNamesLNI[loop] == true)
                 {
-                    result = "<color=green>+</color>";
+                    result = "<span style='color: rgb(0, 150, 0);'>Correct</span>";
                 }
                 else result = "<color=red>-</color>";
                 RLNI_letterText[loop].text = result;
@@ -399,7 +402,7 @@ public class DataManager : MonoBehaviour
                 string result;
                 if (learnedLetterNamesLSI[loop] == true)
                 {
-                    result = "<color=green>+</color>";
+                    result = "<span style='color: rgb(0, 150, 0);'>Correct</span>";
                 }
                 else result = "<color=red>-</color>";
                 RLSI_letterText[loop].text = result;
@@ -461,7 +464,7 @@ public class DataManager : MonoBehaviour
             if (primaryToggle.isOn)
             {
                 individual_LNI[charNum, globalTime-1] = AdaptiveResponse.Correct;
-                responses.Add("<color=green>Correct</color>");
+                responses.Add("<span style='color: rgb(0, 150, 0);'>Correct</span>");
             }
             else
             {
@@ -478,7 +481,7 @@ public class DataManager : MonoBehaviour
             if (primaryToggle.isOn)
             {
                 individual_LSI[charNum, globalTime-1] = AdaptiveResponse.Correct;
-                responses.Add("<color=green>Correct</color>");
+                responses.Add("<span style='color: rgb(0, 150, 0);'>Correct</span>");
             }
             else
             {
