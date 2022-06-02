@@ -65,7 +65,7 @@ public class Prompts_Random : Array_Prompts
         
         if (DataManager.globalGame == "LSI_Instructions")
         {
-            prefixAlphabets = new string[] { "A", "B", "M", "P", "S", "T"};
+            prefixAlphabets = DataManager.exceptionalTwoStageCharactersLSI.ToArray();
             //Initialize and shuffle alphabet
             suffixAlphabets = new string[] {"C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "N", "O", 
                 "Q", "R", "U", "V", "W", "X", "Y", "Z" };
