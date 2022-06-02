@@ -501,7 +501,7 @@ public class DataManager : MonoBehaviour
             {
                 individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Incorrect;
             }
-            if (bsChildResponseField.text != String.Empty)
+            if (!String.IsNullOrEmpty(bsChildResponseField.text))
                 individual_BSChildResponse[itemToGrade.index, globalTime-1] = bsChildResponseField.text;
         }
     }
