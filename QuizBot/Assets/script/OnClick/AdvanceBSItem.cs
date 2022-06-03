@@ -24,6 +24,8 @@ public class AdvanceBSItem: MonoBehaviour
     public Validation_Games checker; //Used to check for valid answer before proceeding
     public Prompts_BS prompts; //Holds the list of prompts that the evaluator will be cycling through - select relevant child
 
+    public static string sep = "  ";
+    
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -31,7 +33,7 @@ public class AdvanceBSItem: MonoBehaviour
         gradeMe = true;
         iterator = 0; //Selects the starting text to display
         recordedSolutions = new List<int>();
-        shownText.text = prompts.promptsToDisplay[iterator].item; //Display the first text
+        shownText.text = prompts.promptsToDisplay[iterator].item + sep + prompts.promptsToDisplay[iterator].pronounce; //Display the first text
         clickedButton.onClick.AddListener(TaskOnClick);
         image.sprite = sprites[prompts.promptsToDisplay[iterator].index + 1];
     }
@@ -47,7 +49,7 @@ public class AdvanceBSItem: MonoBehaviour
             {
                 nextSelectedItem = prompts.promptsToDisplay[prompts.promptsToDisplay.Count - 1];
                 iterator++;
-                shownText.text = nextSelectedItem.item; //Display the first text
+                shownText.text = nextSelectedItem.item + sep + prompts.promptsToDisplay[iterator].pronounce;; //Display the first text
                 image.sprite = sprites[nextSelectedItem.index + 1];
             } 
             else 
@@ -73,7 +75,7 @@ public class AdvanceBSItem: MonoBehaviour
                     prompts.promptsToDisplay.Add(nextSelectedItem);
                     prompts.universalItems.Remove(nextSelectedItem);
                     iterator++;
-                    shownText.text = nextSelectedItem.item; //Display the first text
+                    shownText.text = nextSelectedItem.item + sep + prompts.promptsToDisplay[iterator].pronounce;; //Display the first text
                     image.sprite = sprites[nextSelectedItem.index + 1];
                 }
             }

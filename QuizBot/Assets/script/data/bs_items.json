@@ -2,12 +2,14 @@
   {
     "index": -1,
     "item":"Horse",
+    "pronounce": "/h/",
     "difficulty": -999,
     "IST": "Invalid"
   },
   {
     "index": 0,
     "item":"Hand",
+    "pronounce": "/h/",
     "difficulty": -0.157,
     "IST": "Liquid",
     "imgPath": "images/hand.jpg"
@@ -15,6 +17,7 @@
   {
     "index": 1,
     "item":"Moon",
+    "pronounce": "/m/",
     "difficulty": -0.109,
     "IST": "Nasal",
     "imgPath": "images/moon.jpg"
@@ -22,6 +25,7 @@
   {
     "index": 2,
     "item":"Sun",
+    "pronounce": "/s/",
     "difficulty": -0.100,
     "IST": "Liquid",
     "imgPath": "images/sun.jpg"
@@ -29,6 +33,7 @@
   {
     "index": 3,
     "item":"Door",
+    "pronounce": "/d/",
     "difficulty": -0.065,
     "IST": "Stop",
     "imgPath": "images/door.jpg"
@@ -36,6 +41,7 @@
   {
     "index": 4,
     "item":"Mouse",
+    "pronounce": "/m/",
     "difficulty": -0.065,
     "IST": "Nasal",
     "imgPath": "images/mouse.jpg"
@@ -43,6 +49,7 @@
   {
     "index": 5,
     "item":"Car",
+    "pronounce": "/c/",
     "difficulty": -0.065,
     "IST": "Stop",
     "imgPath": "images/car.jpg"
@@ -50,6 +57,7 @@
   {
     "index": 6,
     "item":"Fan",
+    "pronounce": "/f/",
     "difficulty": 0.008,
     "IST": "Liquid",
     "imgPath": "images/fan.png"
@@ -57,12 +65,14 @@
   {
     "index": 7,
     "item":"Pot",
+    "pronounce": "/p/",
     "difficulty": 0.115,
     "IST": "Stop"
   },
   {
     "index": 8,
     "item":"Hat",
+    "pronounce": "/h/",
     "difficulty": 0.138,
     "IST": "Liquid",
     "imgPath": "images/hat.jpg"
@@ -70,162 +80,189 @@
   {
     "index": 9,
     "item":"Ball",
+    "pronounce": "/b/",
     "difficulty": 0.171,
     "IST": "Stop"
   },
   {
     "index": 10,
     "item":"Duck",
+    "pronounce": "/d/",
     "difficulty": 0.217,
     "IST": "Stop"
   },
   {
     "index": 11,
     "item":"Van",
+    "pronounce": "/v/",
     "difficulty": 0.238,
     "IST": "Liquid"
   },
   {
     "index": 12,
     "item":"Dog",
+    "pronounce": "/d/",
     "difficulty": 0.258,
     "IST": "Stop"
   },
   {
     "index": 13,
     "item":"Cake",
+    "pronounce": "/c/",
     "difficulty": 0.283,
     "IST": "Stop"
   },
   {
     "index": 14,
     "item":"Leaf",
+    "pronounce": "/l/",
     "difficulty": 0.283,
     "IST": "Liquid"
   },
   {
     "index": 15,
     "item":"Heart",
+    "pronounce": "/h/",
     "difficulty": 0.283,
     "IST": "Liquid"
   },
   {
     "index": 16,
     "item":"Four",
+    "pronounce": "/f/",
     "difficulty": 0.285,
     "IST": "Liquid"
   },
   {
     "index": 17,
     "item":"Milk",
+    "pronounce": "/m/",
     "difficulty": 0.320,
     "IST": "Nasal"
   },
   {
     "index": 18,
     "item":"Nut",
+    "pronounce": "/n/",
     "difficulty": 0.399,
     "IST": "Nasal"
   },
   {
     "index": 19,
     "item":"Nest",
+    "pronounce": "/n/",
     "difficulty": 0.421,
     "IST": "Nasal"
   },
   {
     "index": 20,
     "item":"Book",
+    "pronounce": "/b/",
     "difficulty": 0.427,
     "IST": "Stop"
   },
   {
     "index": 21,
     "item":"Sock",
+    "pronounce": "/s/",
     "difficulty": 0.427,
     "IST": "Liquid"
   },
   {
     "index": 22,
     "item":"Bird",
+    "pronounce": "/b/",
     "difficulty": 0.452,
     "IST": "Stop"
   },
   {
     "index": 23,
     "item":"Fox",
+    "pronounce": "/f/",
     "difficulty": 0.526,
     "IST": "Liquid"
   },
   {
     "index": 24,
     "item":"Cup",
+    "pronounce": "/c/",
     "difficulty": 0.526,
     "IST": "Stop"
   },
   {
     "index": 25,
     "item":"Pants",
+    "pronounce": "/p/",
     "difficulty": 0.526,
     "IST": "Stop"
   },
   {
     "index": 26,
     "item":"Chalk",
+    "pronounce": "/ch/",
     "difficulty": 0.583,
     "IST": "Affricate"
   },
   {
     "index": 27,
     "item":"Nose",
+    "pronounce": "/n/",
     "difficulty": 0.647,
     "IST": "Nasal"
   },
   {
     "index": 28,
     "item":"Chin",
+    "pronounce": "/ch/",
     "difficulty": 0.647,
     "IST": "Affricate"
   },
   {
     "index": 29,
     "item":"Chair",
+    "pronounce": "/ch/",
     "difficulty": 0.657,
     "IST": "Affricate"
   },
   {
     "index": 30,
     "item":"Leg",
+    "pronounce": "/l/",
     "difficulty": 0.670,
     "IST": "Liquid"
   },
   {
     "index": 31,
     "item":"Net",
+    "pronounce": "/n/",
     "difficulty": 0.960,
     "IST": "Nasal"
   },
   {
     "index": 32,
     "item":"Fish",
+    "pronounce": "/f/",
     "difficulty": 0.960,
     "IST": "Liquid"
   },
   {
     "index": 33,
     "item":"Cat",
+    "pronounce": "/c/",
     "difficulty": 1.132,
     "IST": "Stop"
   },
   {
     "index": 34,
     "item":"Lamp",
+    "pronounce": "/l/",
     "difficulty": 1.312,
     "IST": "Liquid"
   },
   {
     "index": 35,
     "item":"Cheese",
+    "pronounce": "/ch/",
     "difficulty": 1.334,
     "IST": "Affricate"
   }
