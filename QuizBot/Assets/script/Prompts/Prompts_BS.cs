@@ -9,6 +9,7 @@ public class Prompts_BS : MonoBehaviour
 {
     public List<BSItem> universalItems;
     public List<BSItem> promptsToDisplay;
+    public static string testItem = "Horse";
     public static string firstItem = "Fan";
     public static string configurationFilePath = "script/data/bs_items.json";
     
@@ -33,16 +34,25 @@ public class Prompts_BS : MonoBehaviour
                                                             item.index != null &&
                                                             item.difficulty != null);
             BSItem itemToAdd = null;
+            BSItem testItemToAdd = null;
             foreach (var item in universalItems)
             {
                 if (item.item.Equals(firstItem))
                 {
-                    List<BSItem> items = new List<BSItem>(){};
                     itemToAdd = item;
-                    items.Add(itemToAdd);
-                    promptsToDisplay = items;
+                }
+                if (item.item.Equals(testItem))
+                {
+                    testItemToAdd = item;
                 }
             }
+            
+            List<BSItem> items = new List<BSItem>(){};
+            items.Add(testItemToAdd);
+            items.Add(itemToAdd);
+            promptsToDisplay = items;
+            if (testItemToAdd != null)
+                universalItems.Remove(testItemToAdd);
             if (itemToAdd != null)
                 universalItems.Remove(itemToAdd);
         }

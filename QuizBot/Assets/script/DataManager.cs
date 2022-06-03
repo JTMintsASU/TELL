@@ -495,16 +495,19 @@ public class DataManager : MonoBehaviour
         if (currentScene == "BS_Evaluator")
         {
             BSItem itemToGrade = promptCyclerBS.prompts.promptsToDisplay[promptCyclerBS.iterator];
-            if (primaryToggle.isOn)
+            if (!itemToGrade.item.Equals(Prompts_BS.testItem))
             {
-                individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Correct;
+                if (primaryToggle.isOn)
+                {
+                    individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Correct;
+                }
+                else
+                {
+                    individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Incorrect;
+                }
+                if (!String.IsNullOrEmpty(bsChildResponseField.text))
+                    individual_BSChildResponse[itemToGrade.index, globalTime-1] = bsChildResponseField.text;
             }
-            else
-            {
-                individual_BS[itemToGrade.index, globalTime-1] = AdaptiveResponse.Incorrect;
-            }
-            if (!String.IsNullOrEmpty(bsChildResponseField.text))
-                individual_BSChildResponse[itemToGrade.index, globalTime-1] = bsChildResponseField.text;
         }
     }
 

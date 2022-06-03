@@ -2715,6 +2715,7 @@ MonoBehaviour:
   response_no: {fileID: 290119540}
   clickedButton: {fileID: 867038192}
   sprites:
+  - {fileID: 21300000, guid: cbe47b52b42af4373a11fba9125c1a85, type: 3}
   - {fileID: 21300000, guid: f512c13af1c6d417ca8d72ed3bea330f, type: 3}
   - {fileID: 21300000, guid: 34f7219003c5d44d8b57606af42bfca1, type: 3}
   - {fileID: 21300000, guid: 27771ed3fe9dc4877b4c01721f1febbd, type: 3}

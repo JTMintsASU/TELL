@@ -1,5 +1,11 @@
 [
   {
+    "index": -1,
+    "item":"Horse",
+    "difficulty": -999,
+    "IST": "Invalid"
+  },
+  {
     "index": 0,
     "item":"Hand",
     "difficulty": -0.157,

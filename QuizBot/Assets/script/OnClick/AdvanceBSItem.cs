@@ -33,7 +33,7 @@ public class AdvanceBSItem: MonoBehaviour
         recordedSolutions = new List<int>();
         shownText.text = prompts.promptsToDisplay[iterator].item; //Display the first text
         clickedButton.onClick.AddListener(TaskOnClick);
-        image.sprite = sprites[prompts.promptsToDisplay[iterator].index];
+        image.sprite = sprites[prompts.promptsToDisplay[iterator].index + 1];
     }
     
     //Occurs when button is clicked
@@ -42,20 +42,31 @@ public class AdvanceBSItem: MonoBehaviour
         checker.Validator();
         if (checker.GetValidInput())
         {
-            Tuple<double, double> eapResults = getEAPEstimationScore();
-            double eap_estimation_value = eapResults.Item1;
-            double standard_error = eapResults.Item2;
-
-            BSItem nextSelectedItem = pickNextItemRandomly(eap_estimation_value);
-
-            if (prompts.promptsToDisplay.Count == 7 || standard_error <= 0.4)
+            BSItem nextSelectedItem = null;
+            if (iterator == 0)
             {
-                complete = true;
-            }
-
-            if (iterator == 7)
+                nextSelectedItem = prompts.promptsToDisplay[prompts.promptsToDisplay.Count - 1];
+                iterator++;
+                shownText.text = nextSelectedItem.item; //Display the first text
+                image.sprite = sprites[nextSelectedItem.index + 1];
+            } 
+            else 
             {
-                DataManager.final_BSscores[DataManager.globalTime-1] = eapResults;
+                Tuple<double, double> eapResults = getEAPEstimationScore();
+                double eap_estimation_value = eapResults.Item1;
+                double standard_error = eapResults.Item2;
+
+                nextSelectedItem = pickNextItemRandomly(eap_estimation_value);
+
+                if (prompts.promptsToDisplay.Count == 9 || standard_error <= 0.4)
+                {
+                    complete = true;
+                }
+
+                if (iterator == 8)
+                {
+                    DataManager.final_BSscores[DataManager.globalTime-1] = eapResults;
+                }
             }
 
             if (nextSelectedItem != null)
@@ -64,7 +75,7 @@ public class AdvanceBSItem: MonoBehaviour
                 prompts.universalItems.Remove(nextSelectedItem);
                 iterator++;
                 shownText.text = nextSelectedItem.item; //Display the first text
-                image.sprite = sprites[nextSelectedItem.index];
+                image.sprite = sprites[nextSelectedItem.index + 1];
             }
 
         }
@@ -74,7 +85,6 @@ public class AdvanceBSItem: MonoBehaviour
     {
         if (checker.GetValidInput())
         {
-            
             if (response_no.isOn)
                 this.recordedSolutions.Add(0);
             if (response_yes.isOn)
