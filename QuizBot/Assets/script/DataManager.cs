@@ -388,6 +388,7 @@ public class DataManager : MonoBehaviour
         if (currentScene == "RLI")
         {
             //look for last good score
+            childText.text = childID;
             for(int loop = 0; loop < learnedLetterNamesLNI.Length; loop++)
             {
                 string result;
