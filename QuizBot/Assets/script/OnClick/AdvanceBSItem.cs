@@ -128,7 +128,7 @@ public class AdvanceBSItem: MonoBehaviour
 
     private BSItem pickNextItemRandomly(double eap_estimation_value)
     {
-        int randomnessThreshold = 3;
+        int randomnessThreshold = 4;
         Random random = new Random();
         List<Tuple<double, int>> absDifference = new List<Tuple<double, int>>();
         
