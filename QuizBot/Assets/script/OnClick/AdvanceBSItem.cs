@@ -58,7 +58,7 @@ public class AdvanceBSItem: MonoBehaviour
 
                 nextSelectedItem = pickNextItemRandomly(eap_estimation_value);
 
-                if (prompts.promptsToDisplay.Count == 9 || standard_error <= 0.4)
+                if (prompts.promptsToDisplay.Count == 8 || standard_error <= 0.4)
                 {
                     complete = true;
                 }
@@ -67,15 +67,15 @@ public class AdvanceBSItem: MonoBehaviour
                 {
                     DataManager.final_BSscores[DataManager.globalTime-1] = eapResults;
                 }
-            }
-
-            if (nextSelectedItem != null)
-            {
-                prompts.promptsToDisplay.Add(nextSelectedItem);
-                prompts.universalItems.Remove(nextSelectedItem);
-                iterator++;
-                shownText.text = nextSelectedItem.item; //Display the first text
-                image.sprite = sprites[nextSelectedItem.index + 1];
+                
+                if (nextSelectedItem != null)
+                {
+                    prompts.promptsToDisplay.Add(nextSelectedItem);
+                    prompts.universalItems.Remove(nextSelectedItem);
+                    iterator++;
+                    shownText.text = nextSelectedItem.item; //Display the first text
+                    image.sprite = sprites[nextSelectedItem.index + 1];
+                }
             }
 
         }
