@@ -50,6 +50,7 @@ public class DataManager : MonoBehaviour
     //BS Grades
     public static AdaptiveResponse[,] individual_BS;
     public static string[,] individual_BSChildResponse;
+    public static Tuple<double, double>[] final_BSscores;
 
     //Vocab Grades
     //These hold the total score for the game
@@ -174,6 +175,7 @@ public class DataManager : MonoBehaviour
             individual_LSI =  new AdaptiveResponse[26, 6];
             individual_BS =  new AdaptiveResponse[36, 6];
             individual_BSChildResponse =  new string[36, 6];
+            final_BSscores = new Tuple<double, double>[6];
 
             learnedLetterNamesLNI = new bool[26] {false, false, false, false, false, false, false, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false};

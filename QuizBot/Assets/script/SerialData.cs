@@ -35,7 +35,8 @@ public class SerialData
     //BS Storage
     public AdaptiveResponse[,] sIndividual_BS;
     public string[,] sIndividual_BSChildResponse;
-    
+    public Tuple<double, double>[] final_BSscores;
+
     public static SerialData convertToSerialData(UsersDetails usersDetails)
     {
         SerialData serialData = new SerialData();

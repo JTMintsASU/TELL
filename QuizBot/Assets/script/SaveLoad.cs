@@ -60,6 +60,7 @@ public class SaveLoad
 		//Storing BS data
 		staging.sIndividual_BS = DataManager.individual_BS;
 		staging.sIndividual_BSChildResponse = DataManager.individual_BSChildResponse;
+		staging.final_BSscores = DataManager.final_BSscores;
 		
 		string fileName = staging.sClassroomID + "_" + staging.sChildID + ".dat"; // File for saving, filename will be <childID>.dat
 		string savePath = Path.Combine(pdP, fileName); // File path for storage with the file name
@@ -112,6 +113,7 @@ public class SaveLoad
         DataManager.individual_LSI = staging.sIndividual_LSI;
         DataManager.individual_BS = staging.sIndividual_BS;
         DataManager.individual_BSChildResponse = staging.sIndividual_BSChildResponse;
+        DataManager.final_BSscores = staging.final_BSscores;
 	}
 	
 	// Creates files and saves data passed as parameter

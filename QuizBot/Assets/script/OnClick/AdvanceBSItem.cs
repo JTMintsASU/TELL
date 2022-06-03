@@ -53,6 +53,11 @@ public class AdvanceBSItem: MonoBehaviour
                 complete = true;
             }
 
+            if (iterator == 7)
+            {
+                DataManager.final_BSscores[DataManager.globalTime-1] = eapResults;
+            }
+
             if (nextSelectedItem != null)
             {
                 prompts.promptsToDisplay.Add(nextSelectedItem);
@@ -61,6 +66,7 @@ public class AdvanceBSItem: MonoBehaviour
                 shownText.text = nextSelectedItem.item; //Display the first text
                 image.sprite = sprites[nextSelectedItem.index];
             }
+
         }
     }
 
