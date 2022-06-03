@@ -56,7 +56,7 @@ public class AdvanceTextAlphabet : AdvanceText
                 }
             }
 
-            if (twoStepRuleThreshold > 0 && iterator == 6)
+            if (twoStepRuleThreshold > 0 && iterator == 5)
             {
                 int wrongos = 0;
                 //if we can find 3+ incorrect answers, it's time to stop
