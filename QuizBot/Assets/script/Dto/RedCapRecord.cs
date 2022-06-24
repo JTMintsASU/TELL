@@ -418,6 +418,157 @@ public class RedCapRecord
     [CanBeNull]
     public int? rLSI_Z = null;
 
+    //Fields for beginning sounds
+    [JsonProperty("bs_session_no", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsSessionNumber = null;
+    [JsonProperty("bs_eap", NullValueHandling = NullValueHandling.Ignore)]
+    public double? bsEAP = null;
+    [JsonProperty("bs_std_error", NullValueHandling = NullValueHandling.Ignore)]
+    public double? bsStdError = null;
+    [JsonProperty("bs_hand", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsHand = null;
+    [JsonProperty("bsr_hand", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResHand = null;
+    [JsonProperty("bs_moon", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsMoon = null;
+    [JsonProperty("bsr_moon", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResMoon = null;
+    [JsonProperty("bs_sun", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsSun = null;
+    [JsonProperty("bsr_sun", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResSun = null;
+    [JsonProperty("bs_door", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsDoor = null;
+    [JsonProperty("bsr_door", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResDoor = null;
+    [JsonProperty("bs_mouse", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsMouse = null;
+    [JsonProperty("bsr_mouse", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResMouse = null;
+    [JsonProperty("bs_car", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsCar = null;
+    [JsonProperty("bsr_car", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResCar = null;
+    [JsonProperty("bs_fan", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsFan = null;
+    [JsonProperty("bsr_fan", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResFan = null;
+    [JsonProperty("bs_pot", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsPot = null;
+    [JsonProperty("bsr_pot", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResPot = null;
+    [JsonProperty("bs_hat", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsHat = null;
+    [JsonProperty("bsr_hat", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResHat = null;
+    [JsonProperty("bs_ball", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsBall = null;
+    [JsonProperty("bsr_ball", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResBall = null;
+    [JsonProperty("bs_duck", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsDuck = null;
+    [JsonProperty("bsr_duck", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResDuck = null;
+    [JsonProperty("bs_van", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsVan = null;
+    [JsonProperty("bsr_van", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResVan = null;
+    [JsonProperty("bs_dog", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsDog = null;
+    [JsonProperty("bsr_dog", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResDog = null;
+    [JsonProperty("bs_cake", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsCake = null;
+    [JsonProperty("bsr_cake", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResCake = null;
+    [JsonProperty("bs_leaf", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsLeaf = null;
+    [JsonProperty("bsr_leaf", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResLeaf = null;
+    [JsonProperty("bs_heart", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsHeart = null;
+    [JsonProperty("bsr_heart", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResHeart = null;
+    [JsonProperty("bs_four", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsFour = null;
+    [JsonProperty("bsr_four", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResFour = null;
+    [JsonProperty("bs_milk", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsMilk = null;
+    [JsonProperty("bsr_milk", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResMilk = null;
+    [JsonProperty("bs_nut", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsNut = null;
+    [JsonProperty("bsr_nut", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResNut = null;
+    [JsonProperty("bs_nest", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsNest = null;
+    [JsonProperty("bsr_nest", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResNest = null;
+    [JsonProperty("bs_book", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsBook = null;
+    [JsonProperty("bsr_book", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResBook = null;
+    [JsonProperty("bs_sock", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsSock = null;
+    [JsonProperty("bsr_sock", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResSock = null;
+    [JsonProperty("bs_bird", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsBird = null;
+    [JsonProperty("bsr_bird", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResBird = null;
+    [JsonProperty("bs_fox", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsFox = null;
+    [JsonProperty("bsr_fox", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResFox = null;
+    [JsonProperty("bs_cup", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsCup = null;
+    [JsonProperty("bsr_cup", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResCup = null;
+    [JsonProperty("bs_pants", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsPants = null;
+    [JsonProperty("bsr_pants", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResPants = null;
+    [JsonProperty("bs_chalk", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsChalk = null;
+    [JsonProperty("bsr_chalk", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResChalk = null;
+    [JsonProperty("bs_nose", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsNose = null;
+    [JsonProperty("bsr_nose", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResNose = null;
+    [JsonProperty("bs_chin", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsChin = null;
+    [JsonProperty("bsr_chin", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResChin = null;
+    [JsonProperty("bs_chair", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsChair = null;
+    [JsonProperty("bsr_chair", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResChair = null;
+    [JsonProperty("bs_leg", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsLeg = null;
+    [JsonProperty("bsr_leg", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResLeg = null;
+    [JsonProperty("bs_net", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsNet = null;
+    [JsonProperty("bsr_net", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResNet = null;
+    [JsonProperty("bs_fish", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsFish = null;
+    [JsonProperty("bsr_fish", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResFish = null;
+    [JsonProperty("bs_cat", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsCat = null;
+    [JsonProperty("bsr_cat", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResCat = null;
+    [JsonProperty("bs_lamp", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsLamp = null;
+    [JsonProperty("bsr_lamp", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResLamp = null;
+    [JsonProperty("bs_cheese", NullValueHandling = NullValueHandling.Ignore)]
+    public int? bsCheese = null;
+    [JsonProperty("bsr_cheese", NullValueHandling = NullValueHandling.Ignore)]
+    public string bsResCheese = null;
 
     //Seems like the idea here is to create a big list of RedcapRecords
     //that match the db field names so they can be serialized later
@@ -667,7 +818,7 @@ public class RedCapRecord
             lniRRecord.rLNI_R = (int)lniRSD[17, lnrRIndex];
             lniRRecord.rLNI_S = (int)lniRSD[18, lnrRIndex];
             lniRRecord.rLNI_T = (int)lniRSD[19, lnrRIndex];
-            lniRRecord.rLNI_U = (int)lniRSD[20, lnrRIndex];//PROBLEM HERE OR BELOW
+            lniRRecord.rLNI_U = (int)lniRSD[20, lnrRIndex];
             lniRRecord.rLNI_V = (int)lniRSD[21, lnrRIndex];
             lniRRecord.rLNI_W = (int)lniRSD[22, lnrRIndex];
             lniRRecord.rLNI_X = (int)lniRSD[23, lnrRIndex];
@@ -769,6 +920,117 @@ public class RedCapRecord
             lsiRRecord.rLSI_Z = (int)lsiRSD[25, lsrRIndex];
         }
         redCapRecords.AddRange(lsiRedCapRecords);
+
+        //Populate fields for Beginning Sounds Instrument
+        List<RedCapRecord> bsRedCapRecords = new();
+        for (int bsIndex = 0; inputData.sIndividual_BS != null &&
+            bsIndex < inputData.sIndividual_BS.GetLength(1); bsIndex++)
+        {
+            //Headers, credentials, etc.
+            RedCapRecord bsRecord;
+            AdaptiveResponse[,] bsSD = inputData.sIndividual_BS;
+            if (bsRedCapRecords.Count - 1 < bsIndex)
+                bsRedCapRecords.Add(new RedCapRecord());
+
+            bsRecord = bsRedCapRecords[bsIndex];
+            bsRecord.bsSessionNumber = bsIndex + 1;
+            bsRecord.recordID = recordID;
+            bsRecord.redcapRepeatInstrument = "beginning_sounds";
+            bsRecord.redcapRepeatInstance = bsRecord.bsSessionNumber;
+            
+            //Total Scores
+            var tupleTemp = (Tuple<double, double>[])inputData.final_BSscores;
+            if (tupleTemp[bsIndex] != null)
+            {
+                bsRecord.bsEAP = tupleTemp[bsIndex].Item1;
+                bsRecord.bsStdError = tupleTemp[bsIndex].Item2;
+            }
+            
+            //Actual data values
+            //Not using nullproofing on sessiondata
+            //Since AdaptiveResponse(enum) is non-nullable
+            //And the 0 value is significant in grading
+            //Refer to bs_items.json for reesponse list
+            bsRecord.bsHand = (int)bsSD[0, bsIndex];
+            bsRecord.bsMoon = (int)bsSD[1, bsIndex];
+            bsRecord.bsSun = (int)bsSD[2, bsIndex];
+            bsRecord.bsDoor = (int)bsSD[3, bsIndex];
+            bsRecord.bsMouse = (int)bsSD[4, bsIndex];
+            bsRecord.bsCar = (int)bsSD[5, bsIndex];
+            bsRecord.bsFan = (int)bsSD[6, bsIndex];
+            bsRecord.bsPot = (int)bsSD[7, bsIndex];
+            bsRecord.bsHat = (int)bsSD[8, bsIndex];
+            bsRecord.bsBall = (int)bsSD[9, bsIndex];
+            bsRecord.bsDuck = (int)bsSD[10, bsIndex];
+            bsRecord.bsVan = (int)bsSD[11, bsIndex];
+            bsRecord.bsDog = (int)bsSD[12, bsIndex];
+            bsRecord.bsCake = (int)bsSD[13, bsIndex];
+            bsRecord.bsLeaf = (int)bsSD[14, bsIndex];
+            bsRecord.bsHeart = (int)bsSD[15, bsIndex];
+            bsRecord.bsFour = (int)bsSD[16, bsIndex];
+            bsRecord.bsMilk = (int)bsSD[17, bsIndex];
+            bsRecord.bsNut = (int)bsSD[18, bsIndex];
+            bsRecord.bsNest = (int)bsSD[19, bsIndex];
+            bsRecord.bsBook = (int)bsSD[20, bsIndex];
+            bsRecord.bsSock = (int)bsSD[21, bsIndex];
+            bsRecord.bsBird = (int)bsSD[22, bsIndex];
+            bsRecord.bsFox = (int)bsSD[23, bsIndex];
+            bsRecord.bsCup = (int)bsSD[24, bsIndex];
+            bsRecord.bsPants = (int)bsSD[25, bsIndex];
+            bsRecord.bsChalk = (int)bsSD[26, bsIndex];
+            bsRecord.bsNose = (int)bsSD[27, bsIndex];
+            bsRecord.bsChin = (int)bsSD[28, bsIndex];
+            bsRecord.bsChair = (int)bsSD[29, bsIndex];
+            bsRecord.bsLeg = (int)bsSD[30, bsIndex];
+            bsRecord.bsNet = (int)bsSD[31, bsIndex];
+            bsRecord.bsFish = (int)bsSD[32, bsIndex];
+            bsRecord.bsCat = (int)bsSD[33, bsIndex];
+            bsRecord.bsLamp = (int)bsSD[34, bsIndex];
+            bsRecord.bsCheese = (int)bsSD[35, bsIndex];
+            
+            //Now that the scores are out of the way,
+            //Let's also store the child responses
+            String[,] bsRes = inputData.sIndividual_BSChildResponse;
+            bsRecord.bsResHand = bsRes[0, bsIndex];
+            bsRecord.bsResMoon = bsRes[1, bsIndex];
+            bsRecord.bsResSun = bsRes[2, bsIndex];
+            bsRecord.bsResDoor = bsRes[3, bsIndex];
+            bsRecord.bsResMouse = bsRes[4, bsIndex];
+            bsRecord.bsResCar = bsRes[5, bsIndex];
+            bsRecord.bsResFan = bsRes[6, bsIndex];
+            bsRecord.bsResPot = bsRes[7, bsIndex];
+            bsRecord.bsResHat = bsRes[8, bsIndex];
+            bsRecord.bsResBall = bsRes[9, bsIndex];
+            bsRecord.bsResDuck = bsRes[10, bsIndex];
+            bsRecord.bsResVan = bsRes[11, bsIndex];
+            bsRecord.bsResDog = bsRes[12, bsIndex];
+            bsRecord.bsResCake = bsRes[13, bsIndex];
+            bsRecord.bsResLeaf = bsRes[14, bsIndex];
+            bsRecord.bsResHeart = bsRes[15, bsIndex];
+            bsRecord.bsResFour = bsRes[16, bsIndex];
+            bsRecord.bsResMilk = bsRes[17, bsIndex];
+            bsRecord.bsResNut = bsRes[18, bsIndex];
+            bsRecord.bsResNest = bsRes[19, bsIndex];
+            bsRecord.bsResBook = bsRes[20, bsIndex];
+            bsRecord.bsResSock = bsRes[21, bsIndex];
+            bsRecord.bsResBird = bsRes[22, bsIndex];
+            bsRecord.bsResFox = bsRes[23, bsIndex];
+            bsRecord.bsResCup = bsRes[24, bsIndex];
+            bsRecord.bsResPants = bsRes[25, bsIndex];
+            bsRecord.bsResChalk = bsRes[26, bsIndex];
+            bsRecord.bsResNose = bsRes[27, bsIndex];
+            bsRecord.bsResChin = bsRes[28, bsIndex];
+            bsRecord.bsResChair = bsRes[29, bsIndex];
+            bsRecord.bsResLeg = bsRes[30, bsIndex];
+            bsRecord.bsResNet = bsRes[31, bsIndex];
+            bsRecord.bsResFish = bsRes[32, bsIndex];
+            bsRecord.bsResCat = bsRes[33, bsIndex];
+            bsRecord.bsResLamp = bsRes[34, bsIndex];
+            bsRecord.bsResCheese = bsRes[35, bsIndex];/**/
+
+        }
+        redCapRecords.AddRange(bsRedCapRecords);
+        
         
         
         return redCapRecords;

@@ -33,9 +33,9 @@ public class SerialData
     public AdaptiveResponse[,] sIndividual_LSI;
     
     //BS Storage
-    public AdaptiveResponse[,] sIndividual_BS;
-    public string[,] sIndividual_BSChildResponse;
-    public Tuple<double, double>[] final_BSscores;
+    public AdaptiveResponse[,] sIndividual_BS; //answer array with preset of 36 sounds, see bs_items.json
+    public string[,] sIndividual_BSChildResponse; //[index, globaltime-1] holds child response to every question
+    public Tuple<double, double>[] final_BSscores; //This tuple holds eap_estimation_value and standard_error
 
     public static SerialData convertToSerialData(UsersDetails usersDetails)
     {
