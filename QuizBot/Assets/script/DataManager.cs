@@ -119,10 +119,12 @@ public class DataManager : MonoBehaviour
     public TextMeshProUGUI[] RLNI_letterText;
     public TextMeshProUGUI[] RLSI_letterText;
 
-    //RLI Fields
+    //RLI Fields - I think akshay started using this for BS but unsure if implemented
     public TextMeshProUGUI[] BS_items;
     public TextMeshProUGUI[] BS_letterText;
 
+    //RBS Fields
+    public TextMeshProUGUI[] BS_EAPScore;
     
 
     // Start is called before the first frame update
@@ -136,6 +138,7 @@ public class DataManager : MonoBehaviour
             grade_vocabularyExpressive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyReceptive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyTotal = new double[6] { -1, -1, -1, -1, -1, -1 };
+            final_BSscores = new Tuple<double, double>[6] { Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0)};
 
             individual_vocabularyExpressive = new List<List<bool>>();
             individual_vocabularyExpressiveFlag = new List<List<bool>>();
@@ -166,6 +169,7 @@ public class DataManager : MonoBehaviour
             grade_vocabularyExpressive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyReceptive = new double[6] { -1, -1, -1, -1, -1, -1 };
             grade_vocabularyTotal = new double[6] { -1, -1, -1, -1, -1, -1 };
+            final_BSscores = new Tuple<double, double>[6] { Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0), Tuple.Create(-10.0, -10.0) };
             individual_vocabularyExpressive = new List<List<bool>>();
             individual_vocabularyExpressiveFlag = new List<List<bool>>();
             individual_vocabularyReceptive = new List<List<bool>>();
@@ -175,8 +179,7 @@ public class DataManager : MonoBehaviour
             individual_LSI =  new AdaptiveResponse[26, 6];
             individual_BS =  new AdaptiveResponse[36, 6];
             individual_BSChildResponse =  new string[36, 6];
-            final_BSscores = new Tuple<double, double>[6];
-
+            
             learnedLetterNamesLNI = new bool[26] {false, false, false, false, false, false, false, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false};
 
@@ -414,6 +417,17 @@ public class DataManager : MonoBehaviour
             //else track back and add, exit once tested out
             
              
+        }
+
+        //Report card - show all times
+        if (currentScene == "RBS")
+        {
+            childText.text = childID;
+            //Loop populates grades textboxes, hardcoded at 6 due to issues reading unfully instantiated sizes
+            for (int loop = 0; loop < 6; loop++)
+            {
+                BS_EAPScore[loop].text = final_BSscores[loop].Item1.ToString("0.00"); //Parameter ensures two decimal points
+            }
         }
     }
 

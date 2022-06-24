@@ -399,8 +399,100 @@ public class SerialData
                 if (redCapRecord.rLSI_Z != null)
                     serialData.sIndividual_LSI[25, lsiTime] = (AdaptiveResponse)(int)redCapRecord.rLSI_Z;
             }
+
+            //Populate Beginning Sounds
+            serialData.final_BSscores = new Tuple<double, double>[6];
+            serialData.sIndividual_BS = new AdaptiveResponse[36, 6];
+            serialData.sIndividual_BSChildResponse = new string[36, 6];
+            if (redCapRecord.bsSessionNumber != null && redCapRecord.bsSessionNumber != 0)
+            {
+                int bsTime = (int)redCapRecord.bsSessionNumber - 1; //offset for zero array
+                if (redCapRecord.bsEAP != null && redCapRecord.bsStdError != null)
+                {
+                    serialData.final_BSscores[bsTime] = new Tuple<double, double>((double)redCapRecord.bsEAP, (double)redCapRecord.bsStdError);
+                }
+
+                //store the scores
+                //Refer to bs_items.json for reesponse list
+                if(redCapRecord.bsHand != null)
+                    serialData.sIndividual_BS[0, bsTime] = (AdaptiveResponse)redCapRecord.bsHand;
+                if(redCapRecord.bsMoon != null)serialData.sIndividual_BS[1, bsTime]= (AdaptiveResponse)redCapRecord.bsMoon;
+                if(redCapRecord.bsSun != null)serialData.sIndividual_BS[2, bsTime]= (AdaptiveResponse)redCapRecord.bsSun;
+                if(redCapRecord.bsDoor != null)serialData.sIndividual_BS[3, bsTime]= (AdaptiveResponse)redCapRecord.bsDoor;
+                if(redCapRecord.bsMouse != null)serialData.sIndividual_BS[4, bsTime]= (AdaptiveResponse)redCapRecord.bsMouse;
+                if(redCapRecord.bsCar != null)serialData.sIndividual_BS[5, bsTime]= (AdaptiveResponse)redCapRecord.bsCar;
+                if(redCapRecord.bsFan != null)serialData.sIndividual_BS[6, bsTime]= (AdaptiveResponse)redCapRecord.bsFan;
+                if(redCapRecord.bsPot != null)serialData.sIndividual_BS[7, bsTime]= (AdaptiveResponse)redCapRecord.bsPot;
+                if(redCapRecord.bsHat != null)serialData.sIndividual_BS[8, bsTime]= (AdaptiveResponse)redCapRecord.bsHat;
+                if(redCapRecord.bsBall != null)serialData.sIndividual_BS[9, bsTime]= (AdaptiveResponse)redCapRecord.bsBall;
+                if(redCapRecord.bsDuck != null)serialData.sIndividual_BS[10, bsTime]= (AdaptiveResponse)redCapRecord.bsDuck;
+                if(redCapRecord.bsVan != null)serialData.sIndividual_BS[11, bsTime]= (AdaptiveResponse)redCapRecord.bsVan;
+                if(redCapRecord.bsDog != null)serialData.sIndividual_BS[12, bsTime]= (AdaptiveResponse)redCapRecord.bsDog;
+                if(redCapRecord.bsCake != null)serialData.sIndividual_BS[13, bsTime]= (AdaptiveResponse)redCapRecord.bsCake;
+                if (redCapRecord.bsLeaf != null) serialData.sIndividual_BS[14, bsTime] = (AdaptiveResponse)redCapRecord.bsLeaf;
+                if(redCapRecord.bsHeart != null)serialData.sIndividual_BS[15, bsTime]= (AdaptiveResponse)redCapRecord.bsHeart;
+                if(redCapRecord.bsFour != null)serialData.sIndividual_BS[16, bsTime]= (AdaptiveResponse)redCapRecord.bsFour;
+                if(redCapRecord.bsMilk != null)serialData.sIndividual_BS[17, bsTime]= (AdaptiveResponse)redCapRecord.bsMilk;
+                if(redCapRecord.bsNut != null)serialData.sIndividual_BS[18, bsTime]= (AdaptiveResponse)redCapRecord.bsNut;
+                if(redCapRecord.bsNest != null)serialData.sIndividual_BS[19, bsTime]= (AdaptiveResponse)redCapRecord.bsNest;
+                if(redCapRecord.bsBook != null)serialData.sIndividual_BS[20, bsTime]= (AdaptiveResponse)redCapRecord.bsBook;
+                if(redCapRecord.bsSock != null)serialData.sIndividual_BS[21, bsTime]= (AdaptiveResponse)redCapRecord.bsSock;
+                if(redCapRecord.bsBird != null)serialData.sIndividual_BS[22, bsTime]= (AdaptiveResponse)redCapRecord.bsBird;
+                if(redCapRecord.bsFox != null)serialData.sIndividual_BS[23, bsTime]= (AdaptiveResponse)redCapRecord.bsFox;
+                if(redCapRecord.bsCup != null)serialData.sIndividual_BS[24, bsTime]= (AdaptiveResponse)redCapRecord.bsCup;
+                if(redCapRecord.bsPants != null)serialData.sIndividual_BS[25, bsTime]= (AdaptiveResponse)redCapRecord.bsPants;
+                if(redCapRecord.bsChalk != null)serialData.sIndividual_BS[26, bsTime]= (AdaptiveResponse)redCapRecord.bsChalk;
+                if(redCapRecord.bsNose != null)serialData.sIndividual_BS[27, bsTime]= (AdaptiveResponse)redCapRecord.bsNose;
+                if(redCapRecord.bsChin != null)serialData.sIndividual_BS[28, bsTime]= (AdaptiveResponse)redCapRecord.bsChin;
+                if(redCapRecord.bsChair != null)serialData.sIndividual_BS[29, bsTime]= (AdaptiveResponse)redCapRecord.bsChair;
+                if(redCapRecord.bsLeg != null)serialData.sIndividual_BS[30, bsTime]= (AdaptiveResponse)redCapRecord.bsLeg;
+                if(redCapRecord.bsNet != null)serialData.sIndividual_BS[31, bsTime]= (AdaptiveResponse)redCapRecord.bsNet;
+                if(redCapRecord.bsFish != null)serialData.sIndividual_BS[32, bsTime]= (AdaptiveResponse)redCapRecord.bsFish;
+                if(redCapRecord.bsCat != null)serialData.sIndividual_BS[33, bsTime]= (AdaptiveResponse)redCapRecord.bsCat;
+                if(redCapRecord.bsLamp != null)serialData.sIndividual_BS[34, bsTime]= (AdaptiveResponse)redCapRecord.bsLamp;
+                if(redCapRecord.bsCheese != null)serialData.sIndividual_BS[35, bsTime]= (AdaptiveResponse)redCapRecord.bsCheese;
+
+                //Now that the scores are out of the way,
+                //Let's also store the child responses
+                if (redCapRecord.bsResHand != null)
+                    serialData.sIndividual_BSChildResponse[0,bsTime] = redCapRecord.bsResHand;
+                if (redCapRecord.bsResMoon != null) serialData.sIndividual_BSChildResponse[1, bsTime] = redCapRecord.bsResMoon;
+                if (redCapRecord.bsResSun != null) serialData.sIndividual_BSChildResponse[2, bsTime] = redCapRecord.bsResSun;
+                if (redCapRecord.bsResDoor != null) serialData.sIndividual_BSChildResponse[3, bsTime] = redCapRecord.bsResDoor;
+                if (redCapRecord.bsResMouse != null) serialData.sIndividual_BSChildResponse[4, bsTime] = redCapRecord.bsResMouse;
+                if (redCapRecord.bsResCar != null) serialData.sIndividual_BSChildResponse[5, bsTime] = redCapRecord.bsResCar;
+                if (redCapRecord.bsResFan != null) serialData.sIndividual_BSChildResponse[6, bsTime] = redCapRecord.bsResFan;
+                if (redCapRecord.bsResPot != null) serialData.sIndividual_BSChildResponse[7, bsTime] = redCapRecord.bsResPot;
+                if (redCapRecord.bsResHat != null) serialData.sIndividual_BSChildResponse[8, bsTime] = redCapRecord.bsResHat;
+                if (redCapRecord.bsResBall != null) serialData.sIndividual_BSChildResponse[9, bsTime] = redCapRecord.bsResBall;
+                if (redCapRecord.bsResDuck != null) serialData.sIndividual_BSChildResponse[10, bsTime] = redCapRecord.bsResDuck;
+                if (redCapRecord.bsResVan != null) serialData.sIndividual_BSChildResponse[11, bsTime] = redCapRecord.bsResVan;
+                if (redCapRecord.bsResDog != null) serialData.sIndividual_BSChildResponse[12, bsTime] = redCapRecord.bsResDog;
+                if (redCapRecord.bsResCake != null) serialData.sIndividual_BSChildResponse[13, bsTime] = redCapRecord.bsResCake;
+                if (redCapRecord.bsResLeaf != null) serialData.sIndividual_BSChildResponse[14, bsTime] = redCapRecord.bsResLeaf;
+                if (redCapRecord.bsResHeart != null) serialData.sIndividual_BSChildResponse[15, bsTime] = redCapRecord.bsResHeart;
+                if (redCapRecord.bsResFour != null) serialData.sIndividual_BSChildResponse[16, bsTime] = redCapRecord.bsResFour;
+                if (redCapRecord.bsResMilk != null) serialData.sIndividual_BSChildResponse[17, bsTime] = redCapRecord.bsResMilk;
+                if (redCapRecord.bsResNut != null) serialData.sIndividual_BSChildResponse[18, bsTime] = redCapRecord.bsResNut;
+                if (redCapRecord.bsResNest != null) serialData.sIndividual_BSChildResponse[19, bsTime] = redCapRecord.bsResNest;
+                if (redCapRecord.bsResBook != null) serialData.sIndividual_BSChildResponse[20, bsTime] = redCapRecord.bsResBook;
+                if (redCapRecord.bsResSock != null) serialData.sIndividual_BSChildResponse[21, bsTime] = redCapRecord.bsResSock;
+                if (redCapRecord.bsResBird != null) serialData.sIndividual_BSChildResponse[22, bsTime] = redCapRecord.bsResBird;
+                if (redCapRecord.bsResFox != null) serialData.sIndividual_BSChildResponse[23, bsTime] = redCapRecord.bsResFox;
+                if (redCapRecord.bsResCup != null) serialData.sIndividual_BSChildResponse[24, bsTime] = redCapRecord.bsResCup;
+                if (redCapRecord.bsResPants != null) serialData.sIndividual_BSChildResponse[25, bsTime] = redCapRecord.bsResPants;
+                if (redCapRecord.bsResChalk != null) serialData.sIndividual_BSChildResponse[26, bsTime] = redCapRecord.bsResChalk;
+                if (redCapRecord.bsResNose != null) serialData.sIndividual_BSChildResponse[27, bsTime] = redCapRecord.bsResNose;
+                if (redCapRecord.bsResChin != null) serialData.sIndividual_BSChildResponse[28, bsTime] = redCapRecord.bsResChin;
+                if (redCapRecord.bsResChair != null) serialData.sIndividual_BSChildResponse[29, bsTime] = redCapRecord.bsResChair;
+                if (redCapRecord.bsResLeg != null) serialData.sIndividual_BSChildResponse[30, bsTime] = redCapRecord.bsResLeg;
+                if (redCapRecord.bsResNet != null) serialData.sIndividual_BSChildResponse[31, bsTime] = redCapRecord.bsResNet;
+                if (redCapRecord.bsResFish != null) serialData.sIndividual_BSChildResponse[32, bsTime] = redCapRecord.bsResFish;
+                if (redCapRecord.bsResCat != null) serialData.sIndividual_BSChildResponse[33, bsTime] = redCapRecord.bsResCat;
+                if (redCapRecord.bsResLamp != null) serialData.sIndividual_BSChildResponse[34, bsTime] = redCapRecord.bsResLamp;
+                if (redCapRecord.bsResCheese != null) serialData.sIndividual_BSChildResponse[35, bsTime] = redCapRecord.bsResCheese;
+            }
         }
-        
 
         serialData.sIndividualExpressiveList = expressiveList;
         serialData.sIndividualExpressiveFlagList = expressiveFlagList;

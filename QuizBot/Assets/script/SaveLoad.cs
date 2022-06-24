@@ -112,7 +112,7 @@ public class SaveLoad
         DataManager.learnedLetterNamesLSI = staging.sLearnedLetterNamesLSI;
         DataManager.individual_LSI = staging.sIndividual_LSI;
         DataManager.individual_BS = staging.sIndividual_BS;
-        DataManager.individual_BSChildResponse = staging.sIndividual_BSChildResponse;
+		DataManager.individual_BSChildResponse = staging.sIndividual_BSChildResponse;
         DataManager.final_BSscores = staging.final_BSscores;
 	}
 	
