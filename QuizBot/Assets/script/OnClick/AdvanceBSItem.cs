@@ -36,6 +36,7 @@ public class AdvanceBSItem: MonoBehaviour
         shownText.text = prompts.promptsToDisplay[iterator].item + sep + prompts.promptsToDisplay[iterator].pronounce; //Display the first text
         clickedButton.onClick.AddListener(TaskOnClick);
         image.sprite = sprites[prompts.promptsToDisplay[iterator].index + 1];
+        image.preserveAspect = true;
     }
     
     //Occurs when button is clicked
@@ -77,6 +78,7 @@ public class AdvanceBSItem: MonoBehaviour
                     iterator++;
                     shownText.text = nextSelectedItem.item + sep + prompts.promptsToDisplay[iterator].pronounce;; //Display the first text
                     image.sprite = sprites[nextSelectedItem.index + 1];
+                    image.preserveAspect = true;
                 }
             }
 

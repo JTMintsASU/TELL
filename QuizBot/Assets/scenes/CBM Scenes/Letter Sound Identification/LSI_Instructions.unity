@@ -958,7 +958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
+  m_AnchoredPosition: {x: 137, y: 0}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041972399
@@ -1167,6 +1167,7 @@ MonoBehaviour:
   childIDField: {fileID: 0}
   classroomIDField: {fileID: 0}
   lniNameField: {fileID: 0}
+  bsChildResponseField: {fileID: 0}
   responseField: {fileID: 0}
   primaryToggle: {fileID: 0}
   receptiveToggle: {fileID: 0}
@@ -1174,6 +1175,7 @@ MonoBehaviour:
   expressiveFlag: {fileID: 0}
   receptiveFlag: {fileID: 0}
   promptCycler: {fileID: 0}
+  promptCyclerBS: {fileID: 0}
   childText: {fileID: 0}
   promptText: []
   responsesText: []
@@ -1188,6 +1190,10 @@ MonoBehaviour:
   receptivePercent:
   - {fileID: 0}
   RLNI_letterText: []
+  RLSI_letterText: []
+  BS_items: []
+  BS_letterText: []
+  BS_EAPScore: []
 --- !u!114 &1405885869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,7 +1272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
+  m_AnchoredPosition: {x: -137, y: 0}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016643386
