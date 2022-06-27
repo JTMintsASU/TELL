@@ -17,14 +17,8 @@ public class Prompts_BS : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //string readPath = Path.Combine(Application.dataPath, configurationFile);
         string json = Resources.Load<TextAsset>(configurationFile).ToString();
         universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
-        /*using (StreamReader r = new StreamReader(readPath))
-        {
-            string json = r.ReadToEnd();
-            universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
-        }*/
 
         if (universalItems == null || universalItems.Count == 0)
         {

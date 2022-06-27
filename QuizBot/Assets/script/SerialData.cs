@@ -73,7 +73,7 @@ public class SerialData
                     serialData.sGradeVocabRec = new double[6] { -1, -1, -1, -1, -1, -1 };
                 if (serialData.sGradeVocabTotal == null)
                     serialData.sGradeVocabTotal = new double[6] { -1, -1, -1, -1, -1, -1 };
-                
+                 
                 if (redCapRecord.q1Expressive != null)
                     sessionExpressiveList[0] = getTrueFalse(redCapRecord.q1Expressive);
                 if (redCapRecord.q2Expressive != null)

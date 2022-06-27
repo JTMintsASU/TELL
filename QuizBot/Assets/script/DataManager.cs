@@ -342,12 +342,6 @@ public class DataManager : MonoBehaviour
         if (currentScene == "BS_Grader" )
         {
             List<BSItem> universalItems;
-            /*string readPath = Path.Combine(Application.dataPath, Prompts_BS.configurationFilePath);
-            using (StreamReader r = new StreamReader(readPath))
-            {
-                string json = r.ReadToEnd();
-                universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
-            }*/
             string json = Resources.Load<TextAsset>("bs_items").ToString();
             universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
             
@@ -399,7 +393,7 @@ public class DataManager : MonoBehaviour
                 string result;
                 if (learnedLetterNamesLNI[loop] == true)
                 {
-                    result = "<span style='color: rgb(0, 150, 0);'>Correct</span>";
+                    result = "<color=green>+</color>";
                 }
                 else result = "<color=red>-</color>";
                 RLNI_letterText[loop].text = result;
@@ -410,7 +404,7 @@ public class DataManager : MonoBehaviour
                 string result;
                 if (learnedLetterNamesLSI[loop] == true)
                 {
-                    result = "<span style='color: rgb(0, 150, 0);'>Correct</span>";
+                    result = "<color=green>+</color>";
                 }
                 else result = "<color=red>-</color>";
                 RLSI_letterText[loop].text = result;
