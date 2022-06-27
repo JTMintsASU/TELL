@@ -1,4 +1,5 @@
-
+//This script is being used to connect the sprite images in advanceBSItem
+//with the bs_items metadata table via BSItems.
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,17 +12,19 @@ public class Prompts_BS : MonoBehaviour
     public List<BSItem> promptsToDisplay;
     public static string testItem = "Horse";
     public static string firstItem = "Fan";
-    public static string configurationFilePath = "script/data/bs_items.json";
-    
+    public static string configurationFile = "bs_items";
+
     // Start is called before the first frame update
     void Awake()
     {
-        string readPath = Path.Combine(Application.dataPath, configurationFilePath);
-        using (StreamReader r = new StreamReader(readPath))
+        //string readPath = Path.Combine(Application.dataPath, configurationFile);
+        string json = Resources.Load<TextAsset>(configurationFile).ToString();
+        universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
+        /*using (StreamReader r = new StreamReader(readPath))
         {
             string json = r.ReadToEnd();
             universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
-        }
+        }*/
 
         if (universalItems == null || universalItems.Count == 0)
         {
@@ -31,8 +34,8 @@ public class Prompts_BS : MonoBehaviour
         else
         {
             universalItems = universalItems.FindAll(item => item.item != String.Empty &&
-                                                            item.index != null &&
-                                                            item.difficulty != null);
+                                                            item.index != 0 &&
+                                                            item.difficulty != 0.0);
             BSItem itemToAdd = null;
             BSItem testItemToAdd = null;
             foreach (var item in universalItems)

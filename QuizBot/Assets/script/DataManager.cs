@@ -342,12 +342,14 @@ public class DataManager : MonoBehaviour
         if (currentScene == "BS_Grader" )
         {
             List<BSItem> universalItems;
-            string readPath = Path.Combine(Application.dataPath, Prompts_BS.configurationFilePath);
+            /*string readPath = Path.Combine(Application.dataPath, Prompts_BS.configurationFilePath);
             using (StreamReader r = new StreamReader(readPath))
             {
                 string json = r.ReadToEnd();
                 universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
-            }
+            }*/
+            string json = Resources.Load<TextAsset>("bs_items").ToString();
+            universalItems = JsonConvert.DeserializeObject<List<BSItem>>(json);
             
             //Check for "Tested Out" Letters
             int iterator = 0;
