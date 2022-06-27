@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:QuizBot/Assets/StreamingAssets.meta
 guid: 1a7a272a9c0981f41a9eed8c31ddcec1
 folderAsset: yes
+========
+guid: 8e7dcf14449bfee4d959d9b705b2e062
+>>>>>>>> main:QuizBot/Assets/scenes/Results Scenes/RBS.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
