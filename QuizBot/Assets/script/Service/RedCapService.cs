@@ -91,7 +91,7 @@ public class RedCapService : MonoBehaviour
             form.AddField("arm", redCapRequest.arm);
         }*/
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.asu.edu/api/", form))
         {
             yield return www.SendWebRequest();
 
@@ -174,7 +174,7 @@ public class RedCapService : MonoBehaviour
         }*/
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.asu.edu/api/", form))
         {
             yield return www.SendWebRequest();
 
@@ -258,7 +258,7 @@ public class RedCapService : MonoBehaviour
     {
         WWWForm form = prepareForm(redCapRequest);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.asu.edu/api/", form))
         {
             //yield return www.SendWebRequest();
             www.SendWebRequest();
@@ -297,7 +297,7 @@ public class RedCapService : MonoBehaviour
 
         WWWForm form = prepareForm(redCapRequest);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.asu.edu/api/", form))
         {
             //yield return www.SendWebRequest();
             www.SendWebRequest();
@@ -353,7 +353,7 @@ public class RedCapService : MonoBehaviour
 
     public void ExportFileFromRedCap(RedCapMasterRecord redCapMasterRecord, string redcapRecordId, int instanceIndex, List<string> imageDataList)
     {
-        string redcapUrl = "https://redcap.rc.asu.edu/api/";
+        string redcapUrl = "https://redcap.asu.edu/api/";
         string redcapRepeatInstrument = "writing";
         string redcapRepeatInstance = (instanceIndex + 1).ToString();
 
@@ -395,7 +395,7 @@ public class RedCapService : MonoBehaviour
     public async Task clientFileUploladTaskExecution(RedCapMasterRecord redCapMasterRecord, String redcapRecordId, int i, string filePath)
     {
 
-        string redcapUrl = "https://redcap.rc.asu.edu/api/";
+        string redcapUrl = "https://redcap.asu.edu/api/";
         string fieldName = "image_writing";
         string redcapRepeatInstrument = "writing";
         string redcapRepeatInstance = (i + 1).ToString();
@@ -498,7 +498,7 @@ public class RedCapService : MonoBehaviour
         if (!String.IsNullOrEmpty(redCapRequest.returnContent))
             form.AddField("returnContent", redCapRequest.returnContent);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.rc.asu.edu/api/", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://redcap.asu.edu/api/", form))
         {
             Debug.Log("About to be yielded ");
 
